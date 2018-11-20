@@ -28,10 +28,10 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     public MyItemRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mFoodImageMap = new HashMap<>();
-        mFoodImageMap.put("브로콜리", R.drawable.broccoli);
-        mFoodImageMap.put("마늘", R.drawable.garlic);
-        mFoodImageMap.put("치킨", R.drawable.chicken5);
-        mFoodImageMap.put("생선", R.drawable.fish);
+        mFoodImageMap.put("베이컨", R.drawable.baecon);
+        mFoodImageMap.put("부채살", R.drawable.buchesal);
+        mFoodImageMap.put("차돌박이", R.drawable.chadol);
+        mFoodImageMap.put("불고기", R.drawable.bulgogi);
         mListener = listener;
     }
 
