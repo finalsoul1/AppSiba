@@ -7,14 +7,18 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.co.appsiba.fragment.FavoritesFragment;
 import com.example.co.appsiba.fragment.MemoFragment;
 import com.example.co.appsiba.fragment.MyrefriFragment;
+import com.example.co.appsiba.fragment.RefriFragment;
 import com.example.co.appsiba.fragment.ResultFragment;
 
 public class HomeActivity extends AppCompatActivity {
 
+
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,5 +79,10 @@ public class HomeActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+
+    public void clickToRefri(View view) {
+        Fragment fragment = new RefriFragment();
+        loadFragment(fragment);
+    }
 }
 

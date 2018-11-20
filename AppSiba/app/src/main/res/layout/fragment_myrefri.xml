@@ -6,9 +6,11 @@
     tools:context=".fragment.MyrefriFragment">
 
     <Button
+        android:id="@+id/to_refri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:text="검색" />
+        android:text="검색"
+        android:onClick="clickToRefri"/>
 
 </FrameLayout>
