@@ -6,4 +6,6 @@
     <color name="bgBottomNavigation">#fe485a</color>
     <color name="baseColor">#fedd6a</color>
     <color name="bgColorYellow">#fff9eb</color>
+    <color name="blackYellow">#2C2F14</color>
+    <color name="brown">#BD7D56</color>
 </resources>

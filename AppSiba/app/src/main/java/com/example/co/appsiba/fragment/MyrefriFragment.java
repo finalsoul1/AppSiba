@@ -32,15 +32,6 @@ public class MyrefriFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_myrefri, container, false);
 
-//        Button button = (Button) view.findViewById(R.id.to_refri);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FragmentActivity activity = getActivity();
-//                activity.
-//            }
-//        });
-
         return view;
     }
 
