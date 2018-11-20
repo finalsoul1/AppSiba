@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="bgBottomNavigation">#fe485a</color>
+    <color name="colorButton">#fedd6a</color>
+    <color name="colorBackground">#FFF9EB</color>
+    <color name="colorMenu">#BD7D56</color>
 </resources>
