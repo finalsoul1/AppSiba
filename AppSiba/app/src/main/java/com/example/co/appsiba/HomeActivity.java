@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import com.example.co.appsiba.fragment.FavoritesFragment;
 import com.example.co.appsiba.fragment.MemoFragment;
 import com.example.co.appsiba.fragment.MyrefriFragment;
-import com.example.co.appsiba.fragment.RefriFragment;
 import com.example.co.appsiba.fragment.ResultFragment;
 
 public class HomeActivity extends AppCompatActivity {
@@ -31,7 +30,7 @@ public class HomeActivity extends AppCompatActivity {
 //        layoutParams.setBehavior(new BottomNavigationBehavior());
 
         // load the store fragment by default
-        loadFragment(new RefriFragment());
+        loadFragment(new MyrefriFragment());
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
