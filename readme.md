@@ -1,13 +1,13 @@
 #가져올때  
-git add .
-git commit -m "blabla"
-git fetch
-git merge
+git add .  
+git commit -m "blabla"  
+git fetch  
+git merge  
 
 #올릴 때  
-git add .
-git commit -m "blabla"
-git push
+git add .  
+git commit -m "blabla"  
+git push  
 
 #올리기전에 가져온다음 올려야 올라갑니다.
 
