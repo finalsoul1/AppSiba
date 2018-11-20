@@ -1,0 +1,4 @@
+#Fri Nov 02 19:14:05 KST 2018
+base.0=E\:\\kwon\\android\\work\\android-DownloadableFonts-master\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\10
+path.0=classes.dex
+renamed.0=classes.dex
