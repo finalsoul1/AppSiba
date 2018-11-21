@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,12 +29,14 @@ public class RefriActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refri);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.refri_pager);
+        ViewPager viewPager = findViewById(R.id.refri_pager);
         RefriAdapter adapter = new RefriAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = findViewById(R.id.tab);
         tabLayout.setupWithViewPager(viewPager);
+
+//        Button button = (Button) findViewById(R.id.food_image)
 
     }
 
@@ -44,6 +47,14 @@ public class RefriActivity extends AppCompatActivity
 
     public void onClick(View view) {
         TextView textView = view.findViewById(R.id.food_nameView);
-        Toast.makeText(this, textView.getText() + "을/를 누르셨습니다.", Toast.LENGTH_LONG).show();
+        ImageView imageView = view.findViewById(R.id.food_image);
+
+        if(imageView.getImageAlpha() == 255){
+            Toast.makeText(this, textView.getText() + "을/를 누르셨습니다.", Toast.LENGTH_LONG).show();
+            imageView.setImageAlpha(20);
+        } else {
+            Toast.makeText(this, textView.getText() + "을/를 이미 추가하셨습니다.", Toast.LENGTH_LONG).show();
+        }
+        
     }
 }

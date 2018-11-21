@@ -1,20 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/meatgrid"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".refrigerator.MeatFragment">
 
-    <GridView
-        android:id="@+id/meat_grid"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:horizontalSpacing="5dp"
-        android:numColumns="5"
-        android:verticalSpacing="5dp"
-        tools:listitem="@layout/food_toggle"
-        android:background="@color/bgColorYellow"
-        android:padding="10dp">
-    </GridView>
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/top1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="알" />
+
+                <GridView
+                    android:id="@+id/meat_egg_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="@color/bgColorYellow"
+                    android:horizontalSpacing="5dp"
+                    android:numColumns="5"
+                    android:padding="10dp"
+                    android:verticalSpacing="5dp"
+                    tools:listitem="@layout/food_toggle"></GridView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/top2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="닭" />
+
+                <GridView
+                    android:id="@+id/meat_dak_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="@color/bgColorYellow"
+                    android:horizontalSpacing="5dp"
+                    android:numColumns="5"
+                    android:padding="10dp"
+                    android:verticalSpacing="5dp"
+                    tools:listitem="@layout/food_toggle"></GridView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="돼지" />
+
+                <GridView
+                    android:id="@+id/meat_pig_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="@color/bgColorYellow"
+                    android:horizontalSpacing="5dp"
+                    android:numColumns="5"
+                    android:padding="10dp"
+                    android:verticalSpacing="5dp"
+                    tools:listitem="@layout/food_toggle"></GridView>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

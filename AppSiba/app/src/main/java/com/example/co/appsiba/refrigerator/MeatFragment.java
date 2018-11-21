@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.example.co.appsiba.R;
+import com.example.co.appsiba.refrigerator.adapter.MyAdapter;
 import com.example.co.appsiba.refrigerator.model.FoodIngredients;
 
 import java.util.ArrayList;
@@ -30,6 +31,9 @@ public class MeatFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     ArrayList<FoodIngredients> data;
+    ArrayList<FoodIngredients> data1;
+    ArrayList<FoodIngredients> data2;
+    ArrayList<FoodIngredients> data3;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -85,59 +89,71 @@ public class MeatFragment extends Fragment {
 
         // 자료
         data = new ArrayList<>();
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
-        data.add(new FoodIngredients("베이컨"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+
+
 
         // 어댑터
-        MyAdapter adapter = new MyAdapter(data);
+//        MyAdapter adapter = new MyAdapter(data);
 
         // 뷰
-        GridView gridView = (GridView) getActivity().findViewById(R.id.meat_grid);
-        gridView.setAdapter(adapter);
+        GridView gridView1 = (GridView) getActivity().findViewById(R.id.meat_egg_grid);
+        GridView gridView2 = (GridView) getActivity().findViewById(R.id.meat_dak_grid);
+        GridView gridView3 = (GridView) getActivity().findViewById(R.id.meat_pig_grid);
+
+//        gridView.setAdapter(adapter);
+
+        data1 = new ArrayList<>();
+        data2 = new ArrayList<>();
+        data3 = new ArrayList<>();
+
+        for (FoodIngredients food : data) {
+            switch (food.getFoodType()) {
+                case "알":
+                    data1.add(food);
+                    break;
+                case "닭":
+                    data2.add(food);
+                    break;
+                case "돼지":
+                    data3.add(food);
+                    break;
+            }
+        }
+
+        MyAdapter adapter1 = new MyAdapter(data1);
+        MyAdapter adapter2 = new MyAdapter(data2);
+        MyAdapter adapter3 = new MyAdapter(data3);
+
+        gridView1.setAdapter(adapter1);
+        gridView2.setAdapter(adapter2);
+        gridView3.setAdapter(adapter3);
 
     }
 
