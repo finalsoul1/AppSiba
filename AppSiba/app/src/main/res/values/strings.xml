@@ -9,10 +9,9 @@
     <string name="myrefri_message2">내 냉장고에 있는 재료</string>
 
     <string name="refri_message">냉장고에 있는 재료를 \n 선택해주세요!</string>
-<<<<<<< HEAD
+
     <string name="favorite_message"> 계속 보고 또 만들어 보고 싶개!</string>
-=======
->>>>>>> 9cc312de74aad5d2ba5214d72f9e5310fcef06e1
+
 
     <string name="st_vegi">채소</string>
     <string name="st_meat">육류</string>

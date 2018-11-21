@@ -89,38 +89,39 @@ public class MeatFragment extends Fragment {
 
         // 자료
         data = new ArrayList<>();
-        data.add(new FoodIngredients("달걀", 1));
-        data.add(new FoodIngredients("닭", 2));
-        data.add(new FoodIngredients("목살", 3));
-        data.add(new FoodIngredients("달걀", 1));
-        data.add(new FoodIngredients("닭", 2));
-        data.add(new FoodIngredients("목살", 3));
-        data.add(new FoodIngredients("달걀", 1));
-        data.add(new FoodIngredients("닭", 2));
-        data.add(new FoodIngredients("목살", 3));
-        data.add(new FoodIngredients("달걀", 1));
-        data.add(new FoodIngredients("닭", 2));
-        data.add(new FoodIngredients("목살", 3));
-        data.add(new FoodIngredients("달걀", 1));
-        data.add(new FoodIngredients("닭", 2));
-        data.add(new FoodIngredients("목살", 3));
-        data.add(new FoodIngredients("달걀", 1));
-        data.add(new FoodIngredients("닭", 2));
-        data.add(new FoodIngredients("목살", 3));
-        data.add(new FoodIngredients("달걀", 1));
-        data.add(new FoodIngredients("닭", 2));
-        data.add(new FoodIngredients("목살", 3));
-        data.add(new FoodIngredients("달걀", 1));
-        data.add(new FoodIngredients("닭", 2));
-        data.add(new FoodIngredients("목살", 3));
-        data.add(new FoodIngredients("달걀.,", 1));
-        data.add(new FoodIngredients("닭", 2));
-        data.add(new FoodIngredients("목살", 3));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+        data.add(new FoodIngredients("달걀", "알"));
+        data.add(new FoodIngredients("닭", "닭"));
+        data.add(new FoodIngredients("목살", "돼지"));
+
+
 
         // 어댑터
 //        MyAdapter adapter = new MyAdapter(data);
 
-        MyAdapter adapter;
         // 뷰
         GridView gridView1 = (GridView) getActivity().findViewById(R.id.meat_egg_grid);
         GridView gridView2 = (GridView) getActivity().findViewById(R.id.meat_dak_grid);
@@ -134,13 +135,13 @@ public class MeatFragment extends Fragment {
 
         for (FoodIngredients food : data) {
             switch (food.getFoodType()) {
-                case 1:
+                case "알":
                     data1.add(food);
                     break;
-                case 2:
+                case "닭":
                     data2.add(food);
                     break;
-                case 3:
+                case "돼지":
                     data3.add(food);
                     break;
             }
@@ -153,8 +154,6 @@ public class MeatFragment extends Fragment {
         gridView1.setAdapter(adapter1);
         gridView2.setAdapter(adapter2);
         gridView3.setAdapter(adapter3);
-
-
 
     }
 
