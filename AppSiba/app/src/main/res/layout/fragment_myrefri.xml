@@ -5,10 +5,69 @@
     android:layout_height="match_parent"
     tools:context=".fragment.MyrefriFragment">
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:text="검색" />
+        android:background="@color/bgColorYellow"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/sibabaguni" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/messageboxxpng"
+            android:backgroundTint="@color/baseColor"
+            android:gravity="center"
+            android:text="@string/myrefri_message"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/brown">
+
+
+        <Button
+            android:id="@+id/to_refri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="고르기"
+            android:onClick="clickToRefri"
+            />
+
+        <Button
+            android:id="@+id/myrefri_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="100dp"
+            android:text="비우기" />
+
+        <Button
+            android:id="@+id/to_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:text="검색"
+            />
+
+    </FrameLayout>
+
+
+
 
 </FrameLayout>

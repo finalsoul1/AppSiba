@@ -1,5 +1,6 @@
 package com.example.co.appsiba;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -7,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.co.appsiba.fragment.FavoritesFragment;
 import com.example.co.appsiba.fragment.MemoFragment;
@@ -15,6 +18,9 @@ import com.example.co.appsiba.fragment.ResultFragment;
 
 public class HomeActivity extends AppCompatActivity {
 
+
+    private View view;
+    ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +35,10 @@ public class HomeActivity extends AppCompatActivity {
 //        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
 //        layoutParams.setBehavior(new BottomNavigationBehavior());
 
+
         // load the store fragment by default
         loadFragment(new MyrefriFragment());
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -74,6 +82,15 @@ public class HomeActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
+
+    public void clickToRefri(View view) {
+
+        Intent intent = new Intent(this, RefriActivity.class);
+        startActivity(intent);
+    }
+
+
 
 }
 
