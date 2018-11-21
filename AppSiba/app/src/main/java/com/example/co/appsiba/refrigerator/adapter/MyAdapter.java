@@ -1,4 +1,4 @@
-package com.example.co.appsiba.refrigerator;
+package com.example.co.appsiba.refrigerator.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +30,12 @@ public class MyAdapter extends BaseAdapter {
         mFoodImageMap.put("아구", R.drawable.agu);
         mFoodImageMap.put("당면", R.drawable.dangmean);
         mFoodImageMap.put("호두", R.drawable.hodu);
+        mFoodImageMap.put("호두", R.drawable.hodu);
+        mFoodImageMap.put("닭", R.drawable.dak);
+        mFoodImageMap.put("아보카도", R.drawable.avocado);
+        mFoodImageMap.put("아욱", R.drawable.auk);
+        mFoodImageMap.put("달걀", R.drawable.egg);
+        mFoodImageMap.put("목살", R.drawable.pork_mok);
     }
 
     @Override
@@ -62,6 +68,7 @@ public class MyAdapter extends BaseAdapter {
             holder.foodImage = foodImage;
             holder.foodName = foodName;
             convertView.setTag(holder);
+
         } else {
             holder = (ViewHolder) convertView.getTag();
         }

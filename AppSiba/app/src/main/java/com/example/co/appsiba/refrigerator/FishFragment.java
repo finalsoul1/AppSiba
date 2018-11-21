@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.example.co.appsiba.R;
+import com.example.co.appsiba.refrigerator.adapter.MyAdapter;
 import com.example.co.appsiba.refrigerator.model.FoodIngredients;
 
 import java.util.ArrayList;
@@ -84,44 +85,8 @@ public class FishFragment extends Fragment {
 
         // 자료
         data = new ArrayList<>();
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
-        data.add(new FoodIngredients("아구"));
+//        data.add(new FoodIngredients("아귀", 1));
+
 
         // 어댑터
         MyAdapter adapter = new MyAdapter(data);

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.example.co.appsiba.R;
+import com.example.co.appsiba.refrigerator.adapter.MyAdapter;
 import com.example.co.appsiba.refrigerator.model.FoodIngredients;
 
 import java.util.ArrayList;
@@ -83,47 +84,9 @@ public class EtcFragment extends Fragment {
 
         // 자료
         data = new ArrayList<>();
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
-        data.add(new FoodIngredients("당면"));
+//        data.add(new FoodIngredients("당면", 2));
+//        data.add(new FoodIngredients("호두", 4));
+
 
         // 어댑터
         MyAdapter adapter = new MyAdapter(data);

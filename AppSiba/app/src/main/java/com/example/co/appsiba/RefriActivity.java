@@ -35,6 +35,9 @@ public class RefriActivity extends AppCompatActivity
         TabLayout tabLayout = findViewById(R.id.tab);
         tabLayout.setupWithViewPager(viewPager);
 
+
+
+
     }
 
     @Override
