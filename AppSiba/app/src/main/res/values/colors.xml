@@ -4,14 +4,14 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="bgBottomNavigation">#fe485a</color>
-<<<<<<< HEAD
+
     <color name="colorButton">#fedd6a</color>
     <color name="colorBackground">#FFF9EB</color>
     <color name="colorMenu">#BD7D56</color>
-=======
+
     <color name="baseColor">#fedd6a</color>
     <color name="bgColorYellow">#fff9eb</color>
     <color name="blackYellow">#2C2F14</color>
     <color name="brown">#BD7D56</color>
->>>>>>> 9cc312de74aad5d2ba5214d72f9e5310fcef06e1
+
 </resources>
