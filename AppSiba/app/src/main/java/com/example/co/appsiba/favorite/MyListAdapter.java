@@ -30,7 +30,6 @@ public class MyListAdapter extends BaseAdapter  {
         this.context = context;
         this.list_itemArrayList = list_itemArrayList;
 
-
     }
 
     @Override
@@ -74,7 +73,8 @@ public class MyListAdapter extends BaseAdapter  {
                 public void onClick(View convertView) {
                     list_itemArrayList.remove(position);
                     notifyDataSetChanged();
-                     Toast.makeText(context, "삭제"+position+"!!!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "삭제"+position+"!!!!", Toast.LENGTH_SHORT).show();
+
                 }
             });
 

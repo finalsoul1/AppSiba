@@ -47,3 +47,16 @@ https://hashcode.co.kr/questions/2045/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93
 
 #프래그먼트 데이터 전달
 https://medium.com/@henen/%EB%B9%A0%EB%A5%B4%EA%B2%8C%EB%B0%B0%EC%9A%B0%EB%8A%94-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-fragment-4-fragment%EA%B0%84-%EC%97%90-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%A0%84%EB%8B%AC-c6ab1d0766af
+
+
+#유용한 레이아웃 속성
+fabSize = "auto"  // 자동사이즈  
+useCompatPadding="true"  // 자동패딩  
+
+@android:color/transparent // 투명색
+
+
+#커서어댑터  
+https://hashcode.co.kr/questions/1702/adapter%EC%9D%98-notifydatasetchanged-%EB%A9%94%EC%86%8C%EB%93%9C-%EA%B4%80%EB%A0%A8-%EC%A7%88%EB%AC%B8-%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4  
+
+#GLide: URI로 이미지 받아올때 쓰면 좋은 라이브러리  
