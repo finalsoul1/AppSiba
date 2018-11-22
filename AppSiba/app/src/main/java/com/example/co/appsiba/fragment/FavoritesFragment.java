@@ -1,29 +1,36 @@
 package com.example.co.appsiba.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.co.appsiba.R;
+import com.example.co.appsiba.RecipeActivity;
 import com.example.co.appsiba.favorite.MyListAdapter;
 import com.example.co.appsiba.favorite.list_item;
 
 import java.util.ArrayList;
 
-public class FavoritesFragment extends Fragment implements View.OnClickListener {
+public class FavoritesFragment extends Fragment {
 
     public FavoritesFragment() {
         // Required empty public constructor
     }
 
+
     ListView listView;
     MyListAdapter myListAdapter;
     ArrayList<list_item> list_itemArrayList;
+    ArrayAdapter<list_item> list_itemArrayAdapter;
+
+
 
     public static FavoritesFragment newInstance(String param1, String param2) {
         FavoritesFragment fragment = new FavoritesFragment();
@@ -31,6 +38,9 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
         fragment.setArguments(args);
         return fragment;
     }
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,23 +65,40 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
 
         myListAdapter = new MyListAdapter(getActivity(), list_itemArrayList);
+        list_itemArrayAdapter = new ArrayAdapter<list_item>(getActivity(),list_itemArrayList.size());
 
         listView.setAdapter(myListAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), list_itemArrayList.get(position).getContent(), Toast.LENGTH_SHORT).show();
+
+
+                Intent intent = (new Intent(getContext(), RecipeActivity.class));
+                // intent.putExtra("content", list_itemArrayList);
+                startActivity(intent);
+                //Toast.makeText(getActivity(), list_itemArrayList.get(position).getContent(), Toast.LENGTH_SHORT).show();
             }
         });
 
 
+        Button button2 = (Button)view.findViewById(R.id.favor_allDelete);
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               list_itemArrayList.removeAll(list_itemArrayList);
+               myListAdapter.notifyDataSetChanged();
+
+            }
+        });
+
         return view;
+
+
     }
 
 
-    @Override
-    public void onClick(View v) {
 
-    }
 }
+

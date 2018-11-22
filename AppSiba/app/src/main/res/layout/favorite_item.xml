@@ -21,12 +21,25 @@
 
         <TextView
             android:id="@+id/favorite_content_textview"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="8"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="5dp"
             android:textSize="20dp"
-            android:text="TextView(favorite_item)" />
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/favor_deletebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:layout_weight="1"
+            android:text="-"
+            android:textSize="40dp"
+            android:focusable ="false"
+
+            />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
