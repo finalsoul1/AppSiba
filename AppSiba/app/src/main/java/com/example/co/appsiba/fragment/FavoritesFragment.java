@@ -25,6 +25,7 @@ public class FavoritesFragment extends Fragment {
     }
 
 
+
     ListView listView;
     MyListAdapter myListAdapter;
     ArrayList<list_item> list_itemArrayList;
@@ -90,6 +91,15 @@ public class FavoritesFragment extends Fragment {
                list_itemArrayList.removeAll(list_itemArrayList);
                myListAdapter.notifyDataSetChanged();
 
+            }
+        });
+
+        Button button3 = (Button)view.findViewById(R.id.favor_add);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list_itemArrayList.add(new list_item(R.drawable.ic_launcher_background, "추가"));
+                myListAdapter.notifyDataSetChanged();
             }
         });
 
