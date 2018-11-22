@@ -80,6 +80,9 @@ public class MyAdapter extends BaseAdapter {
         holder.foodName.setText(foodIngredients.getFoodName());
         holder.foodImage.setImageResource(mFoodImageMap.get(foodIngredients.getFoodName()));
 
+
+
+
         return convertView;
     }
     static class ViewHolder{
