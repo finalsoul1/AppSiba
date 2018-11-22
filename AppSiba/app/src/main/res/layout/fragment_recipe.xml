@@ -1,18 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
-=======
     xmlns:app="http://schemas.android.com/apk/res-auto"
->>>>>>> 0e7f9a64d3cc6735e9ddb5bf33d5972d731bf28a
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="임시 레시피 화면이다. "
-        />
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+      <!--android:fillViewport="true"-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+
+            android:id="@+id/main_recipe_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/baseColor"
+            app:srcCompat="@drawable/agu"    />
+
+
+        <Button
+            android:id="@+id/Add_favor_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:text="즐겨찾기에 추가"
+            android:background="@color/bgColorYellow"
+            />
+
+        <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="재료"
+                    android:background="@color/baseColor"/>
+
+                    <ListView
+                        android:id="@+id/recipe_indgredients"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        tools:listitem="@layout/ingredients_item" />
+
+
+
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:background="@color/baseColor"
+                    android:text="조리과정" />
+
+                <ListView
+                    android:id="@+id/recipe_process"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/recipe_item"/>
+
+
+            </LinearLayout>
+    </LinearLayout>
+        </LinearLayout>
+        </ScrollView>
+
+
 </android.support.constraint.ConstraintLayout>
