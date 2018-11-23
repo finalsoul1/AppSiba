@@ -24,6 +24,11 @@ public class RefriActivity extends AppCompatActivity
         FruitFragment.OnFragmentInteractionListener,
         VegiFragment.OnFragmentInteractionListener  {
 
+//    GridView gridEgg;
+//    GridView gridDak;
+//    GridView gridPig;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +41,9 @@ public class RefriActivity extends AppCompatActivity
         TabLayout tabLayout = findViewById(R.id.tab);
         tabLayout.setupWithViewPager(viewPager);
 
-//        Button button = (Button) findViewById(R.id.food_image)
+//        gridEgg = findViewById(R.id.meat_egg_grid);
+
+//        ScrollHelper.setListViewHeightBasedOnChildren(gridEgg);
 
     }
 

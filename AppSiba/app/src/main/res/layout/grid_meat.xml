@@ -29,7 +29,7 @@
                 <GridView
                     android:id="@+id/meat_egg_grid"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="match_parent"
                     android:background="@color/bgColorYellow"
                     android:horizontalSpacing="5dp"
                     android:numColumns="5"
@@ -54,7 +54,7 @@
                 <GridView
                     android:id="@+id/meat_dak_grid"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="match_parent"
                     android:background="@color/bgColorYellow"
                     android:horizontalSpacing="5dp"
                     android:numColumns="5"
@@ -78,7 +78,7 @@
                 <GridView
                     android:id="@+id/meat_pig_grid"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="match_parent"
                     android:background="@color/bgColorYellow"
                     android:horizontalSpacing="5dp"
                     android:numColumns="5"
