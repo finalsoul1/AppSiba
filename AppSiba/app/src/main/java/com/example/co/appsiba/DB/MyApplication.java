@@ -1,4 +1,4 @@
-package com.example.co.appsiba.DB;
+package com.example.co.appsiba.db;
 
 import android.app.Application;
 
