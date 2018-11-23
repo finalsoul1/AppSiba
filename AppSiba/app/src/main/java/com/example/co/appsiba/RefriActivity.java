@@ -34,6 +34,7 @@ public class RefriActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refri);
 
+
         ViewPager viewPager = findViewById(R.id.refri_pager);
         RefriAdapter adapter = new RefriAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
