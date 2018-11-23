@@ -1,12 +1,17 @@
 package com.example.co.appsiba;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.example.co.appsiba.fragment.FavoritesFragment;
 import com.example.co.appsiba.helper.ScrollHelper;
 import com.example.co.appsiba.recipe.IndgredientsAdapter;
 import com.example.co.appsiba.recipe.ProcessAdapter;
@@ -73,14 +78,40 @@ import java.util.ArrayList;
          ScrollHelper.setListViewHeightBasedOnChildren(listView);
          ScrollHelper.setListViewHeightBasedOnChildren(listView2);
 
+
+        Intent intent = getIntent();
+
+        String data = intent.getStringExtra("data");
+        Bitmap bitmap = (Bitmap)intent.getExtras().get("img");
+
+        TextView textView = (TextView) findViewById(R.id.main_recipe_image_textView) ;
+        ImageView img = (ImageView)findViewById(R.id.main_recipe_image);
+
+        textView.setText(data);
+        img.setImageBitmap(bitmap);
+
+
          Add_favor_btn = (Button) findViewById(R.id.Add_favor_btn);
          Add_favor_btn.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
+                 Intent intent = new Intent( RecipeActivity.this,FavoritesFragment.class );
+
+                 intent.putExtra("name", "홍길동");
+
+                 startActivity(intent);
 
              }
+
+
          });
+
+
+
      }
+
+
+
  }
 
 
