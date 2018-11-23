@@ -124,7 +124,13 @@ public class FavoritesFragment extends Fragment {
             }
         });
 
-
+//       Bundle bundle = getArguments();
+//       String bundle1 = bundle.getString("userId");
+// if( bundle1 == null) {
+//     Toast.makeText(getContext(), "<" + getArguments().getString("userId"), Toast.LENGTH_SHORT).show();
+// } else {
+//     Toast.makeText(getContext(), "<" + getArguments().getString("userId"), Toast.LENGTH_SHORT).show();
+// }
 
         return view;
 

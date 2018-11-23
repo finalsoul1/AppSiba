@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.co.appsiba.fragment.FavoritesFragment;
 import com.example.co.appsiba.helper.ScrollHelper;
@@ -78,7 +79,7 @@ import java.util.ArrayList;
          ScrollHelper.setListViewHeightBasedOnChildren(listView);
          ScrollHelper.setListViewHeightBasedOnChildren(listView2);
 
-
+        // intent로 받는 부분
         Intent intent = getIntent();
 
         String data = intent.getStringExtra("data");
@@ -95,11 +96,14 @@ import java.util.ArrayList;
          Add_favor_btn.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Intent intent = new Intent( RecipeActivity.this,FavoritesFragment.class );
 
-                 intent.putExtra("name", "홍길동");
 
-                 startActivity(intent);
+                 FavoritesFragment favoritesFragment = new FavoritesFragment();
+                 Bundle bundle = new Bundle();
+                 bundle.putString("userId", "바보");
+                 favoritesFragment.setArguments(bundle);
+                 Toast.makeText(RecipeActivity.this, "="+bundle.getString("userId"), Toast.LENGTH_SHORT).show();
+
 
              }
 
