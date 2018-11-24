@@ -15,10 +15,12 @@
             android:id="@+id/memoTextView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="left|center_vertical"
             android:layout_margin="5dp"
             android:layout_weight="8"
             android:background="@color/colorButton"
-            android:padding="12dp"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="12dp"
             android:text="돼지고기!" />
 
         <CheckBox
@@ -27,16 +29,19 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@color/colorButton" />
+            android:background="@color/colorButton"
+            android:gravity="center_vertical" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="12dp"
             android:layout_height="match_parent"
+            android:layout_gravity="right|center_vertical"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@color/colorButton"
-            android:text="ㅡ" />
+            android:text="-"
+            android:textSize="30sp" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
 
