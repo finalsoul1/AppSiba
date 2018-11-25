@@ -1,48 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/memoItem"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorMenu"
-        android:orientation="horizontal">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/memoTextView"
-            android:layout_width="wrap_content"
+            android:id="@+id/memoINameTextView"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_gravity="left|center_vertical"
             android:layout_margin="5dp"
             android:layout_weight="8"
-            android:background="@color/colorButton"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="12dp"
-            android:text="돼지고기!" />
+            android:background="@drawable/shape_round"
+            android:gravity="start|center_vertical"
+            android:padding="5dp"
+            android:text="돼지고기"
+            android:textColor="#756531" />
 
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="13dp"
+        <LinearLayout
+            android:id="@+id/memoCheckBoxWrapper"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@color/colorButton"
-            android:gravity="center_vertical" />
+            android:background="@drawable/shape_round"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/memoCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
         <Button
-            android:id="@+id/button3"
-            android:layout_width="12dp"
+            android:id="@+id/memoRemoveButton"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_gravity="right|center_vertical"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@color/colorButton"
+            android:background="@drawable/button_selector"
+            android:gravity="center"
+            android:padding="5dp"
             android:text="-"
-            android:textSize="30sp" />
+            android:textColor="#756531"
+            android:textSize="15sp" />
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
 
-    <!--android:layout_gravity="end|center"-->
+
+</android.support.constraint.ConstraintLayout>

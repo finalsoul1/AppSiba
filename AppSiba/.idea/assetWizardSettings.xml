@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_note_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/toggle/ic_indeterminate_check_box_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -33,8 +33,11 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="imageAsset" value="C:\Users\youngseung\Downloads\pictures\lemon.png" />
-                                      <entry key="outputName" value="ic_note" />
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\youngseung\Downloads\pictures\roundBox.png" />
+                                      <entry key="outputName" value="ic_roundbox" />
+                                      <entry key="theme" value="HOLO_DARK" />
+                                      <entry key="themeColor" value="fedd6a" />
                                     </map>
                                   </option>
                                 </PersistentState>
