@@ -23,4 +23,9 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="page_1">밥</string>
+    <string name="page_2">찌개</string>
+    <string name="page_3">후식</string>
+    <string name="page_4">반찬</string>
+    <string name="page_5">일품</string>
 </resources>
