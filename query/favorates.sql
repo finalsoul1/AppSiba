@@ -4,3 +4,12 @@ from my_favorates a left outer join food b
 on a.food_id = b.id
 order by a.reg_date desc;
 
+
+-- 즐겨찾기 추가 쿼리 
+insert into my_favorates (food_id, reg_date) values (250, now());
+
+
+-- 즐겨찾기 삭제
+delete from my_favorates where food_id = 250;
+
+
