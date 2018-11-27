@@ -6,8 +6,7 @@ select b.name from my_refrigerator a left outer join ingredient_list b
 on a.ingredient_list_id = b.id
 
 -- 추천메뉴 
-select id, name, small_image_location, big_image_location
-from (
+select id, name, small_image_location
 	select id, name, small_image_location, big_image_location
 	from food 
 	where food_type_id = 1
