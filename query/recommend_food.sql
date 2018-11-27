@@ -1,3 +1,6 @@
+
+Collections.shuffle(fileList);
+
 -- 추천메뉴 
 select id, name, small_image_location, big_image_location
 from (
