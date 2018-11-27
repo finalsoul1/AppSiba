@@ -1,34 +1,20 @@
 package com.example.co.appsiba.result;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.SparseArray;
-import android.view.ViewGroup;
-
-import com.example.co.appsiba.R;
-import com.example.co.appsiba.fragment.ResultFragment;
 
 public class TabPagerAdapter extends FragmentStatePagerAdapter {
 
 Context context;
 
 
-private final int[] resultImages = new int[]{
-        R.drawable.avocado,
-        R.drawable.baecon,
-        R.drawable.chadol,
-        R.drawable.dangmean
-    };
+
 
     public TabPagerAdapter( FragmentManager fm) {
         super(fm);
-       /// this.tabCount = tabCount;
+
 
     }
 
