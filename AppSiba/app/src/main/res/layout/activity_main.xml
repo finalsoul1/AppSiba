@@ -9,24 +9,38 @@
 
     <ImageView
         android:id="@+id/mainImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="280dp"
+        android:layout_height="129dp"
         android:layout_margin="5dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/mainImageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/siba_logo"/>
+
+    <ImageView
+        android:id="@+id/mainImageView2"
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        android:layout_margin="5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread"
-        app:srcCompat="@drawable/icon" />
+        app:layout_constraintTop_toBottomOf="@+id/mainImageView"
+        app:srcCompat="@drawable/siba_main_circle" />
 
     <Button
         android:id="@+id/buttonStart"
-        android:layout_width="0dp"
-        android:layout_height="107dp"
+        android:layout_width="280dp"
+        android:layout_height="100dp"
         android:layout_margin="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/button_selector"
         android:onClick="clickToHome"
@@ -36,12 +50,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/mainImageView2" />
 
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
