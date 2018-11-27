@@ -34,10 +34,11 @@
                     android:background="#ffffff"
                     android:horizontalSpacing="5dp"
                     android:isScrollContainer="false"
-                    android:numColumns="5"
+                    android:numColumns="4"
                     android:padding="10dp"
                     android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
+                    android:gravity="center"
                     tools:listitem="@layout/food_toggle" />
             </LinearLayout>
 
@@ -62,10 +63,11 @@
                     android:background="#ffffff"
                     android:horizontalSpacing="5dp"
                     android:isScrollContainer="false"
-                    android:numColumns="5"
+                    android:numColumns="4"
                     android:padding="10dp"
                     android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
+                    android:gravity="center"
                     tools:listitem="@layout/food_toggle" />
             </LinearLayout>
 
@@ -90,10 +92,11 @@
                     android:background="#ffffff"
                     android:horizontalSpacing="5dp"
                     android:isScrollContainer="false"
-                    android:numColumns="5"
+                    android:numColumns="4"
                     android:padding="10dp"
                     android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
+                    android:gravity="center"
                     tools:listitem="@layout/food_toggle" />
             </LinearLayout>
 
