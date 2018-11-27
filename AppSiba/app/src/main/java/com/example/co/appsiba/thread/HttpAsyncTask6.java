@@ -60,7 +60,7 @@ public class HttpAsyncTask6 extends AsyncTask<String, Void, List> {
             Type listType = new TypeToken<ArrayList<Recipe>>() {}.getType();
             dbList = gson.fromJson(str, listType);
 
-            Log.d(TAG, "dbList: " + dbList);
+            Log.d(TAG, "dbList: " + dbList.toString());
 
             new RecipeDAO().insert(dbList, context);
 

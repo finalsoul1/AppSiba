@@ -14,9 +14,9 @@ public class RefriAdapter extends FragmentPagerAdapter {
         super(fm);
 
         mData = new ArrayList<>();
+        mData.add(new VegiFragment());
         mData.add(new MeatFragment());
         mData.add(new FishFragment());
-        mData.add(new VegiFragment());
         mData.add(new FruitFragment());
         mData.add(new EtcFragment());
     }
@@ -36,13 +36,13 @@ public class RefriAdapter extends FragmentPagerAdapter {
         String str = "";
         switch (position){
             case 0:
-                str = "육류";
+                str = "채소";
                 break;
             case 1:
-                str = "어류";
+                str = "육류";
                 break;
             case 2:
-                str = "채소";
+                str = "어류";
                 break;
             case 3:
                 str = "과일";

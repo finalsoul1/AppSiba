@@ -20,7 +20,7 @@ public class IngreSubCateDAO {
             contentValues.put("id", ingresubcate.getId());
             contentValues.put("ingredient_category_id", ingresubcate.getIngredientCategoryId());
             contentValues.put("name", ingresubcate.getName());
-            db.insert("ingre_sub_cate", null, contentValues);
+            db.insert("ingredient_sub_category", null, contentValues);
         }
     }
 }

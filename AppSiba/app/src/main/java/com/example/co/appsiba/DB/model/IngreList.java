@@ -2,34 +2,34 @@ package com.example.co.appsiba.db.model;
 
 public class IngreList {
 
-    private Long id;
-    private Long ingredientSubCategoryId;
+    private int id;
+    private int ingredientSubCategoryId;
     private String name;
     private String fileName;
 
     public IngreList() {
     }
 
-    public IngreList(Long id, Long ingredientSubCategoryId, String name, String fileName) {
+    public IngreList(int id, int ingredientSubCategoryId, String name, String fileName) {
         this.id = id;
         this.ingredientSubCategoryId = ingredientSubCategoryId;
         this.name = name;
         this.fileName = fileName;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getIngredientSubCategoryId() {
+    public int getIngredientSubCategoryId() {
         return ingredientSubCategoryId;
     }
 
-    public void setIngredientSubCategoryId(Long ingredientSubCategoryId) {
+    public void setIngredientSubCategoryId(int ingredientSubCategoryId) {
         this.ingredientSubCategoryId = ingredientSubCategoryId;
     }
 

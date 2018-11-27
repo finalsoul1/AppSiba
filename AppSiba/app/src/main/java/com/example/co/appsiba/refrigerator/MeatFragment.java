@@ -1,18 +1,23 @@
 package com.example.co.appsiba.refrigerator;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.example.co.appsiba.R;
+import com.example.co.appsiba.db.SibaDbHelper;
+import com.example.co.appsiba.helper.ExpandableHeightGridView;
 import com.example.co.appsiba.refrigerator.adapter.MyAdapter;
-import com.example.co.appsiba.refrigerator.model.FoodIngredients;
+import com.example.co.appsiba.vo.RefriIngredientVO;
 
 import java.util.ArrayList;
 
@@ -30,10 +35,15 @@ public class MeatFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    ArrayList<FoodIngredients> data;
-    ArrayList<FoodIngredients> data1;
-    ArrayList<FoodIngredients> data2;
-    ArrayList<FoodIngredients> data3;
+    ArrayList<RefriIngredientVO> data;
+    ArrayList<RefriIngredientVO> data1;
+    ArrayList<RefriIngredientVO> data2;
+    ArrayList<RefriIngredientVO> data3;
+    ArrayList<RefriIngredientVO> data4;
+    ArrayList<RefriIngredientVO> data5;
+
+    Cursor cursor;
+    SQLiteDatabase db;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -87,74 +97,82 @@ public class MeatFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        // 자료
+        // db
+        db = SibaDbHelper.getInstance(getContext()).getReadableDatabase();
+
+        cursor = db.rawQuery("select a.id as category_id, a.name as category, b.id as sub_category_id, b.name as sub_category, \n" +
+                "c.id as ingredient_id, c.name, c.file_name \n" +
+                "from ingredient_category as a left outer join ingredient_sub_category as b \n" +
+                "on a.id = b.ingredient_category_id \n " +
+                "left outer join ingredient_list c \n" +
+                "on b.id = c.ingredient_sub_category_id \n" +
+                "where a.id= 2 \n" +
+                "order by a.id, b.id, c.id asc", null);
+
+        Log.d("kwon", cursor.getColumnName(6));
+
         data = new ArrayList<>();
-        data.add(new FoodIngredients("달걀", "알"));
-        data.add(new FoodIngredients("닭", "닭"));
-        data.add(new FoodIngredients("목살", "돼지"));
-        data.add(new FoodIngredients("달걀", "알"));
-        data.add(new FoodIngredients("닭", "닭"));
-        data.add(new FoodIngredients("목살", "돼지"));
-        data.add(new FoodIngredients("달걀", "알"));
-        data.add(new FoodIngredients("닭", "닭"));
-        data.add(new FoodIngredients("목살", "돼지"));
-        data.add(new FoodIngredients("달걀", "알"));
-        data.add(new FoodIngredients("닭", "닭"));
-        data.add(new FoodIngredients("목살", "돼지"));
-        data.add(new FoodIngredients("달걀", "알"));
-        data.add(new FoodIngredients("닭", "닭"));
-        data.add(new FoodIngredients("목살", "돼지"));
-        data.add(new FoodIngredients("달걀", "알"));
-        data.add(new FoodIngredients("닭", "닭"));
-        data.add(new FoodIngredients("목살", "돼지"));
-        data.add(new FoodIngredients("달걀", "알"));
-        data.add(new FoodIngredients("닭", "닭"));
-        data.add(new FoodIngredients("목살", "돼지"));
-        data.add(new FoodIngredients("달걀", "알"));
-        data.add(new FoodIngredients("닭", "닭"));
-        data.add(new FoodIngredients("목살", "돼지"));
-        data.add(new FoodIngredients("달걀", "알"));
-        data.add(new FoodIngredients("닭", "닭"));
-        data.add(new FoodIngredients("목살", "돼지"));
+        RefriIngredientVO refriVO;
 
+        while(cursor.moveToNext()){
+            refriVO = new RefriIngredientVO();
+            refriVO.setCateId(cursor.getInt(2));
+            refriVO.setId(cursor.getInt(4));
+            refriVO.setName(cursor.getString(5));
+            refriVO.setFileName(cursor.getString(6));
 
+            data.add(refriVO);
+        }
 
-        // 어댑터
-//        MyAdapter adapter = new MyAdapter(data);
+        cursor.close();
 
         // 뷰
-        GridView gridView1 = (GridView) getActivity().findViewById(R.id.meat_egg_grid);
-        GridView gridView2 = (GridView) getActivity().findViewById(R.id.meat_dak_grid);
-        GridView gridView3 = (GridView) getActivity().findViewById(R.id.meat_pig_grid);
-
-//        gridView.setAdapter(adapter);
+        GridView gridView1 = (ExpandableHeightGridView) getActivity().findViewById(R.id.meat_egg_grid);
+        GridView gridView2 = (ExpandableHeightGridView) getActivity().findViewById(R.id.meat_dak_grid);
+        GridView gridView3 = (ExpandableHeightGridView) getActivity().findViewById(R.id.meat_pig_grid);
+        GridView gridView4 = (ExpandableHeightGridView) getActivity().findViewById(R.id.meat_cow_grid);
+        GridView gridView5 = (ExpandableHeightGridView) getActivity().findViewById(R.id.meat_duck_grid);
 
         data1 = new ArrayList<>();
         data2 = new ArrayList<>();
         data3 = new ArrayList<>();
+        data4 = new ArrayList<>();
+        data5 = new ArrayList<>();
 
-        for (FoodIngredients food : data) {
-            switch (food.getFoodType()) {
-                case "알":
-                    data1.add(food);
+        for (RefriIngredientVO ingre : data) {
+            switch (ingre.getCateId()) {
+                case 4:
+                    data1.add(ingre);
                     break;
-                case "닭":
-                    data2.add(food);
+                case 5:
+                    data2.add(ingre);
                     break;
-                case "돼지":
-                    data3.add(food);
+                case 6:
+                    data3.add(ingre);
+                    break;
+                case 7:
+                    data4.add(ingre);
+                    break;
+                case 8:
+                    data5.add(ingre);
                     break;
             }
         }
 
-        MyAdapter adapter1 = new MyAdapter(data1);
-        MyAdapter adapter2 = new MyAdapter(data2);
-        MyAdapter adapter3 = new MyAdapter(data3);
+        MyAdapter adapter = new MyAdapter(data1);
+        gridView1.setAdapter(adapter);
 
-        gridView1.setAdapter(adapter1);
-        gridView2.setAdapter(adapter2);
-        gridView3.setAdapter(adapter3);
+        adapter = new MyAdapter(data2);
+        gridView2.setAdapter(adapter);
 
+        adapter = new MyAdapter(data3);
+        gridView3.setAdapter(adapter);
+
+        adapter = new MyAdapter(data4);
+        gridView4.setAdapter(adapter);
+
+        adapter = new MyAdapter(data5);
+        gridView5.setAdapter(adapter);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

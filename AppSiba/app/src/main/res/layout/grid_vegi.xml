@@ -5,16 +5,99 @@
     android:layout_height="match_parent"
     tools:context=".refrigerator.MeatFragment">
 
-    <GridView
-        android:id="@+id/vegi_grid"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:horizontalSpacing="5dp"
-        android:numColumns="5"
-        android:verticalSpacing="5dp"
-        tools:listitem="@layout/food_toggle"
-        android:background="@color/bgColorYellow"
-        android:padding="10dp">
-    </GridView>
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/top1_vegi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/bgColorYellow"
+                    android:text="잎채소" />
+
+                <com.example.co.appsiba.helper.ExpandableHeightGridView
+                    android:id="@+id/vegi_reaf_grid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="5"
+                    android:padding="10dp"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="5dp"
+                    tools:listitem="@layout/food_toggle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/top2_vegi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top1_vegi"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/bgColorYellow"
+                    android:text="열매채소" />
+
+                <com.example.co.appsiba.helper.ExpandableHeightGridView
+                    android:id="@+id/vegi_fruitVegi_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="5"
+                    android:padding="10dp"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="5dp"
+                    tools:listitem="@layout/food_toggle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/top3_vegi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top2_vegi"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/bgColorYellow"
+                    android:text="버섯" />
+
+                <com.example.co.appsiba.helper.ExpandableHeightGridView
+                    android:id="@+id/vegi_mushroom_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="5"
+                    android:padding="10dp"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="5dp"
+                    tools:listitem="@layout/food_toggle" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
 
 </FrameLayout>

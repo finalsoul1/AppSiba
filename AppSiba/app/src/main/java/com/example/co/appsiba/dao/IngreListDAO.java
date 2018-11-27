@@ -18,10 +18,10 @@ public class IngreListDAO {
 
         for (IngreList ingrelist : ingreLists) {
             contentValues.put("id", ingrelist.getId());
-            contentValues.put("ingredient_category_id", ingrelist.getIngredientSubCategoryId());
+            contentValues.put("ingredient_sub_category_id", ingrelist.getIngredientSubCategoryId());
             contentValues.put("name", ingrelist.getName());
             contentValues.put("file_name", ingrelist.getFileName());
-            db.insert("ingre_list", null, contentValues);
+            db.insert("ingredient_list", null, contentValues);
         }
     }
 }

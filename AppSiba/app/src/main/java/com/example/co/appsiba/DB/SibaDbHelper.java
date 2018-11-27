@@ -11,15 +11,19 @@ public class SibaDbHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "Siba.db";
 
-    // table name
-    private static final String INGREDIENT_CATEGORY = "ingre_cate";
-    private static final String INGERDIENT_SUB_CATEGORY = "ingre_sub_cate";
-    private static final String INGERDIENT_LIST = "ingre_list";
+    // table name, readonly
+    private static final String INGREDIENT_CATEGORY = "ingredient_category";
+    private static final String INGERDIENT_SUB_CATEGORY = "ingredient_sub_category";
+    private static final String INGERDIENT_LIST = "ingredient_list";
     private static final String FOOD_TYPE = "food_type";
     private static final String FOOD = "food";
     private static final String FOOD_RECIPE = "food_recipe";
     private static final String FOOD_INGREDIENTS = "food_ingredients";
 
+    // writable
+    private static final String MY_FAVORATES = "my_favorates";
+    private static final String MY_NOTEPAD = "my_notepad";
+    private static final String MY_REFRIGERATOR = "my_refrigerator";
 
 
 
@@ -30,8 +34,8 @@ public class SibaDbHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_SUB_CATE = "CREATE TABLE "
             + INGERDIENT_SUB_CATEGORY + "(id INTEGER PRIMARY KEY, ingredient_category_id INTEGER, name TEXT)";
 
-    private static final String CREATE_TABLE_SUB_SUB_CATE = "CREATE TABLE "
-            + INGERDIENT_LIST + "(id INTEGER PRIMARY KEY, ingredient_category_id INTEGER, name TEXT, file_name TEXT)";
+    private static final String CREATE_INGERDIENT_LIST = "CREATE TABLE "
+            + INGERDIENT_LIST + "(id INTEGER PRIMARY KEY, ingredient_sub_category_id INTEGER, name TEXT, file_name TEXT)";
 
     private static final String CREATE_FOOD_TYPE = "CREATE TABLE " + FOOD_TYPE + "(id INTEGER PRIMARY KEY, name TEXT)";
 
@@ -40,12 +44,19 @@ public class SibaDbHelper extends SQLiteOpenHelper {
             " natrium REAL, small_image_location TEXT, big_image_location TEXT, ingredients TEXT)";
 
     private static final String CREATE_FOOD_RECIPE = "CREATE TABLE "
-            + FOOD_RECIPE + "(food_id INTEGER PRIMARY KEY, recipe_desc TEXT, image_location TEXT, file_name TEXT)";
+            + FOOD_RECIPE + "(food_id INTEGER PRIMARY KEY, recipe_desc TEXT, image_location TEXT, ord INTEGER)";
 
     private static final String CREATE_FOOD_INGREDIENTS = "CREATE TABLE " + FOOD_INGREDIENTS + "(food_id INTEGER PRIMARY KEY, name TEXT)";
 
 
+    private static final String CREATE_MY_FAVORATES = "CREATE TABLE "
+            + MY_FAVORATES + "(food_id INTEGER PRIMARY KEY AUTOINCREMENT, reg_data DATETIME DEFAULT CURRENT_TIMESTAMP)";
 
+    private static final String CREATE_MY_NOTEPAD = "CREATE TABLE "
+            + MY_NOTEPAD + "(id INTEGER PRIMARY KEY, ingredient_name TEXT, checked TEXT, reg_date DATETIME DEFAULT CURRENT_TIMESTAMP)";
+
+    private static final String CREATE_MY_REFRIGERATOR = "CREATE TABLE "
+            + MY_REFRIGERATOR + "(id INTEGER PRIMARY KEY, ingredient_name TEXT)";
 
 
 
@@ -67,22 +78,30 @@ public class SibaDbHelper extends SQLiteOpenHelper {
     // 테이블 삭제
     private static final String DELETE_TABLE_CATE = "DROP TABLE IF EXISTS " + INGREDIENT_CATEGORY;
     private static final String DELETE_TABLE_SUB_CATE = "DROP TABLE IF EXISTS " + INGERDIENT_SUB_CATEGORY;
-    private static final String DELETE_TABLE_SUB_SUB_CATE = "DROP TABLE IF EXISTS " + INGERDIENT_LIST;
+    private static final String DELETE_TABLE_INGERDIENT_LIST = "DROP TABLE IF EXISTS " + INGERDIENT_LIST;
     private static final String DELETE_TABLE_FOOD_TYPE = "DROP TABLE IF EXISTS " + FOOD_TYPE;
     private static final String DELETE_TABLE_FOOD_RECIPE = "DROP TABLE IF EXISTS " + FOOD_RECIPE;
     private static final String DELETE_TABLE_FOOD_INGREDIENTS = "DROP TABLE IF EXISTS " + FOOD_INGREDIENTS;
     private static final String DELETE_TABLE_FOOD = "DROP TABLE IF EXISTS " + FOOD;
+
+    private static final String DELETE_MY_FAVORATES = "DROP TABLE IF EXISTS " + MY_FAVORATES;
+    private static final String DELETE_MY_NOTEPAD = "DROP TABLE IF EXISTS " + MY_NOTEPAD;
+    private static final String DELETE_MY_REFRIGERATOR = "DROP TABLE IF EXISTS " + MY_REFRIGERATOR;
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_CATE);
         db.execSQL(CREATE_TABLE_SUB_CATE);
-        db.execSQL(CREATE_TABLE_SUB_SUB_CATE);
+        db.execSQL(CREATE_INGERDIENT_LIST);
         db.execSQL(CREATE_FOOD_TYPE);
         db.execSQL(CREATE_FOOD);
         db.execSQL(CREATE_FOOD_RECIPE);
         db.execSQL(CREATE_FOOD_INGREDIENTS);
+
+        db.execSQL(CREATE_MY_FAVORATES);
+        db.execSQL(CREATE_MY_NOTEPAD);
+        db.execSQL(CREATE_MY_REFRIGERATOR);
     }
 
     @Override
@@ -97,12 +116,15 @@ public class SibaDbHelper extends SQLiteOpenHelper {
 
         db.execSQL(DELETE_TABLE_CATE);
         db.execSQL(DELETE_TABLE_SUB_CATE);
-        db.execSQL(DELETE_TABLE_SUB_SUB_CATE);
+        db.execSQL(DELETE_TABLE_INGERDIENT_LIST);
         db.execSQL(DELETE_TABLE_FOOD_TYPE);
         db.execSQL(DELETE_TABLE_FOOD);
         db.execSQL(DELETE_TABLE_FOOD_RECIPE);
         db.execSQL(DELETE_TABLE_FOOD_INGREDIENTS);
 
+        db.execSQL(DELETE_MY_FAVORATES);
+        db.execSQL(DELETE_MY_NOTEPAD);
+        db.execSQL(DELETE_MY_REFRIGERATOR);
 
         onCreate(db);
     }

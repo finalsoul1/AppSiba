@@ -1,9 +1,12 @@
 package com.example.co.appsiba;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -17,12 +20,16 @@ import com.example.co.appsiba.fragment.FavoritesFragment;
 import com.example.co.appsiba.fragment.MemoFragment;
 import com.example.co.appsiba.fragment.MyrefriFragment;
 import com.example.co.appsiba.fragment.ResultFragment;
+import com.example.co.appsiba.helper.BottomNavigationBehavior;
 
 public class HomeActivity extends AppCompatActivity {
 
 
     private View view;
     ImageButton imageButton;
+
+    Cursor cursor;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +41,8 @@ public class HomeActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         // attaching bottom sheet behaviour - hide / show on scroll
-//        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
-//        layoutParams.setBehavior(new BottomNavigationBehavior());
-
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
+        layoutParams.setBehavior(new BottomNavigationBehavior());
 
         // load the store fragment by default
         loadFragment(new MyrefriFragment());
@@ -96,7 +102,6 @@ public class HomeActivity extends AppCompatActivity {
     public void onClickSearch(View view) {
         ViewPager viewPager = findViewById(R.id.refri_pager);
         ScrollView scrollView = findViewById(R.id.scroll);
-
 
         viewPager.addView(scrollView);
     }

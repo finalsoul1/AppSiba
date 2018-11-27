@@ -2,9 +2,9 @@ package com.example.co.appsiba.db.model;
 
 public class Food {
 
-    private Long id;
+    private int id;
     private String name;
-    private Long foodTypeId;
+    private int foodTypeId;
     private Float calorie;
     private Float carbohydrate;
     private Float protein;
@@ -17,7 +17,7 @@ public class Food {
     public Food() {
     }
 
-    public Food(Long id, String name, Long foodTypeId, Float calorie, Float carbohydrate, Float protein, Float fat, Float natrium, String smallImageLocation, String bigImageLocation, String ingredients) {
+    public Food(int id, String name, int foodTypeId, Float calorie, Float carbohydrate, Float protein, Float fat, Float natrium, String smallImageLocation, String bigImageLocation, String ingredients) {
         this.id = id;
         this.name = name;
         this.foodTypeId = foodTypeId;
@@ -31,11 +31,11 @@ public class Food {
         this.ingredients = ingredients;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -47,11 +47,11 @@ public class Food {
         this.name = name;
     }
 
-    public Long getFoodTypeId() {
+    public int getFoodTypeId() {
         return foodTypeId;
     }
 
-    public void setFoodTypeId(Long foodTypeId) {
+    public void setFoodTypeId(int foodTypeId) {
         this.foodTypeId = foodTypeId;
     }
 

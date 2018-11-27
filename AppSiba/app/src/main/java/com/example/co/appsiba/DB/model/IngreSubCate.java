@@ -2,32 +2,32 @@ package com.example.co.appsiba.db.model;
 
 public class IngreSubCate {
 
-    private Long id;
-    private Long ingredientCategoryId;
+    private int id;
+    private int ingredientCategoryId;
     private String name;
 
     public IngreSubCate() {
     }
 
-    public IngreSubCate(Long id, Long ingredientCategoryId, String name) {
+    public IngreSubCate(int id, int ingredientCategoryId, String name) {
         this.id = id;
         this.ingredientCategoryId = ingredientCategoryId;
         this.name = name;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getIngredientCategoryId() {
+    public int getIngredientCategoryId() {
         return ingredientCategoryId;
     }
 
-    public void setIngredientCategoryId(Long ingredientCategoryId) {
+    public void setIngredientCategoryId(int ingredientCategoryId) {
         this.ingredientCategoryId = ingredientCategoryId;
     }
 

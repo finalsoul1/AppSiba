@@ -19,7 +19,7 @@ public class IngreCateDAO {
         for (IngreCate ingrecate : iCate) {
             contentValues.put("id", ingrecate.getId());
             contentValues.put("name", ingrecate.getName());
-            db.insert("ingre_cate", null, contentValues);
+            db.insert("ingredient_category", null, contentValues);
         }
 
     }

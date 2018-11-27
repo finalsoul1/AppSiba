@@ -8,7 +8,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,18 +25,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:background="@color/bgColorYellow"
                     android:text="알" />
 
-                <GridView
+                <com.example.co.appsiba.helper.ExpandableHeightGridView
                     android:id="@+id/meat_egg_grid"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/bgColorYellow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
                     android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
                     android:numColumns="5"
                     android:padding="10dp"
+                    android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
-                    tools:listitem="@layout/food_toggle"></GridView>
+                    tools:listitem="@layout/food_toggle" />
             </LinearLayout>
 
             <LinearLayout
@@ -49,21 +53,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:background="@color/bgColorYellow"
                     android:text="닭" />
 
-                <GridView
+                <com.example.co.appsiba.helper.ExpandableHeightGridView
                     android:id="@+id/meat_dak_grid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/bgColorYellow"
+                    android:background="#ffffff"
                     android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
                     android:numColumns="5"
                     android:padding="10dp"
+                    android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
-                    tools:listitem="@layout/food_toggle"></GridView>
+                    tools:listitem="@layout/food_toggle" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/top3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/top2"
@@ -73,18 +81,76 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:background="@color/bgColorYellow"
                     android:text="돼지" />
 
-                <GridView
+                <com.example.co.appsiba.helper.ExpandableHeightGridView
                     android:id="@+id/meat_pig_grid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/bgColorYellow"
+                    android:background="#ffffff"
                     android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
                     android:numColumns="5"
                     android:padding="10dp"
+                    android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
-                    tools:listitem="@layout/food_toggle"></GridView>
+                    tools:listitem="@layout/food_toggle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/top4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/bgColorYellow"
+                    android:text="소" />
+
+                <com.example.co.appsiba.helper.ExpandableHeightGridView
+                    android:id="@+id/meat_cow_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="5"
+                    android:padding="10dp"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="5dp"
+                    tools:listitem="@layout/food_toggle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top4"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/bgColorYellow"
+                    android:text="오리" />
+
+                <com.example.co.appsiba.helper.ExpandableHeightGridView
+                    android:id="@+id/meat_duck_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="5"
+                    android:padding="10dp"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="5dp"
+                    tools:listitem="@layout/food_toggle" />
             </LinearLayout>
 
         </RelativeLayout>
