@@ -1,5 +1,7 @@
 package com.example.co.appsiba;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.co.appsiba.db.SibaDbHelper;
 import com.example.co.appsiba.refrigerator.EtcFragment;
 import com.example.co.appsiba.refrigerator.FishFragment;
 import com.example.co.appsiba.refrigerator.FruitFragment;
@@ -23,6 +26,8 @@ public class RefriActivity extends AppCompatActivity
         FishFragment.OnFragmentInteractionListener,
         FruitFragment.OnFragmentInteractionListener,
         VegiFragment.OnFragmentInteractionListener  {
+
+    SQLiteDatabase db;
 
 
     @Override
@@ -49,7 +54,18 @@ public class RefriActivity extends AppCompatActivity
         TextView textView = view.findViewById(R.id.food_nameView);
         ImageView imageView = view.findViewById(R.id.food_image);
 
+
+
         if(imageView.getImageAlpha() == 255){
+
+            SQLiteDatabase db = SibaDbHelper.getInstance(this).getWritableDatabase();
+            ContentValues contentValues = new ContentValues();
+
+            int imageTag = (Integer) imageView.getTag();
+
+            contentValues.put("ingredient_list_id", imageTag);
+            db.insert("my_refrigerator", null, contentValues);
+
             Toast.makeText(this, textView.getText() + "을/를 누르셨습니다.", Toast.LENGTH_LONG).show();
             imageView.setImageAlpha(20);
         } else {

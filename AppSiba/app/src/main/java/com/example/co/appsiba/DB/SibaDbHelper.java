@@ -50,15 +50,13 @@ public class SibaDbHelper extends SQLiteOpenHelper {
 
 
     private static final String CREATE_MY_FAVORATES = "CREATE TABLE "
-            + MY_FAVORATES + "(food_id INTEGER PRIMARY KEY AUTOINCREMENT, reg_data DATETIME DEFAULT CURRENT_TIMESTAMP)";
+            + MY_FAVORATES + "(food_id INTEGER PRIMARY KEY, reg_data INTEGER)";
 
     private static final String CREATE_MY_NOTEPAD = "CREATE TABLE "
             + MY_NOTEPAD + "(id INTEGER PRIMARY KEY, ingredient_name TEXT, checked TEXT, reg_date DATETIME DEFAULT CURRENT_TIMESTAMP)";
 
     private static final String CREATE_MY_REFRIGERATOR = "CREATE TABLE "
-            + MY_REFRIGERATOR + "(id INTEGER PRIMARY KEY, ingredient_name TEXT)";
-
-
+            + MY_REFRIGERATOR + "(id INTEGER PRIMARY KEY, ingredient_list_id INTEGER)";
 
 
 
