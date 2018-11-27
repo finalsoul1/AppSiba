@@ -59,7 +59,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickToHome(View view) {
         Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
+
+        try {
+            startActivity(intent);
+        } catch (OutOfMemoryError e){
+
+        }
+
     }
 
     public void testHttp(View view) {
