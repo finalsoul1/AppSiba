@@ -31,8 +31,6 @@
                     android:background="@color/baseColor"
                     app:srcCompat="@drawable/agu" />
 
-<<<<<<< HEAD
-=======
         <TextView
             android:id="@+id/main_recipe_image_textView"
             android:layout_width="match_parent"
@@ -50,7 +48,6 @@
             android:text="즐겨찾기에 추가"
             android:background="@color/bgColorYellow"
             />
->>>>>>> 2db9f1eb9b4c41db0cbb07a1739158c058421e82
 
                 <Button
                     android:id="@+id/Add_favor_btn"

@@ -5,16 +5,29 @@
     android:layout_height="match_parent"
     tools:context=".refrigerator.MeatFragment">
 
-    <GridView
-        android:id="@+id/fruit_grid"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:horizontalSpacing="5dp"
-        android:numColumns="5"
-        android:verticalSpacing="5dp"
-        tools:listitem="@layout/food_toggle"
-        android:background="@color/bgColorYellow"
-        android:padding="10dp">
-    </GridView>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@color/bgColorYellow"
+            android:text="과일" />
+
+        <com.example.co.appsiba.helper.ExpandableHeightGridView
+            android:id="@+id/fruit_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:horizontalSpacing="5dp"
+            android:isScrollContainer="false"
+            android:numColumns="5"
+            android:padding="10dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="5dp"
+            tools:listitem="@layout/food_toggle" />
+    </LinearLayout>
 </FrameLayout>

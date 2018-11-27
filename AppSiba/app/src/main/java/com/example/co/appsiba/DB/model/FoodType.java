@@ -2,22 +2,22 @@ package com.example.co.appsiba.db.model;
 
 public class FoodType {
 
-    private Long id;
+    private int id;
     private String name;
 
     public FoodType() {
     }
 
-    public FoodType(Long id, Long ingredientCategoryId, String name) {
+    public FoodType(int id, int ingredientCategoryId, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

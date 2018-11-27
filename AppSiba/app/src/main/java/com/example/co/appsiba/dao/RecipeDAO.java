@@ -20,6 +20,7 @@ public class RecipeDAO {
             contentValues.put("food_id", recipe.getFoodId());
             contentValues.put("recipe_desc", recipe.getRecipeDesc());
             contentValues.put("image_location", recipe.getImageLocation());
+            contentValues.put("ord", recipe.getOrd());
             db.insert("food_recipe", null, contentValues);
         }
     }

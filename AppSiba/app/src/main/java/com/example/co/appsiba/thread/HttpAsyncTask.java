@@ -54,13 +54,13 @@ public class HttpAsyncTask extends AsyncTask<String, Void, List> {
             Response response = client.newCall(request).execute();
 
             String str = response.body().string();
-            Log.d(TAG, "str: " + str);
+//            Log.d(TAG, "str: " + str);
 
             Gson gson = new Gson();
             Type listType = new TypeToken<ArrayList<IngreCate>>() {}.getType();
             dbList = gson.fromJson(str, listType);
 
-            Log.d(TAG, "dbList: " + dbList);
+//            Log.d(TAG, "dbList: " + dbList);
 
             new IngreCateDAO().insert(dbList, context);
 

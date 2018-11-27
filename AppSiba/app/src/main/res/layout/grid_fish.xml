@@ -5,16 +5,127 @@
     android:layout_height="match_parent"
     tools:context=".refrigerator.MeatFragment">
 
-    <GridView
-        android:id="@+id/fish_grid"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:horizontalSpacing="5dp"
-        android:numColumns="5"
-        android:verticalSpacing="5dp"
-        tools:listitem="@layout/food_toggle"
-        android:background="@color/bgColorYellow"
-        android:padding="10dp">
-    </GridView>
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/top1_fish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/bgColorYellow"
+                    android:text="생선류" />
+
+                <com.example.co.appsiba.helper.ExpandableHeightGridView
+                    android:id="@+id/fish_fish_grid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="5"
+                    android:padding="10dp"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="5dp"
+                    tools:listitem="@layout/food_toggle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/top2_fish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top1_fish"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/bgColorYellow"
+                    android:text="조개&amp;갑각류" />
+
+                <com.example.co.appsiba.helper.ExpandableHeightGridView
+                    android:id="@+id/fish_clam_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="5"
+                    android:padding="10dp"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="5dp"
+                    tools:listitem="@layout/food_toggle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/top3_fish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top2_fish"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/bgColorYellow"
+                    android:text="해조류" />
+
+                <com.example.co.appsiba.helper.ExpandableHeightGridView
+                    android:id="@+id/fish_seaweed_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="5"
+                    android:padding="10dp"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="5dp"
+                    tools:listitem="@layout/food_toggle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/top4_fish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top3_fish"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/bgColorYellow"
+                    android:text="어류&amp;알&amp;젓갈" />
+
+                <com.example.co.appsiba.helper.ExpandableHeightGridView
+                    android:id="@+id/fish_dried_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="5"
+                    android:padding="10dp"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="5dp"
+                    tools:listitem="@layout/food_toggle" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
 
 </FrameLayout>

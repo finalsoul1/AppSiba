@@ -1,5 +1,6 @@
 package com.example.co.appsiba.refrigerator.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,34 +9,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.co.appsiba.R;
-import com.example.co.appsiba.refrigerator.model.FoodIngredients;
+import com.example.co.appsiba.vo.RefriIngredientVO;
 
-import java.util.HashMap;
+import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Map;
 
 public class MyAdapter extends BaseAdapter {
 
     private final List mData;
 
-    private Map<String, Integer> mFoodImageMap;
-
-    public MyAdapter(List<FoodIngredients> mData) {
+    public MyAdapter(List<RefriIngredientVO> mData) {
         this.mData = mData;
-        mFoodImageMap = new HashMap<>();
-        mFoodImageMap.put("베이컨", R.drawable.baecon);
-        mFoodImageMap.put("부채살", R.drawable.buchesal);
-        mFoodImageMap.put("차돌박이", R.drawable.chadol);
-        mFoodImageMap.put("불고기", R.drawable.bulgogi);
-        mFoodImageMap.put("아구", R.drawable.agu);
-        mFoodImageMap.put("당면", R.drawable.dangmean);
-        mFoodImageMap.put("호두", R.drawable.hodu);
-        mFoodImageMap.put("호두", R.drawable.hodu);
-        mFoodImageMap.put("닭", R.drawable.dak);
-        mFoodImageMap.put("아보카도", R.drawable.avocado);
-        mFoodImageMap.put("아욱", R.drawable.auk);
-        mFoodImageMap.put("달걀", R.drawable.egg);
-        mFoodImageMap.put("목살", R.drawable.pork_mok);
     }
 
     @Override
@@ -62,8 +46,8 @@ public class MyAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_toggle, parent, false);
 
             // 재료이름, 이미지 View
-            ImageView foodImage = (ImageView) convertView.findViewById(R.id.food_image);
-            TextView foodName = (TextView) convertView.findViewById(R.id.food_nameView);
+            ImageView foodImage = convertView.findViewById(R.id.food_image);
+            TextView foodName = convertView.findViewById(R.id.food_nameView);
 
             holder.foodImage = foodImage;
             holder.foodName = foodName;
@@ -74,19 +58,29 @@ public class MyAdapter extends BaseAdapter {
         }
 
         // 현재 position 의 데이터
-        FoodIngredients foodIngredients = (FoodIngredients) mData.get(position);
+        RefriIngredientVO refri = (RefriIngredientVO) mData.get(position);
+        int resId = getResId(refri.getFileName(), R.drawable.class);
+        Log.d("확인", refri.getName());
 
         // 데이터 설정
-        holder.foodName.setText(foodIngredients.getFoodName());
-        holder.foodImage.setImageResource(mFoodImageMap.get(foodIngredients.getFoodName()));
-
-
-
+        holder.foodName.setText(refri.getName());
+        holder.foodImage.setImageResource(resId);
 
         return convertView;
     }
     static class ViewHolder{
         ImageView foodImage;
         TextView foodName;
+    }
+
+    public static int getResId(String resName, Class<?> c) {
+
+        try {
+            Field idField = c.getDeclaredField(resName);
+            return idField.getInt(idField);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 }
