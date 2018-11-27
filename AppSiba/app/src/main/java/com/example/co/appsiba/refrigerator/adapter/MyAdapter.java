@@ -9,9 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.co.appsiba.R;
+import com.example.co.appsiba.helper.ResouceToInt;
 import com.example.co.appsiba.vo.RefriIngredientVO;
 
-import java.lang.reflect.Field;
 import java.util.List;
 
 public class MyAdapter extends BaseAdapter {
@@ -41,6 +41,8 @@ public class MyAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         // 뷰홀더패턴
         ViewHolder holder;
+
+
         if(convertView == null){
             holder = new ViewHolder();
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_toggle, parent, false);
@@ -59,12 +61,13 @@ public class MyAdapter extends BaseAdapter {
 
         // 현재 position 의 데이터
         RefriIngredientVO refri = (RefriIngredientVO) mData.get(position);
-        int resId = getResId(refri.getFileName(), R.drawable.class);
+        int resId = ResouceToInt.getResId(refri.getFileName(), R.drawable.class);
         Log.d("확인", refri.getName());
 
         // 데이터 설정
         holder.foodName.setText(refri.getName());
         holder.foodImage.setImageResource(resId);
+        holder.foodImage.setTag(refri.getId());
 
         return convertView;
     }
@@ -73,14 +76,4 @@ public class MyAdapter extends BaseAdapter {
         TextView foodName;
     }
 
-    public static int getResId(String resName, Class<?> c) {
-
-        try {
-            Field idField = c.getDeclaredField(resName);
-            return idField.getInt(idField);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
-        }
-    }
 }
