@@ -1,9 +1,12 @@
 package com.example.co.appsiba.fragment;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +27,9 @@ import com.example.co.appsiba.favorite.list_item;
 import java.util.ArrayList;
 
 public class FavoritesFragment extends Fragment {
+
+    Cursor cursor;
+    SQLiteDatabase db;
 
     public FavoritesFragment() {
         // Required empty public constructor
@@ -124,19 +130,19 @@ public class FavoritesFragment extends Fragment {
             }
         });
 
-//       Bundle bundle = getArguments();
-//       String bundle1 = bundle.getString("userId");
-// if( bundle1 == null) {
-//     Toast.makeText(getContext(), "<" + getArguments().getString("userId"), Toast.LENGTH_SHORT).show();
-// } else {
-//     Toast.makeText(getContext(), "<" + getArguments().getString("userId"), Toast.LENGTH_SHORT).show();
-// }
-
         return view;
 
 
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
+        db = com.example.co.appsiba.db.SibaDbHelper.getInstance(getContext()).getReadableDatabase();
+        //cursot = db.
+
+
+    }
 }
 
