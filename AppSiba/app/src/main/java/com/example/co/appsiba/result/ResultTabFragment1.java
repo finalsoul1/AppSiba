@@ -39,7 +39,7 @@ public class ResultTabFragment1 extends Fragment {
         viewPager = (ViewPager)view.findViewById(R.id.viewPager1);
         sliderDotspanel = (LinearLayout)view.findViewById(R.id.SliderDots);
 
-        viewPagerAdapter = new ViewPagerAdapter(getContext());
+        viewPagerAdapter = new ViewPagerAdapter(getActivity());
 
 
         viewPager.setAdapter(viewPagerAdapter);
@@ -84,6 +84,13 @@ public class ResultTabFragment1 extends Fragment {
             }
         });
 
-        return view;
+                return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
     }
 }
