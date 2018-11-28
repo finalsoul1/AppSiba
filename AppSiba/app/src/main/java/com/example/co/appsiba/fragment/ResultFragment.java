@@ -44,7 +44,7 @@ public class ResultFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_results, container, false);
 
 
-       tabLayout = (TabLayout)view.findViewById(R.id.tabs) ;
+        tabLayout = (TabLayout)view.findViewById(R.id.tabs) ;
         viewPager = (ViewPager) view.findViewById(R.id.resultViewPager);
         pagerAdapter = new TabPagerAdapter(getChildFragmentManager());
 

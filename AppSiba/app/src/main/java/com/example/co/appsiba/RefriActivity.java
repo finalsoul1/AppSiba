@@ -27,14 +27,10 @@ public class RefriActivity extends AppCompatActivity
         FruitFragment.OnFragmentInteractionListener,
         VegiFragment.OnFragmentInteractionListener  {
 
-    SQLiteDatabase db;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refri);
-
 
         ViewPager viewPager = findViewById(R.id.refri_pager);
         RefriAdapter adapter = new RefriAdapter(getSupportFragmentManager());
@@ -54,8 +50,6 @@ public class RefriActivity extends AppCompatActivity
         TextView textView = view.findViewById(R.id.food_nameView);
         ImageView imageView = view.findViewById(R.id.food_image);
 
-
-
         if(imageView.getImageAlpha() == 255){
 
             SQLiteDatabase db = SibaDbHelper.getInstance(this).getWritableDatabase();
@@ -68,9 +62,9 @@ public class RefriActivity extends AppCompatActivity
 
             Toast.makeText(this, textView.getText() + "을/를 누르셨습니다.", Toast.LENGTH_LONG).show();
             imageView.setImageAlpha(20);
+
         } else {
             Toast.makeText(this, textView.getText() + "을/를 이미 추가하셨습니다.", Toast.LENGTH_LONG).show();
         }
-        
     }
 }

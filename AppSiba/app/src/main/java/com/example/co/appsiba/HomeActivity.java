@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
 
-import com.example.co.appsiba.db.SibaDbHelper;
 import com.example.co.appsiba.fragment.FavoritesFragment;
 import com.example.co.appsiba.fragment.MemoFragment;
 import com.example.co.appsiba.fragment.MyrefriFragment;
@@ -47,10 +46,6 @@ public class HomeActivity extends AppCompatActivity {
 
         // load the store fragment by default
         loadFragment(new MyrefriFragment());
-
-        db = SibaDbHelper.getInstance(this).getReadableDatabase();
-
-        cursor = db.rawQuery("select * from my_refrigerator order by id desc", null);
 
     }
 

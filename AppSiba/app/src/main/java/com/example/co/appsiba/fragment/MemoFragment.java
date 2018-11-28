@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.co.appsiba.R;
-import com.example.co.appsiba.memo.MemoListAdapter;
 import com.example.co.appsiba.memo.Memo;
+import com.example.co.appsiba.memo.MemoCustomDialog;
+import com.example.co.appsiba.memo.MemoListAdapter;
 
 import java.util.ArrayList;
 
@@ -39,8 +39,9 @@ public class MemoFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_memo, container, false);
+
         memoListView = view.findViewById(R.id.memoListView);
         memoClearButton = view.findViewById(R.id.memoClearButton);
 
@@ -59,17 +60,47 @@ public class MemoFragment extends Fragment {
         memosArrayList.add(new Memo("물12"));
 
         memoListAdapter = new MemoListAdapter(getActivity(), memosArrayList);
-        memoListView.setAdapter(memoListAdapter);
+
 
         memoClearButton.setOnClickListener(new AdapterView.OnClickListener() {
             @Override
             public void onClick(View v) {
-                memosArrayList.clear();
-                memoListView.setAdapter(memoListAdapter);
+                MemoCustomDialog memoCustomDialog = new MemoCustomDialog(getContext());
+                memoCustomDialog.call(memosArrayList, memoListAdapter);
             }
         });
+
+        if (memosArrayList.isEmpty()) {
+            memoListView.setAdapter(memoListAdapter);
+        } else {
+            memoListView.setAdapter(memoListAdapter);
+        }
 
         return view;
     }
 
+//    void confirmClear(){
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//        builder.setTitle("모든 메모를 지웁니다.");
+//        builder.setMessage("정말 다 지울거개?");
+//        builder.setPositiveButton("응", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                memosArrayList.clear();
+//                memoListAdapter.notifyDataSetChanged();
+//                //memoEmptyListAdapter = new MemoEmptyListAdapter(getActivity(), memosEmptyList);
+//                //memoListView.setAdapter(memoEmptyListAdapter);
+//            }
+//        });
+//        builder.setNegativeButton("아니", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//
+//            }
+//        });
+//        builder.show();
+//
+//        MemoCustomDialog memoCustomDialog = new MemoCustomDialog(MemoFragment.this);
+//        memoCustomDialog.call();
+//    }
 }

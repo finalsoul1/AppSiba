@@ -7,12 +7,10 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class TabPagerAdapter extends FragmentStatePagerAdapter {
 
-Context context;
+    Context context;
 
 
-
-
-    public TabPagerAdapter( FragmentManager fm) {
+    public TabPagerAdapter(FragmentManager fm) {
         super(fm);
 
 
@@ -20,8 +18,8 @@ Context context;
 
     @Override
     public Fragment getItem(int position) {
-final  Fragment result;
-        switch (position){
+        final Fragment result;
+        switch (position) {
             case 0:
                 result = new ResultTabFragment1();
                 break;
@@ -38,8 +36,8 @@ final  Fragment result;
                 result = new ResultTabFragment5();
                 break;
             default:
-                result=null;
-            break;
+                result = null;
+                break;
         }
         return result;
     }
@@ -60,8 +58,9 @@ final  Fragment result;
                 return "일품";
             default:
                 return null;
-}
+        }
     }
+
     @Override
     public int getCount() {
         return 5;

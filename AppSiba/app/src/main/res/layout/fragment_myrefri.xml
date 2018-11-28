@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.MyrefriFragment">
 
     <LinearLayout
-        android:id="@+id/lay2"
+        android:id="@+id/myrefri_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bgColorYellow"
@@ -30,47 +30,53 @@
 
     </LinearLayout>
 
-    <FrameLayout
+    <GridView
+        android:id="@+id/myrefri_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:background="@color/brown">
+        android:layout_below="@id/myrefri_top"
+        android:layout_above="@id/myrefri_btngroup"
+        android:numColumns="4"
+        android:gravity="center"
+        />
 
+
+    <FrameLayout
+        android:id="@+id/myrefri_btngroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp"
+        android:background="@color/brown">
 
         <Button
             android:id="@+id/to_refri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|bottom"
-            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
-            android:text="고르기"
             android:onClick="clickToRefri"
-            />
+            android:text="고르기" />
 
         <Button
             android:id="@+id/myrefri_clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:layout_marginBottom="10dp"
             android:layout_marginRight="100dp"
-            android:text="비우기" />
+            android:text="비우기"
+            />
 
         <Button
             android:id="@+id/to_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:layout_marginBottom="10dp"
             android:layout_marginRight="10dp"
 
-            android:text="검색"
-            />
+            android:text="검색" />
 
     </FrameLayout>
 
 
-
-
-</FrameLayout>
+</RelativeLayout>

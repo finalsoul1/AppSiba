@@ -10,15 +10,15 @@ import android.widget.TextView;
 
 import com.example.co.appsiba.R;
 import com.example.co.appsiba.helper.ResouceToInt;
-import com.example.co.appsiba.vo.RefriIngredientVO;
+import com.example.co.appsiba.vo.MyRefriVO;
 
 import java.util.List;
 
-public class MyAdapter extends BaseAdapter {
+public class MyRefriAdapter extends BaseAdapter {
 
     private final List mData;
 
-    public MyAdapter(List<RefriIngredientVO> mData) {
+    public MyRefriAdapter(List<MyRefriVO> mData) {
         this.mData = mData;
     }
 
@@ -49,11 +49,11 @@ public class MyAdapter extends BaseAdapter {
             Log.d("convertView", "convertView = " + (++count));
             holder = new ViewHolder();
 
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_toggle, parent, false);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_toggle_my, parent, false);
 
             // 재료이름, 이미지 View
-            ImageView foodImage = convertView.findViewById(R.id.food_image);
-            TextView foodName = convertView.findViewById(R.id.food_nameView);
+            ImageView foodImage = convertView.findViewById(R.id.myfood_image);
+            TextView foodName = convertView.findViewById(R.id.myfood_nameView);
 
             holder.foodImage = foodImage;
             holder.foodName = foodName;
@@ -63,14 +63,14 @@ public class MyAdapter extends BaseAdapter {
         }
 
         // 현재 position 의 데이터
-        RefriIngredientVO refri = (RefriIngredientVO) mData.get(position);
+        MyRefriVO refri = (MyRefriVO) mData.get(position);
         int resId = ResouceToInt.getResId(refri.getFileName(), R.drawable.class);
         Log.d("확인", refri.getName());
 
         // 데이터 설정
         holder.foodName.setText(refri.getName());
         holder.foodImage.setImageResource(resId);
-        holder.foodImage.setTag(refri.getId());
+        holder.foodImage.setTag(refri.getIngredientListId());
 
         return convertView;
     }
