@@ -28,9 +28,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:text="TextView"
-            android:gravity="center_vertical"
             android:textSize="20dp" />
 
         <Button
@@ -38,13 +38,13 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="end|center"
+            android:background="@android:color/white"
             android:focusable="false"
             android:gravity="center"
             android:padding="5dp"
-            android:background="@android:color/white"
             android:text="-"
-            android:textSize="35sp"
-            android:textColor="@color/colorButton"/>
+            android:textColor="@color/colorButton"
+            android:textSize="35sp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

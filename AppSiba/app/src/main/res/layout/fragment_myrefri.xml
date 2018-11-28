@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".fragment.MyrefriFragment">
 
     <LinearLayout
@@ -12,27 +13,24 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="@color/bgColorYellow"
-        android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:layout_margin="5dp"
+        android:background="@color/colorBackground"
+        android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/sibabaguni" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/siba_mark_exclamation_round_rectangular" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/messageboxxpng"
+            android:background="@drawable/messagebox"
             android:backgroundTint="@color/baseColor"
             android:gravity="center"
             android:text="@string/myrefri_message"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:textColor="@android:color/black"/>
 
     </LinearLayout>
 
@@ -44,10 +42,12 @@
         android:layout_below="@id/myrefri_top"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/shape_round_with_edge_white"
         android:gravity="center"
-        android:numColumns="4" />
+        android:numColumns="4"
+        android:padding="5dp" />
 
 
     <FrameLayout
@@ -57,35 +57,34 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="@color/brown"
+        android:layout_margin="5dp"
+        android:background="@drawable/shape_round_with_edge_white"
         android:padding="10dp">
 
         <Button
             android:id="@+id/to_refri"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="left|bottom"
-            android:layout_marginLeft="10dp"
+            android:layout_gravity="start|center_vertical"
+            android:background="@drawable/shape_round"
             android:onClick="clickToRefri"
+            android:padding="10dp"
             android:text="고르기" />
 
         <Button
             android:id="@+id/myrefri_clear"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_marginRight="100dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_round"
             android:text="비우기" />
 
         <Button
             android:id="@+id/to_search"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_marginRight="10dp"
-
+            android:layout_gravity="end|center_vertical"
+            android:background="@drawable/shape_round"
             android:text="검색" />
 
     </FrameLayout>

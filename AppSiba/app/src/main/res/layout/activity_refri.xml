@@ -8,40 +8,56 @@
     tools:context=".RefriActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bgColorYellow"
+        android:layout_margin="5dp"
+        android:background="@color/colorBackground"
         android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        app:layout_constraintBottom_toTopOf="@+id/refri_lay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread">
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/sibabaguni" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/siba_mark_exclamation_round_rectangular" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/messageboxxpng"
-            android:backgroundTint="@color/baseColor"
+            android:layout_weight="1"
+            android:background="@drawable/messagebox"
             android:gravity="center"
             android:text="@string/refri_message"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:textColor="@android:color/black"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/refri_lay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="95dp"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tab"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginBottom="2dp"
             android:background="@color/baseColor"
             app:tabIndicatorColor="@color/blackYellow"
             app:tabSelectedTextColor="#ffffff"
@@ -54,10 +70,12 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/refri_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_round_with_edge_white"
+            android:padding="5dp">
 
         </android.support.v4.view.ViewPager>
-
 
 
     </LinearLayout>

@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        app:srcCompat="@drawable/siba_logo"/>
+        app:srcCompat="@drawable/siba_logo" />
 
     <ImageView
         android:id="@+id/mainImageView2"
