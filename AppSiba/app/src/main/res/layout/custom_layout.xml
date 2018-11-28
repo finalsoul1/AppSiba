@@ -10,5 +10,8 @@
         app:srcCompat="@mipmap/ic_launcher"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
-        android:id="@+id/pagerImageView" />
+        android:id="@+id/pagerImageView"
+        android:clickable="true"
+
+        />
 </LinearLayout>

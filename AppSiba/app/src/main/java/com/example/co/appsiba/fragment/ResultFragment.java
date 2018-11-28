@@ -70,6 +70,10 @@ public class ResultFragment extends Fragment {
 
             }
         });
+
+
+
+
         return view;
     }
 
@@ -79,6 +83,9 @@ public class ResultFragment extends Fragment {
 
 
 
+
+
     }
+
 
 }

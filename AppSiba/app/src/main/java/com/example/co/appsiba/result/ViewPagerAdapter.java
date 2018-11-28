@@ -1,6 +1,7 @@
 package com.example.co.appsiba.result;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.co.appsiba.R;
+import com.example.co.appsiba.RecipeActivity;
 
 public class ViewPagerAdapter extends PagerAdapter {
 
@@ -35,8 +37,19 @@ public class ViewPagerAdapter extends PagerAdapter {
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.custom_layout, null);
+
         ImageView imageView = (ImageView) view.findViewById(R.id.pagerImageView);
+
         imageView.setImageResource(images[position]);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        //Toast.makeText(context, "click", Toast.LENGTH_SHORT).show();
+       context.startActivity(new Intent(context.getApplicationContext(),RecipeActivity.class));
+    }
+});
+
 
 
         ViewPager vp = (ViewPager) container;
