@@ -36,6 +36,8 @@ public class ResultTabFragment1 extends Fragment {
     Cursor cursor;
 
     ArrayList<MyRefriToResultVO> data;
+    ArrayList<MyRefriToResultVO> mdata;
+
     ArrayList<SearchResultVO> searchData;
 
     String[] selectionArgs;
@@ -76,56 +78,59 @@ public class ResultTabFragment1 extends Fragment {
 
         Collections.shuffle(data);
 
-        Log.d("kwon selec", data.size() + "");
+        mdata = new ArrayList<>();
+        if (data.size() > 3) { mdata.addAll(data.subList(0, 3)); }
 
-        selectionArgs = new String[]{
-                data.get(0).getName(),
-                data.get(1).getName(),
-                data.get(2).getName()
-        };
+        Log.d("kwon data", mdata.size() + "");
 
-        Log.d("kwon selec", selectionArgs[0]);
+        selectionArgs = new String[mdata.size()];
+        int count = 0;
+        for (MyRefriToResultVO mrr:mdata) {
+            selectionArgs[count] = mrr.getName();
+            count++;
+        }
 
-        Cursor cursor1;
+        Log.d("kwon selec", selectionArgs[0] + selectionArgs[1] + selectionArgs[2]);
 
-        cursor1 = db.rawQuery("select id, name,  small_image_location from (\n" +
+        cursor = db.rawQuery("select id, name,  small_image_location from (\n" +
                 "select id, name, small_image_location, big_image_location\n" +
                 "from food \n" +
-                "where food_type_id = 1\n" +
-                "and id in (select food_id from food_ingredients where name like '%아욱%')\n" +
+                "where food_type_id = 2\n" +
+                "and id in (select food_id from food_ingredients where name like ?)\n" +
                 "union\n" +
                 "select id, name, small_image_location, big_image_location\n" +
                 "from food \n" +
-                "where food_type_id = 1\n" +
-                "and id in (select food_id from food_ingredients where name like '%닭%')\n" +
+                "where food_type_id = 2\n" +
+                "and id in (select food_id from food_ingredients where name like ?)\n" +
                 "union\n" +
                 "select id, name, small_image_location, big_image_location\n" +
                 "from food \n" +
-                "where food_type_id = 1\n" +
-                "and id in (select food_id from food_ingredients where name like '%고등어%')\n" +
-                ") food limit 3;" , null);
+                "where food_type_id = 2\n" +
+                "and id in (select food_id from food_ingredients where name like ?)\n" +
+                ") food limit 3" , new String[]{"'%아욱%'", "'%닭%'", "'%고등어%'"});
 
         SearchResultVO searchResultVO;
         searchData = new ArrayList<>();
 
 
-        while(cursor1.moveToNext()){
+        Log.d("kwon cursor", cursor.getCount()+"");
+
+
+        while(cursor.moveToNext()){
             searchResultVO = new SearchResultVO();
-            searchResultVO.setId(cursor1.getInt(0));
-            searchResultVO.setName(cursor1.getString(1));
-            searchResultVO.setSmallImageLocation(cursor1.getString(2));
+            searchResultVO.setId(cursor.getInt(0));
+            searchResultVO.setName(cursor.getString(1));
+            searchResultVO.setSmallImageLocation(cursor.getString(2));
 
             searchData.add(searchResultVO);
         }
 
-        Log.d("kwon", searchData.size() + "");
-
-
+        Log.d("kwon selec", searchData.size() + "");
 
         /////
 
 
-        viewPagerAdapter = new ViewPagerAdapter(getActivity(), 1);
+        viewPagerAdapter = new ViewPagerAdapter(getActivity(), searchData);
 
         viewPager.setAdapter(viewPagerAdapter);
 

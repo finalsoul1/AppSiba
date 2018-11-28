@@ -1,5 +1,7 @@
 package com.example.co.appsiba.result;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +15,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.co.appsiba.R;
+import com.example.co.appsiba.db.SibaDbHelper;
+import com.example.co.appsiba.vo.MyRefriToResultVO;
+import com.example.co.appsiba.vo.SearchResultVO;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class ResultTabFragment5 extends Fragment {
 
@@ -22,6 +30,14 @@ public class ResultTabFragment5 extends Fragment {
     LinearLayout sliderDotspanel;
     private int dotscount;
     private ImageView[] dots;
+
+    SQLiteDatabase db;
+    Cursor cursor;
+
+    ArrayList<MyRefriToResultVO> data;
+    ArrayList<SearchResultVO> searchData;
+
+    String[] selectionArgs;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,8 +56,65 @@ public class ResultTabFragment5 extends Fragment {
         viewPager = (ViewPager)view.findViewById(R.id.viewPager1);
         sliderDotspanel = (LinearLayout)view.findViewById(R.id.SliderDots);
 
-        viewPagerAdapter = new ViewPagerAdapter(getContext(), 5);
 
+        db = SibaDbHelper.getInstance(getActivity()).getReadableDatabase();
+        cursor = db.rawQuery("select b.name from my_refrigerator a left outer join ingredient_list b\n" +
+                "on a.ingredient_list_id = b.id", null);
+
+        MyRefriToResultVO myRefriToResultVO;
+        data = new ArrayList<>();
+
+        while(cursor.moveToNext()){
+            myRefriToResultVO = new MyRefriToResultVO();
+            myRefriToResultVO.setName(cursor.getString(0));
+            data.add(myRefriToResultVO);
+        }
+
+        cursor.close();
+
+        Collections.shuffle(data);
+
+        if (data.size() > 2) data.subList(0, 2);
+
+        selectionArgs = new String[data.size()];
+        int count = 0;
+        for (MyRefriToResultVO mrr:data) {
+            selectionArgs[count] = mrr.getName();
+            count++;
+        }
+
+        cursor = db.rawQuery("select id, name,  small_image_location from (\n" +
+                "select id, name, small_image_location, big_image_location\n" +
+                "from food \n" +
+                "where food_type_id = 5\n" +
+                "and id in (select food_id from food_ingredients where name like '%아욱%')\n" +
+                "union\n" +
+                "select id, name, small_image_location, big_image_location\n" +
+                "from food \n" +
+                "where food_type_id = 5\n" +
+                "and id in (select food_id from food_ingredients where name like '%닭%')\n" +
+                "union\n" +
+                "select id, name, small_image_location, big_image_location\n" +
+                "from food \n" +
+                "where food_type_id = 5\n" +
+                "and id in (select food_id from food_ingredients where name like '%고등어%')\n" +
+                ") food limit 3;" , null);
+
+        SearchResultVO searchResultVO;
+        searchData = new ArrayList<>();
+
+
+        while(cursor.moveToNext()){
+            searchResultVO = new SearchResultVO();
+            searchResultVO.setId(cursor.getInt(0));
+            searchResultVO.setName(cursor.getString(1));
+            searchResultVO.setSmallImageLocation(cursor.getString(2));
+
+            searchData.add(searchResultVO);
+        }
+
+
+        viewPagerAdapter = new ViewPagerAdapter(getContext(), searchData);
 
         viewPager.setAdapter(viewPagerAdapter);
 

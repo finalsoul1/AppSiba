@@ -58,7 +58,7 @@ public class MyrefriFragment extends Fragment {
                 Fragment fragment2 = new ResultFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.myrefri_fragment, fragment2);
+                fragmentTransaction.replace(R.id.frame_container, fragment2);
                 fragmentTransaction.commit();
             }
         });

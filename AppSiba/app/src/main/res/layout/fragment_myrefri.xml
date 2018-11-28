@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myrefri_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    tools:context=".fragment.MyrefriFragment"
-    android:id="@+id/myrefri_fragment">
-=======
+    tools:context=".fragment.MyrefriFragment">
     android:background="@color/colorBackground"
     tools:context=".fragment.MyrefriFragment">
->>>>>>> 996a3fd2f644f1b5c2d52e389e9a0b97d6008b5a
 
     <LinearLayout
         android:id="@+id/myrefri_top"
@@ -34,8 +31,8 @@
             android:backgroundTint="@color/baseColor"
             android:gravity="center"
             android:text="@string/myrefri_message"
-            android:textSize="18dp"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/black"
+            android:textSize="18dp" />
 
     </LinearLayout>
 
