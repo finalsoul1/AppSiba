@@ -4,7 +4,8 @@
         android:shape="oval" android:useLevel="true"
         android:dither="true">
 
-        <size android:height="8dip" android:width="8dip"/>
-
-        <solid android:color="#000000"/>
+        <size android:height="20dp" android:width="20dp"/>
+        <stroke android:color="@color/colorButton"
+                android:width="1dp"/>
+        <solid android:color="@color/colorBackground"/>
     </shape>

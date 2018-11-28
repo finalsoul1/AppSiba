@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:background="@drawable/button_selector"
+        android:background="@drawable/shape_round"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -43,10 +43,21 @@
             <CheckBox
                 android:id="@+id/memoCheckBox"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <Button
+        <ImageButton
+            android:id="@+id/memoWriteButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:gravity="center"
+            android:padding="5dp"
+            app:srcCompat="@drawable/ic_write_black" />
+
+        <ImageButton
             android:id="@+id/memoRemoveButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -57,7 +68,8 @@
             android:padding="5dp"
             android:text="-"
             android:textColor="#756531"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:srcCompat="@drawable/ic_delete_black"/>
     </LinearLayout>
 
 
