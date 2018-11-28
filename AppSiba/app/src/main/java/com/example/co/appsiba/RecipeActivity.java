@@ -1,10 +1,12 @@
 package com.example.co.appsiba;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +20,7 @@ import com.example.co.appsiba.recipe.IndgredientsAdapter;
 import com.example.co.appsiba.recipe.ProcessAdapter;
 import com.example.co.appsiba.recipe.indgredients_item;
 import com.example.co.appsiba.recipe.recipe_item;
+import com.example.co.appsiba.vo.RecipeVO;
 
 import java.util.ArrayList;
 
@@ -28,6 +31,11 @@ import java.util.ArrayList;
      ListView listView2;
      Button Add_favor_btn;
 
+     ArrayList<RecipeVO> data;
+     ArrayList<RecipeVO> data1;
+     ArrayList<RecipeVO> data2;
+     ArrayList<RecipeVO> data3;
+
 
      IndgredientsAdapter myindgredientsAdapter;
      ProcessAdapter processAdapter;
@@ -35,13 +43,31 @@ import java.util.ArrayList;
      ArrayList<indgredients_item> indgredients_itemArrayList;
      ArrayList<recipe_item> recipe_itemArrayList;
 
+     Cursor cursor;
+     SQLiteDatabase db;
 
      @Override
      protected void onCreate(@Nullable Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
          setContentView(R.layout.fragment_recipe);
 
+         Intent intent = getIntent();
+
          listView = (ListView) findViewById(R.id.recipe_indgredients);
+
+         db = com.example.co.appsiba.db.SibaDbHelper.getInstance(this).getReadableDatabase();
+         cursor = db.rawQuery("select id, name, small_image_location from food where id = 54", null);
+
+         RecipeVO recipeVO = new RecipeVO();
+
+         cursor.moveToNext();
+         recipeVO.setId(cursor.getInt(0));
+         recipeVO.setName(cursor.getString(1));
+         recipeVO.setSmall_image_location(cursor.getString(2));
+
+         Log.d("sh1128",recipeVO.toString());
+
+         cursor.close();
 
          indgredients_itemArrayList = new ArrayList<indgredients_item>();
 
@@ -79,17 +105,17 @@ import java.util.ArrayList;
          ScrollHelper.setListViewHeightBasedOnChildren(listView);
          ScrollHelper.setListViewHeightBasedOnChildren(listView2);
 
-        // intent로 받는 부분
-        Intent intent = getIntent();
+        ImageView imageView = (ImageView)findViewById(R.id.main_recipe_image);
+        TextView textView = (TextView)findViewById(R.id.main_recipe_image_textView);
 
-        String data = intent.getStringExtra("data");
-        Bitmap bitmap = (Bitmap)intent.getExtras().get("img");
 
-        TextView textView = (TextView) findViewById(R.id.main_recipe_image_textView) ;
-        ImageView img = (ImageView)findViewById(R.id.main_recipe_image);
 
-        textView.setText(data);
-        img.setImageBitmap(bitmap);
+
+         RecipeVO recipe = new RecipeVO();
+
+         textView.setText(recipe.getName());
+     
+
 
 
          Add_favor_btn = (Button) findViewById(R.id.Add_favor_btn);

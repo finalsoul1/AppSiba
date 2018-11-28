@@ -11,15 +11,20 @@ import android.widget.ImageView;
 
 import com.example.co.appsiba.R;
 import com.example.co.appsiba.RecipeActivity;
+import com.example.co.appsiba.vo.SearchResultVO;
+
+import java.util.ArrayList;
 
 public class ViewPagerAdapter extends PagerAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
     private Integer[] images = {R.drawable.dangmean, R.drawable.agu, R.drawable.baecon};
+    private ArrayList<SearchResultVO> data;
 
-    public ViewPagerAdapter(Context context) {
+    public ViewPagerAdapter(Context context, ArrayList data) {
         this.context = context;
+        this.data = data;
     }
 
     @Override
@@ -37,7 +42,11 @@ public class ViewPagerAdapter extends PagerAdapter {
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.custom_layout, null);
+
+
+
         ImageView imageView = (ImageView) view.findViewById(R.id.pagerImageView);
+
         imageView.setImageResource(images[position]);
 
         imageView.setOnClickListener(new View.OnClickListener() {

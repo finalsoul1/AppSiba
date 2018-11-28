@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/memoHead"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="100dp"
         android:orientation="horizontal"
         android:padding="5dp"
         app:layout_constraintBottom_toTopOf="@+id/memoBody"
@@ -18,23 +18,21 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintVertical_weight="2">
+        app:layout_constraintVertical_chainStyle="packed">
 
         <ImageView
             android:id="@+id/memoHeadImageView"
-            android:layout_width="7dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:layout_weight="2.5"
             android:background="@drawable/siba_mark_exclamation_round_rectangular" />
 
         <TextView
             android:id="@+id/memoHeadTextView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="7.5"
-            android:background="@drawable/shape_round"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/messagebox"
             android:gravity="center"
             android:text="같이 장보러 가개!"
             android:textSize="18sp" />
@@ -55,20 +53,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/memoHead"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintVertical_weight="10">
+        app:layout_constraintVertical_weight="1">
 
         <ListView
             android:id="@+id/memoListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@color/colorMenu"
+            android:divider="@color/colorBackground"
             tools:listitem="@layout/memo_item" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/memoFoot"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
         android:background="@color/colorBackground"
         android:gravity="bottom|center"
         android:orientation="horizontal"
@@ -77,8 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/memoBody"
-        app:layout_constraintVertical_weight="1.5">
+        app:layout_constraintTop_toBottomOf="@+id/memoBody">
 
         <Button
             android:id="@+id/memoClearButton"

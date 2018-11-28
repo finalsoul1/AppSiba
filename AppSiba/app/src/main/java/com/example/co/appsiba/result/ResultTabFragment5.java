@@ -40,7 +40,7 @@ public class ResultTabFragment5 extends Fragment {
         viewPager = (ViewPager)view.findViewById(R.id.viewPager1);
         sliderDotspanel = (LinearLayout)view.findViewById(R.id.SliderDots);
 
-        viewPagerAdapter = new ViewPagerAdapter(getContext());
+        viewPagerAdapter = new ViewPagerAdapter(getContext(), 5);
 
 
         viewPager.setAdapter(viewPagerAdapter);

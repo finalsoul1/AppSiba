@@ -2,6 +2,7 @@ package com.example.co.appsiba.db.model;
 
 public class Recipe {
 
+    private int id;
     private int foodId;
     private String recipeDesc;
     private String imageLocation;
@@ -10,11 +11,20 @@ public class Recipe {
     public Recipe() {
     }
 
-    public Recipe(int foodId, String recipeDesc, String imageLocation, int ord) {
+    public Recipe(int id, int foodId, String recipeDesc, String imageLocation, int ord) {
+        this.id = id;
         this.foodId = foodId;
         this.recipeDesc = recipeDesc;
         this.imageLocation = imageLocation;
         this.ord = ord;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getFoodId() {
