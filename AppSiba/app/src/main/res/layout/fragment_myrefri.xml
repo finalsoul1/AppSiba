@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.MyrefriFragment">
+    tools:context=".fragment.MyrefriFragment"
+    android:id="@+id/myrefri_fragment">
 
     <LinearLayout
         android:id="@+id/myrefri_top"

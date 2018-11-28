@@ -1,17 +1,19 @@
 package com.example.co.appsiba.fragment;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import com.example.co.appsiba.R;
 import com.example.co.appsiba.db.SibaDbHelper;
@@ -49,13 +51,15 @@ public class MyrefriFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_myrefri, container, false);
 
-
-        Button toSearchBtn = (Button) view.findViewById(R.id.to_search);
+        Button toSearchBtn = view.findViewById(R.id.to_search);
         toSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ResultFragment.class);
-                startActivity(intent);
+                Fragment fragment2 = new ResultFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.myrefri_fragment, fragment2);
+                fragmentTransaction.commit();
             }
         });
 
@@ -75,8 +79,6 @@ public class MyrefriFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
 
     }
 
@@ -104,17 +106,27 @@ public class MyrefriFragment extends Fragment {
 
         cursor.close();
 
-        Log.d("kwon", data.toString());
-
         GridView gridView = getActivity().findViewById(R.id.myrefri_view);
-
         MyRefriAdapter myRefriAdapter = new MyRefriAdapter(data);
 
-        Log.d("kwon", myRefriAdapter.toString());
-
         myRefriAdapter.notifyDataSetChanged();
-
         gridView.setAdapter(myRefriAdapter);
+
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ImageView imageView = view.findViewById(R.id.myfood_image);
+
+                String idTag = String.valueOf(imageView.getTag());
+
+                db = SibaDbHelper.getInstance(getActivity()).getWritableDatabase();
+
+                db.delete("my_refrigerator", "ingredient_list_id = ?", new String[] {idTag});
+                onResume();
+            }
+        });
+
 
     }
 

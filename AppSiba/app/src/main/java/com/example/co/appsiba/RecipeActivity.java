@@ -104,7 +104,6 @@ import java.util.ArrayList;
                  favoritesFragment.setArguments(bundle);
                  Toast.makeText(RecipeActivity.this, "="+bundle.getString("userId"), Toast.LENGTH_SHORT).show();
 
-
              }
 
 
