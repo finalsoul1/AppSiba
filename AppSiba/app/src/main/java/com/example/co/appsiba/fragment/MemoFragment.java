@@ -7,7 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.co.appsiba.R;
 import com.example.co.appsiba.memo.Memo;
@@ -18,10 +21,21 @@ import java.util.ArrayList;
 
 public class MemoFragment extends Fragment {
 
+    // fragment에 있는 위젯
     ListView memoListView;
     Button memoClearButton;
+    Button memoAddButton;
 
+    // Adapter에 의해 memoListView에 넣어질 위젯
+    TextView memoINameTextView;
+    CheckBox memoCheckBox;
+    ImageButton memoWriteButton;
+    ImageButton memoRemoveButton;
+
+    // Memo 클래스를 자료형으로 하는 배열
     ArrayList<Memo> memosArrayList;
+
+    // 리스트뷰에 배열을 넣어줄 Adapter
     MemoListAdapter memoListAdapter;
 
     public MemoFragment() {}
@@ -43,24 +57,17 @@ public class MemoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_memo, container, false);
 
         memoListView = view.findViewById(R.id.memoListView);
+        memoINameTextView = view.findViewById(R.id.memoINameTextView);
         memoClearButton = view.findViewById(R.id.memoClearButton);
+        memoAddButton = view.findViewById(R.id.memoAddButton);
+        memoRemoveButton = view.findViewById(R.id.memoRemoveButton);
 
         memosArrayList = new ArrayList<>();
         memosArrayList.add(new Memo("돼지고기"));
         memosArrayList.add(new Memo("김치"));
-        memosArrayList.add(new Memo("물3"));
-        memosArrayList.add(new Memo("물4"));
-        memosArrayList.add(new Memo("물5"));
-        memosArrayList.add(new Memo("물6"));
-        memosArrayList.add(new Memo("물7"));
-        memosArrayList.add(new Memo("물8"));
-        memosArrayList.add(new Memo("물9"));
-        memosArrayList.add(new Memo("물10"));
-        memosArrayList.add(new Memo("물11"));
-        memosArrayList.add(new Memo("물12"));
+        memosArrayList.add(new Memo("물"));
 
         memoListAdapter = new MemoListAdapter(getActivity(), memosArrayList);
-
 
         memoClearButton.setOnClickListener(new AdapterView.OnClickListener() {
             @Override
@@ -70,14 +77,38 @@ public class MemoFragment extends Fragment {
             }
         });
 
+        memoAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                memoAdd();
+            }
+        });
+
         if (memosArrayList.isEmpty()) {
             memoListView.setAdapter(memoListAdapter);
         } else {
             memoListView.setAdapter(memoListAdapter);
         }
 
+        memoListView.setClickable(true);
+        memoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                TextView memoINameTextView = view.findViewById(R.id.memoINameTextView);
+//                ImageButton memoWriteButton = view.findViewById(R.id.memoWriteButton);
+//                ImageButton memoRemoveButton = view.findViewById(R.id.memoRemoveButton);
+
+
+            }
+        });
         return view;
     }
+
+    void memoAdd() {
+        memosArrayList.add(new Memo("새 메모"));
+        memoListView.setAdapter(memoListAdapter);
+    }
+
 
 //    void confirmClear(){
 //        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
