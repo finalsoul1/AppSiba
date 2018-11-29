@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:background="@drawable/shape_round"
             android:gravity="center"
             android:text="옆으로 넘겨서 먹고싶은걸 골라보개!"

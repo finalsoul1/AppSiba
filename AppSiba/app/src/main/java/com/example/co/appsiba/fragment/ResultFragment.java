@@ -19,7 +19,7 @@ public class ResultFragment extends Fragment {
     protected   ViewPager viewPager;
     protected TabLayout tabLayout;
     private  TabPagerAdapter pagerAdapter;
-    private  int image;
+
     public ResultFragment() {
     }
 
@@ -52,7 +52,6 @@ public class ResultFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
 
 
-
         viewPager.addOnPageChangeListener( new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -71,19 +70,12 @@ public class ResultFragment extends Fragment {
             }
         });
 
-
-
-
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
-
-
 
     }
 

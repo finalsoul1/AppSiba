@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,8 +107,6 @@ public class MeatFragment extends Fragment {
                 "on b.id = c.ingredient_sub_category_id \n" +
                 "where a.id= 2 \n" +
                 "order by a.id, b.id, c.id asc", null);
-
-        Log.d("kwon", cursor.getColumnName(6));
 
         data = new ArrayList<>();
         RefriIngredientVO refriVO;
