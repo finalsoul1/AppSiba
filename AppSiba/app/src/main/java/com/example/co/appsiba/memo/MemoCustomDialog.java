@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.co.appsiba.R;
+import com.example.co.appsiba.vo.MemoVO;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public class MemoCustomDialog implements DialogInterface {
         this.context = context;
     }
 
-    public void call(final ArrayList<Memo> memosArrayList, final MemoListAdapter memoListAdapter) {
+    public void call(final ArrayList<MemoVO> memosArrayList, final MemoListAdapter memoListAdapter) {
         final Dialog customDialog = new Dialog(context);
 
         customDialog.setContentView(R.layout.memo_custom_dialog);
