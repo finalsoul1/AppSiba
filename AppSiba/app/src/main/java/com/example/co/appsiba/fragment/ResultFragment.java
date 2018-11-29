@@ -15,10 +15,10 @@ import com.example.co.appsiba.result.TabPagerAdapter;
 public class ResultFragment extends Fragment {
 
 
-    private  View view;
-    protected   ViewPager viewPager;
+    private View view;
+    protected ViewPager viewPager;
     protected TabLayout tabLayout;
-    private  TabPagerAdapter pagerAdapter;
+    private TabPagerAdapter pagerAdapter;
 
     public ResultFragment() {
     }
@@ -43,7 +43,7 @@ public class ResultFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_results, container, false);
 
-        tabLayout = (TabLayout)view.findViewById(R.id.tabs) ;
+        tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         viewPager = (ViewPager) view.findViewById(R.id.resultViewPager);
         pagerAdapter = new TabPagerAdapter(getChildFragmentManager());
 
@@ -51,7 +51,7 @@ public class ResultFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
 
 
-        viewPager.addOnPageChangeListener( new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -76,5 +76,4 @@ public class ResultFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
     }
-
 }

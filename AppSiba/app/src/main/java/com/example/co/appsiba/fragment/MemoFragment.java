@@ -11,11 +11,12 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.co.appsiba.R;
-import com.example.co.appsiba.memo.Memo;
 import com.example.co.appsiba.memo.MemoCustomDialog;
 import com.example.co.appsiba.memo.MemoListAdapter;
+import com.example.co.appsiba.vo.MemoVO;
 
 import java.util.ArrayList;
 
@@ -32,8 +33,8 @@ public class MemoFragment extends Fragment {
     ImageButton memoWriteButton;
     ImageButton memoRemoveButton;
 
-    // Memo 클래스를 자료형으로 하는 배열
-    ArrayList<Memo> memosArrayList;
+    // MemoVO 클래스를 자료형으로 하는 배열
+    ArrayList<MemoVO> memosArrayList;
 
     // 리스트뷰에 배열을 넣어줄 Adapter
     MemoListAdapter memoListAdapter;
@@ -63,9 +64,9 @@ public class MemoFragment extends Fragment {
         memoRemoveButton = view.findViewById(R.id.memoRemoveButton);
 
         memosArrayList = new ArrayList<>();
-        memosArrayList.add(new Memo("돼지고기"));
-        memosArrayList.add(new Memo("김치"));
-        memosArrayList.add(new Memo("물"));
+        memosArrayList.add(new MemoVO("돼지고기", "Y"));
+        memosArrayList.add(new MemoVO("김치", "N" ));
+        memosArrayList.add(new MemoVO("물", "Y"));
 
         memoListAdapter = new MemoListAdapter(getActivity(), memosArrayList);
 
@@ -84,28 +85,36 @@ public class MemoFragment extends Fragment {
             }
         });
 
+        memoListView.setClickable(true);
+        memoListView.setOnItemClickListener(memoWriteButtonListener);
+
         if (memosArrayList.isEmpty()) {
             memoListView.setAdapter(memoListAdapter);
         } else {
             memoListView.setAdapter(memoListAdapter);
         }
 
-        memoListView.setClickable(true);
-        memoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                TextView memoINameTextView = view.findViewById(R.id.memoINameTextView);
-//                ImageButton memoWriteButton = view.findViewById(R.id.memoWriteButton);
-//                ImageButton memoRemoveButton = view.findViewById(R.id.memoRemoveButton);
-
-
-            }
-        });
         return view;
     }
 
+    private AdapterView.OnItemClickListener memoWriteButtonListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+            ImageButton writeButton = (ImageButton) parent.getAdapter().getItem(position);
+//            ImageButton writeButtonView = view.findViewById(R.id.memoWriteButton);
+            writeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    memosArrayList.get(position).setIngredientName("새 메모");
+                    String text = memosArrayList.get(position).getIngredientName();
+                    Toast.makeText(getContext(), "선택한 텍스트가 " + text + "로 변경됨.", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+    };
+
     void memoAdd() {
-        memosArrayList.add(new Memo("새 메모"));
+        memosArrayList.add(new MemoVO("새 메모", "N"));
         memoListView.setAdapter(memoListAdapter);
     }
 
