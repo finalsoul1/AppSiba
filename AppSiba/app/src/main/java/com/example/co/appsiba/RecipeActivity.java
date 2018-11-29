@@ -1,12 +1,12 @@
 package com.example.co.appsiba;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,121 +14,146 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.co.appsiba.fragment.FavoritesFragment;
 import com.example.co.appsiba.helper.ScrollHelper;
 import com.example.co.appsiba.recipe.IndgredientsAdapter;
 import com.example.co.appsiba.recipe.ProcessAdapter;
-import com.example.co.appsiba.recipe.indgredients_item;
-import com.example.co.appsiba.recipe.recipe_item;
 import com.example.co.appsiba.vo.RecipeVO;
+import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
- public class RecipeActivity extends AppCompatActivity {
+public class RecipeActivity extends AppCompatActivity {
 
 
      ListView listView;
      ListView listView2;
      Button Add_favor_btn;
-
-     ArrayList<RecipeVO> data;
-     ArrayList<RecipeVO> data1;
-     ArrayList<RecipeVO> data2;
-     ArrayList<RecipeVO> data3;
-
+     int id;
 
      IndgredientsAdapter myindgredientsAdapter;
      ProcessAdapter processAdapter;
 
-     ArrayList<indgredients_item> indgredients_itemArrayList;
-     ArrayList<recipe_item> recipe_itemArrayList;
+    ArrayList<RecipeVO> data;
+     ArrayList<RecipeVO> recipe_itemArrayList1;
+     ArrayList<RecipeVO> recipe_itemArrayList2;
 
      Cursor cursor;
+     Cursor cursor1;
+     Cursor cursor2;
+
      SQLiteDatabase db;
 
+     RecipeVO recipeVO;
+     RecipeVO recipeVO1;
+     RecipeVO recipeVO2;
+
+    private String getDateTime() {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
      @Override
      protected void onCreate(@Nullable Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
          setContentView(R.layout.fragment_recipe);
 
-         Intent intent = getIntent();
+         Intent intentFromResult = getIntent();
 
+         int toSearchId = intentFromResult.getIntExtra("id", id);
+         String stringid = String.valueOf(toSearchId);
          listView = (ListView) findViewById(R.id.recipe_indgredients);
 
          db = com.example.co.appsiba.db.SibaDbHelper.getInstance(this).getReadableDatabase();
-         cursor = db.rawQuery("select id, name, small_image_location from food where id = 54", null);
+         cursor = db.rawQuery("select id, name, small_image_location from food where id = ?", new String[]{stringid});
 
-         RecipeVO recipeVO = new RecipeVO();
+         recipeVO = new RecipeVO();
 
          cursor.moveToNext();
          recipeVO.setId(cursor.getInt(0));
          recipeVO.setName(cursor.getString(1));
          recipeVO.setSmall_image_location(cursor.getString(2));
 
-         Log.d("sh1128",recipeVO.toString());
-
          cursor.close();
 
-         indgredients_itemArrayList = new ArrayList<indgredients_item>();
+         final ImageView imageView = (ImageView)findViewById(R.id.main_recipe_image);
+         TextView textView = (TextView)findViewById(R.id.main_recipe_image_textView);
 
-         indgredients_itemArrayList.add(new indgredients_item("감자 100g"));
-         indgredients_itemArrayList.add(new indgredients_item("감자 200g"));
-         indgredients_itemArrayList.add(new indgredients_item("감자 300g"));
-         indgredients_itemArrayList.add(new indgredients_item("감자 400g"));
-         indgredients_itemArrayList.add(new indgredients_item("감자 500g"));
-         indgredients_itemArrayList.add(new indgredients_item("감자 600g"));
+         textView.setText(recipeVO.getName());
+         Picasso.with(RecipeActivity.this)
+                 .load(recipeVO.getSmall_image_location())
+                 .into(imageView);
+////////////////////////////////////////////////////////////////////////
 
+         cursor1 = db.rawQuery("select * from food_recipe where food_id =? order by ord asc",new String[]{stringid} );
+
+         recipe_itemArrayList1 = new ArrayList<>();
+
+         while( cursor1.moveToNext()){
+             recipeVO1 = new RecipeVO();
+             recipeVO1.setId(cursor1.getInt(1));
+             recipeVO1.setName(cursor1.getString(2));
+             recipeVO1.setSmall_image_location(cursor1.getString(3));
+
+             recipe_itemArrayList1.add(recipeVO1);
+         }
+
+         cursor1.close();
 
          listView2 = (ListView) findViewById(R.id.recipe_process);
 
-         recipe_itemArrayList = new ArrayList<recipe_item>();
-
-         recipe_itemArrayList.add(new recipe_item(R.drawable.avocado, "1분동안  데우기"));
-         recipe_itemArrayList.add(new recipe_item(R.drawable.avocado, "2분동안  데우기"));
-         recipe_itemArrayList.add(new recipe_item(R.drawable.avocado, "3분동안  데우기"));
-         recipe_itemArrayList.add(new recipe_item(R.drawable.avocado, "4분동안  데우기"));
-         recipe_itemArrayList.add(new recipe_item(R.drawable.avocado, "5분동안  데우기"));
-         recipe_itemArrayList.add(new recipe_item(R.drawable.avocado, "6분동안  데우기"));
-         recipe_itemArrayList.add(new recipe_item(R.drawable.avocado, "7분동안  데우기"));
-         recipe_itemArrayList.add(new recipe_item(R.drawable.avocado, "8분동안  데우기"));
-         recipe_itemArrayList.add(new recipe_item(R.drawable.avocado, "9분동안  데우기"));
-         recipe_itemArrayList.add(new recipe_item(R.drawable.avocado, "10분동안  데우기"));
-
-
-         myindgredientsAdapter = new IndgredientsAdapter(RecipeActivity.this, indgredients_itemArrayList);
-         listView.setAdapter(myindgredientsAdapter);
-
-         processAdapter = new ProcessAdapter(RecipeActivity.this, recipe_itemArrayList);
+         processAdapter = new ProcessAdapter(RecipeActivity.this, recipe_itemArrayList1);
          listView2.setAdapter(processAdapter);
 
+////////////////////////////////////////////////////////////////////////////////////
+
+
+         cursor2 = db.rawQuery("select * from food_ingredients where food_id = ?",new String[]{stringid} );
+         //Log.d("sh111", );
+         recipe_itemArrayList2 = new ArrayList<>();
+
+         while( cursor2.moveToNext()){
+             recipeVO2 = new RecipeVO();
+             recipeVO2.setId(cursor2.getInt(1));
+             recipeVO2.setName(cursor2.getString(2));
+
+             recipe_itemArrayList2.add(recipeVO2);
+         }
+
+         cursor2.close();
+
+         listView = (ListView) findViewById(R.id.recipe_indgredients);
+
+         myindgredientsAdapter = new IndgredientsAdapter(RecipeActivity.this, recipe_itemArrayList2);
+         listView.setAdapter(myindgredientsAdapter);
 
          ScrollHelper.setListViewHeightBasedOnChildren(listView);
          ScrollHelper.setListViewHeightBasedOnChildren(listView2);
-
-        ImageView imageView = (ImageView)findViewById(R.id.main_recipe_image);
-        TextView textView = (TextView)findViewById(R.id.main_recipe_image_textView);
-
-
-
-
-         RecipeVO recipe = new RecipeVO();
-
-         textView.setText(recipe.getName());
-     
-
-
+/////////////////////////////////////////////////////////////////////////////////////
 
          Add_favor_btn = (Button) findViewById(R.id.Add_favor_btn);
          Add_favor_btn.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
+                 ImageView imageView = (ImageView)findViewById(R.id.main_recipe_image);
+                 TextView textView = (TextView)findViewById(R.id.main_recipe_image_textView);
+
+                 Toast.makeText(RecipeActivity.this, "즐겨찾기에 추가했습니다.", Toast.LENGTH_SHORT).show();
+
+                 SQLiteDatabase db = com.example.co.appsiba.db.SibaDbHelper.getInstance(RecipeActivity.this).getWritableDatabase();
+                ContentValues contentValues = new ContentValues();
 
 
-                 FavoritesFragment favoritesFragment = new FavoritesFragment();
-                 Bundle bundle = new Bundle();
-                 bundle.putString("userId", "바보");
-                 favoritesFragment.setArguments(bundle);
-                 Toast.makeText(RecipeActivity.this, "="+bundle.getString("userId"), Toast.LENGTH_SHORT).show();
+                  int foodid = recipeVO.getId();
+
+                  contentValues.put("food_id", foodid);
+                  contentValues.put("reg_data",getDateTime() );
+                 long id =db.insert("my_favorates", null, contentValues);
+                 long date = db.insert("my_favorates", null, contentValues);
 
              }
 

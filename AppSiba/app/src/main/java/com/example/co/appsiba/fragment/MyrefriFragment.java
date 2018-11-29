@@ -55,6 +55,7 @@ public class MyrefriFragment extends Fragment {
         toSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Fragment fragment2 = new ResultFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -95,7 +96,7 @@ public class MyrefriFragment extends Fragment {
         data = new ArrayList<>();
         MyRefriVO myRefriVO;
 
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             myRefriVO = new MyRefriVO();
             myRefriVO.setIngredientListId(cursor.getInt(0));
             myRefriVO.setName(cursor.getString(1));
@@ -116,17 +117,17 @@ public class MyrefriFragment extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 ImageView imageView = view.findViewById(R.id.myfood_image);
 
                 String idTag = String.valueOf(imageView.getTag());
 
                 db = SibaDbHelper.getInstance(getActivity()).getWritableDatabase();
 
-                db.delete("my_refrigerator", "ingredient_list_id = ?", new String[] {idTag});
+                db.delete("my_refrigerator", "ingredient_list_id = ?", new String[]{idTag});
                 onResume();
             }
         });
-
 
     }
 

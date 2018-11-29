@@ -20,6 +20,11 @@ public class ResultFragment extends Fragment {
     protected TabLayout tabLayout;
     private  TabPagerAdapter pagerAdapter;
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 3ff4cfdd88a97fd0d2d1ae3b6c2fa3a9ec582899
     public ResultFragment() {
     }
 
@@ -42,6 +47,7 @@ public class ResultFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_results, container, false);
+
 
 
         tabLayout = (TabLayout)view.findViewById(R.id.tabs) ;
@@ -70,6 +76,11 @@ public class ResultFragment extends Fragment {
             }
         });
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 3ff4cfdd88a97fd0d2d1ae3b6c2fa3a9ec582899
         return view;
     }
 
