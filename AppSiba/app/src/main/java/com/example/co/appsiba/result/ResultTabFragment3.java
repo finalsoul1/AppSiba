@@ -16,16 +16,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.co.appsiba.R;
-<<<<<<< HEAD
-import com.example.co.appsiba.vo.ResultVO;
-=======
 import com.example.co.appsiba.db.SibaDbHelper;
 import com.example.co.appsiba.vo.MyRefriToResultVO;
 import com.example.co.appsiba.vo.SearchResultVO;
 
 import java.util.ArrayList;
 import java.util.Collections;
->>>>>>> 3ff4cfdd88a97fd0d2d1ae3b6c2fa3a9ec582899
 
 public class ResultTabFragment3 extends Fragment {
 
@@ -36,21 +32,14 @@ public class ResultTabFragment3 extends Fragment {
     LinearLayout sliderDotspanel;
     private int dotscount;
     private ImageView[] dots;
-<<<<<<< HEAD
     Cursor cursor;
     SQLiteDatabase db;
-    ResultVO resultVO;
-=======
-
-    SQLiteDatabase db;
-    Cursor cursor;
 
     ArrayList<MyRefriToResultVO> data;
     ArrayList<SearchResultVO> searchData;
 
     String[] selectionArgs;
 
->>>>>>> 3ff4cfdd88a97fd0d2d1ae3b6c2fa3a9ec582899
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,28 +51,14 @@ public class ResultTabFragment3 extends Fragment {
 
 
         view = inflater.inflate(R.layout.result_food_photo, container, false);
-        db = com.example.co.appsiba.db.SibaDbHelper.getInstance(getContext()).getReadableDatabase();
-        cursor = db.rawQuery("select id, name, small_image_location from food where id = 55", null);
-
-        resultVO = new ResultVO();
-
-        cursor.moveToNext();
-        resultVO.setId(cursor.getInt(0));
-        resultVO.setName(cursor.getString(1));
-        resultVO.setImagelink(cursor.getString(2));
-
-        cursor.close();
 
         viewPager = (ViewPager)view.findViewById(R.id.viewPager1);
         sliderDotspanel = (LinearLayout)view.findViewById(R.id.SliderDots);
 
-<<<<<<< HEAD
-        viewPagerAdapter = new ViewPagerAdapter(getContext(),resultVO.getImagelink(), resultVO.getId());
-=======
+
         db = SibaDbHelper.getInstance(getActivity()).getReadableDatabase();
         cursor = db.rawQuery("select b.name from my_refrigerator a left outer join ingredient_list b\n" +
                 "on a.ingredient_list_id = b.id", null);
->>>>>>> 3ff4cfdd88a97fd0d2d1ae3b6c2fa3a9ec582899
 
         MyRefriToResultVO myRefriToResultVO;
         data = new ArrayList<>();
@@ -202,9 +177,6 @@ public class ResultTabFragment3 extends Fragment {
                 }
             });
         }
-
-
-
 
         return view;
     }
