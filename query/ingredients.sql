@@ -9,7 +9,7 @@ where a.id= 2 -- 1,2,3,4,5
 order by a.id, b.id, c.id asc;
 
  -- update food_ingredients set name = replace(name, '변경해야 할 대상 재료명', '변경되길 원하는 재료명');
-update food_ingredients set name = replace(name, '가다랑어포', '가쓰오부시');
-update food_ingredients set name = replace(name, '아구', '아귀');
-update food_ingredients set name = replace(name, '매실청','매실');
-update food_ingredients set name = replace(name, '매실액기스', '매실');
+update food_ingredients set name = replace(name, '가다랑어포', '가쓰오부시') where name like '%가다랑어포%';
+update food_ingredients set name = replace(name, '아구', '아귀') where name like '%아구%';
+update food_ingredients set name = replace(name, '매실청','매실') where name like '%매실청%';
+update food_ingredients set name = replace(name, '매실액기스', '매실') where name like '%아구%';
