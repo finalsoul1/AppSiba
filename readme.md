@@ -8,55 +8,58 @@ https://ovenapp.io/view/comxGroVXog2zwxJMBagwbALww0DfqKT#jlEZQ
 
 
 
-#°¡Á®¿Ã¶§  
+#ê°€ì ¸ì˜¬ë•Œ  
 git add .  
 git commit -m "blabla"  
 git fetch  
 git merge  
 
-#¿Ã¸± ¶§  
+#ì˜¬ë¦´ ë•Œ  
 git add .  
 git commit -m "blabla"  
 git push  
 
-#¿Ã¸®±âÀü¿¡ °¡Á®¿Â´ÙÀ½ ¿Ã·Á¾ß ¿Ã¶ó°©´Ï´Ù.
+#ì˜¬ë¦¬ê¸°ì „ì— ê°€ì ¸ì˜¨ë‹¤ìŒ ì˜¬ë ¤ì•¼ ì˜¬ë¼ê°‘ë‹ˆë‹¤.
 
 
 
-###Âü°í »çÀÌÆ®
+###ì°¸ê³  ì‚¬ì´íŠ¸
 
-#³ªÀÎÆĞÄ¡Åø  
+#ë‚˜ì¸íŒ¨ì¹˜íˆ´  
 http://romannurik.github.io/AndroidAssetStudio/nine-patches.html
-#¼³¸í  
+#ì„¤ëª…  
 https://blog.cracker9.io/2018/10/24/NinePatch/
 
-#strings ¼­½Ä  
+#strings ì„œì‹  
 https://developer.android.com/guide/topics/resources/string-resource?hl=ko#FormattingAndStyling
 
-#tool¼Ó¼º  
+#toolì†ì„±  
 http://gun0912.tistory.com/73
 
-#Åä±Û¹öÆ° on/off ÀÌ¹ÌÁö ¼öÁ¤ ¹æ¹ı  
+#í† ê¸€ë²„íŠ¼ on/off ì´ë¯¸ì§€ ìˆ˜ì • ë°©ë²•  
 https://m.blog.naver.com/PostView.nhn?blogId=websearch&logNo=220484885835&proxyReferer=https%3A%2F%2Fwww.google.co.uk%2F
 
-#±¸±Û ¸ÓÅÍ¸®¾ó µğÀÚÀÎ ¾ÆÀÌÄÜ  
+#êµ¬ê¸€ ë¨¸í„°ë¦¬ì–¼ ë””ìì¸ ì•„ì´ì½˜  
 https://material.io/tools/icons/?style=baseline
 
-#ÇÁ·¡±×¸ÕÆ® µ¥ÀÌÅÍ ÀúÀå  
+#í”„ë˜ê·¸ë¨¼íŠ¸ ë°ì´í„° ì €ì¥  
 https://hashcode.co.kr/questions/2045/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-viewpager%EC%97%90%EC%84%9C-fragment%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%93%A4%EC%9D%84-%EA%B0%80%EC%A7%80%EA%B3%A0-%EC%9E%88%EC%9D%84%EB%A0%A4%EB%A9%B4-%EC%96%B4%EB%96%BB%EA%B2%8C-%EA%B5%AC%ED%98%84%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C%EC%9A%94
 
-#ÇÁ·¡±×¸ÕÆ® µ¥ÀÌÅÍ Àü´Ş
+#í”„ë˜ê·¸ë¨¼íŠ¸ ë°ì´í„° ì „ë‹¬
 https://medium.com/@henen/%EB%B9%A0%EB%A5%B4%EA%B2%8C%EB%B0%B0%EC%9A%B0%EB%8A%94-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-fragment-4-fragment%EA%B0%84-%EC%97%90-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%A0%84%EB%8B%AC-c6ab1d0766af
 
 
-#À¯¿ëÇÑ ·¹ÀÌ¾Æ¿ô ¼Ó¼º
-fabSize = "auto"  // ÀÚµ¿»çÀÌÁî  
-useCompatPadding="true"  // ÀÚµ¿ÆĞµù  
+#ìœ ìš©í•œ ë ˆì´ì•„ì›ƒ ì†ì„±
+fabSize = "auto"  // ìë™ì‚¬ì´ì¦ˆ  
+useCompatPadding="true"  // ìë™íŒ¨ë”©  
 
-@android:color/transparent // Åõ¸í»ö
+@android:color/transparent // íˆ¬ëª…ìƒ‰
 
 
-#Ä¿¼­¾î´ğÅÍ  
+#ì»¤ì„œì–´ëŒ‘í„°  
 https://hashcode.co.kr/questions/1702/adapter%EC%9D%98-notifydatasetchanged-%EB%A9%94%EC%86%8C%EB%93%9C-%EA%B4%80%EB%A0%A8-%EC%A7%88%EB%AC%B8-%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4  
 
-#GLide: URI·Î ÀÌ¹ÌÁö ¹Ş¾Æ¿Ã¶§ ¾²¸é ÁÁÀº ¶óÀÌºê·¯¸®  
+#GLide: URIë¡œ ì´ë¯¸ì§€ ë°›ì•„ì˜¬ë•Œ ì“°ë©´ ì¢‹ì€ ë¼ì´ë¸ŒëŸ¬ë¦¬  
+
+#backstack ìœ¼ë¡œ ê°•ì œë¡œ ê°€ê²Œ í•˜ê³  ì‹¶ì„ë•Œ
+getFragmentManager().popBackStack();
