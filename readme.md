@@ -61,5 +61,5 @@ https://hashcode.co.kr/questions/1702/adapter%EC%9D%98-notifydatasetchanged-%EB%
 
 #GLide: URI로 이미지 받아올때 쓰면 좋은 라이브러리  
 
-#backstack 으로 강제로 가게 하고 싶을때
+#backstack 으로 강제로 가게 하고 싶을때  
 getFragmentManager().popBackStack();
