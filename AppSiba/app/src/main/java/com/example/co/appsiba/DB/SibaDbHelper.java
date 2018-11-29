@@ -40,13 +40,14 @@ public class SibaDbHelper extends SQLiteOpenHelper {
     private static final String CREATE_FOOD_TYPE = "CREATE TABLE " + FOOD_TYPE + "(id INTEGER PRIMARY KEY, name TEXT)";
 
     private static final String CREATE_FOOD = "CREATE TABLE " + FOOD
-            + "(id INTEGER PRIMARY KEY, name TEXT, food_type_id INTEGER, calorie REAL, carbohydrate REAL, protein REAL, fat REAL," +
+            + "(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, food_type_id INTEGER, calorie REAL, carbohydrate REAL, protein REAL, fat REAL," +
             " natrium REAL, small_image_location TEXT, big_image_location TEXT, ingredients TEXT)";
 
     private static final String CREATE_FOOD_RECIPE = "CREATE TABLE "
-            + FOOD_RECIPE + "(food_id INTEGER PRIMARY KEY, recipe_desc TEXT, image_location TEXT, ord INTEGER)";
+            + FOOD_RECIPE + "(id INTEGER PRIMARY KEY AUTOINCREMENT, food_id INTEGER, recipe_desc TEXT, image_location TEXT, ord INTEGER)";
 
-    private static final String CREATE_FOOD_INGREDIENTS = "CREATE TABLE " + FOOD_INGREDIENTS + "(food_id INTEGER PRIMARY KEY, name TEXT)";
+    private static final String CREATE_FOOD_INGREDIENTS = "CREATE TABLE "
+            + FOOD_INGREDIENTS + "(id INTEGER PRIMARY KEY AUTOINCREMENT, food_id INTEGER, name TEXT)";
 
 
     private static final String CREATE_MY_FAVORATES = "CREATE TABLE "

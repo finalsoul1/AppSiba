@@ -1,6 +1,8 @@
 package com.example.co.appsiba.favorite;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,41 +14,43 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.co.appsiba.R;
-import com.example.co.appsiba.helper.ResouceToInt;
 import com.example.co.appsiba.vo.FavoritesVO;
+import com.squareup.picasso.Picasso;
 
-import java.util.List;
+import java.util.ArrayList;
 
 
 public class MyListAdapter extends BaseAdapter  {
 
-private  final List mdata;
+
     Context  context;
-  //  ArrayList<list_item> list_itemArrayList;
-    ArrayAdapter<list_item> list_itemArrayAdapter;
+    ArrayList<FavoritesVO> list_itemArrayList;
+    ArrayAdapter<FavoritesVO> list_itemArrayAdapter;
 
 
     TextView content_textView;
     ImageView imageView;
+    SQLiteDatabase db;
+    FavoritesVO favoritesVO;
+    Cursor cursor;
 
-
-    public MyListAdapter(Context context, List<FavoritesVO> mdata) {
+    public MyListAdapter(Context context, ArrayList<FavoritesVO> list_itemArrayList) {
         this.context = context;
-       // this.list_itemArrayList = list_itemArrayList;
-        this.mdata = mdata;
+
+        this.list_itemArrayList = list_itemArrayList;
 
     }
 
     @Override
 //    리스트뷰가 몇개의 아이템을 갖고있는지 카운트(arraylist.size만큼)
     public int getCount() {
-        return this.mdata.size();
+        return this.list_itemArrayList.size();
     }
 
     @Override
 //    현재 어떤 아이템인지 알려주는 부분 (arraylist 의 객체 중 position에 해당하는것을 가져옴.
     public Object getItem(int position) {
-        return mdata.get(position);
+        return list_itemArrayList.get(position);
     }
 
     @Override
@@ -63,14 +67,14 @@ private  final List mdata;
         if(convertView==null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.favorite_item, null);
 
-            FavoritesVO favor = (FavoritesVO)mdata.get(position) ;
-            int resId = ResouceToInt.getResId(favor.getRecipefileImage(), R.drawable.class);
 
             content_textView = (TextView) convertView.findViewById(R.id.favorite_content_textview);
             imageView = (ImageView) convertView.findViewById(R.id.favorite_imageView);
 
-            content_textView.setText(favor.getRecipeName());
-            imageView.setImageResource(favor.getRecipeId());
+            content_textView.setText(list_itemArrayList.get(position).getRecipeName());
+            Picasso.with(context)
+                    .load(list_itemArrayList.get(position).getRecipefileImage())
+                    .into(imageView);
 
             final Button button1 = (Button) convertView.findViewById(R.id.favor_deletebtn);
 
@@ -79,15 +83,23 @@ private  final List mdata;
 
                 @Override
                 public void onClick(View convertView) {
-                    mdata.remove(position);
+
+                 int id = list_itemArrayList.get(position).getRecipeId();
+                 String str = String.valueOf(id);
+                    db = com.example.co.appsiba.db.SibaDbHelper.getInstance(context).getWritableDatabase();
+                 db.delete("my_favorates " ,"food_id=?",new String[]{str});
+                    Toast.makeText(context, "삭제했습니다.", Toast.LENGTH_SHORT).show();
+
+
                     notifyDataSetChanged();
-                    Toast.makeText(context, "삭제"+position+"!!!!", Toast.LENGTH_SHORT).show();
 
                 }
             });
 
 
         }
+
+
         return convertView;
 
     }

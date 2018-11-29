@@ -9,19 +9,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.co.appsiba.R;
+import com.example.co.appsiba.vo.RecipeVO;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class ProcessAdapter extends BaseAdapter {
     Context context;
-    ArrayList<recipe_item> recipe_itemArrayList;
-
+    ArrayList<RecipeVO> recipe_itemArrayList;
     TextView recipe_process_textview;
     ImageView recipe_image;
 
-    public ProcessAdapter(Context context, ArrayList<recipe_item> recipe_itemArrayList) {
+
+    public ProcessAdapter(Context context, ArrayList<RecipeVO> recipe_itemArrayList) {
         this.context = context;
         this.recipe_itemArrayList = recipe_itemArrayList;
+
     }
 
     @Override
@@ -48,11 +51,12 @@ public class ProcessAdapter extends BaseAdapter {
             recipe_image=(ImageView)convertView.findViewById(R.id.recipe_imageView);
             recipe_process_textview=(TextView) convertView.findViewById(R.id.recipe_content_textview);
 
-            recipe_image.setImageResource(recipe_itemArrayList.get(position).getRecipe_image());
-            recipe_process_textview.setText(recipe_itemArrayList.get(position).getProcess());
+            recipe_process_textview.setText(recipe_itemArrayList.get(position).getName());
+
+            Picasso.with(context)
+                    .load(recipe_itemArrayList.get(position).getSmall_image_location())
+                    .into(recipe_image);
         }
-
-
         return convertView;
     }
 }

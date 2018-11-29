@@ -31,10 +31,6 @@
                     android:background="@color/baseColor"
                     app:srcCompat="@drawable/agu" />
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5a87bd30c349a124ba33d14fa4520acb87e9a80e
 
                 <TextView
                     android:id="@+id/main_recipe_image_textView"
@@ -53,10 +49,7 @@
                     android:text="즐겨찾기에 추가"
                     android:background="@color/bgColorYellow"
                     />
-<<<<<<< HEAD
 
-=======
->>>>>>> 5a87bd30c349a124ba33d14fa4520acb87e9a80e
 
 
                 <LinearLayout

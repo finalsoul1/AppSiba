@@ -19,7 +19,9 @@ public class ResultFragment extends Fragment {
     protected   ViewPager viewPager;
     protected TabLayout tabLayout;
     private  TabPagerAdapter pagerAdapter;
-    private  int image;
+
+
+
     public ResultFragment() {
     }
 
@@ -42,6 +44,7 @@ public class ResultFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_results, container, false);
+
 
 
         tabLayout = (TabLayout)view.findViewById(R.id.tabs) ;
@@ -70,7 +73,6 @@ public class ResultFragment extends Fragment {
 
             }
         });
-
 
 
 

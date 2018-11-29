@@ -1,5 +1,7 @@
 package com.example.co.appsiba.result;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.co.appsiba.R;
+import com.example.co.appsiba.vo.ResultVO;
 
 public class ResultTabFragment2 extends Fragment {
 
@@ -22,7 +25,9 @@ public class ResultTabFragment2 extends Fragment {
     LinearLayout sliderDotspanel;
     private int dotscount;
     private ImageView[] dots;
-
+    Cursor cursor;
+    SQLiteDatabase db;
+    ResultVO resultVO;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,12 +40,22 @@ public class ResultTabFragment2 extends Fragment {
 
 
         view = inflater.inflate(R.layout.result_food_photo, container, false);
+        db = com.example.co.appsiba.db.SibaDbHelper.getInstance(getContext()).getReadableDatabase();
+        cursor = db.rawQuery("select id, name, small_image_location from food where id = 54", null);
 
+        resultVO = new ResultVO();
+
+        cursor.moveToNext();
+        resultVO.setId(cursor.getInt(0));
+        resultVO.setName(cursor.getString(1));
+        resultVO.setImagelink(cursor.getString(2));
+
+        cursor.close();
 
         viewPager = (ViewPager)view.findViewById(R.id.viewPager1);
         sliderDotspanel = (LinearLayout)view.findViewById(R.id.SliderDots);
 
-        viewPagerAdapter = new ViewPagerAdapter(getContext());
+        viewPagerAdapter = new ViewPagerAdapter(getContext(),resultVO.getImagelink(), resultVO.getId());
 
 
         viewPager.setAdapter(viewPagerAdapter);

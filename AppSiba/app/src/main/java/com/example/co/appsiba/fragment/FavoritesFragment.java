@@ -8,7 +8,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,24 +28,23 @@ import java.util.ArrayList;
 
 public class FavoritesFragment extends Fragment {
 
-
-
-
-
     Cursor cursor;
     SQLiteDatabase db;
-
-    public FavoritesFragment() {
-        // Required empty public constructor
-    }
-
+    FavoritesVO favoritesVO;
+    View view;
     ListView listView;
     MyListAdapter myListAdapter;
 
     ArrayAdapter<list_item> list_itemArrayAdapter;
 
     ArrayList<FavoritesVO> list_itemArrayList;
-    ArrayList<FavoritesVO> list_itemArrayList1;
+
+    public FavoritesFragment() {
+        // Required empty public constructor
+    }
+
+
+
 
 
 
@@ -74,7 +72,7 @@ public class FavoritesFragment extends Fragment {
 
 
 
-        View view = inflater.inflate(R.layout.fragment_favorites, container, false);
+       view = inflater.inflate(R.layout.fragment_favorites, container, false);
 
         db = com.example.co.appsiba.db.SibaDbHelper.getInstance(getContext()).getReadableDatabase();
 
@@ -84,41 +82,26 @@ public class FavoritesFragment extends Fragment {
                 "from my_favorates a left outer join food b\n" +
                 "on a.food_id = b.id\n", null);
 
-        Log.d("sh123", cursor.toString());
+
 
         list_itemArrayList = new ArrayList<>();
-        FavoritesVO favoritesVO;
-
-        while(cursor.moveToNext()){
+        while( cursor.moveToNext()) {
             favoritesVO = new FavoritesVO();
             favoritesVO.setRecipeId(cursor.getInt(0));
             favoritesVO.setRecipeName(cursor.getString(1));
             favoritesVO.setRecipefileImage(cursor.getString(2));
-
             list_itemArrayList.add(favoritesVO);
-        }
 
+        }
         cursor.close();
 
-        list_itemArrayList1 = new ArrayList<>();
-        for(FavoritesVO favor : list_itemArrayList){
-            list_itemArrayList1.add(favor);
-        }
-
         listView = (ListView) view.findViewById(R.id.my_listView);
+        myListAdapter = new MyListAdapter( getActivity(),list_itemArrayList);
 
-
-
-//        list_itemArrayList.add(new list_item(R.drawable.baecon, "food1baecon"));
-//        list_itemArrayList.add(new list_item(R.drawable.agu, "food2agu"));
-//        list_itemArrayList.add(new list_item(R.drawable.buchesal, "food3buchesal"));
-//        list_itemArrayList.add(new list_item(R.drawable.dangmean, "food4dangmean"));
-
-
-        myListAdapter = new MyListAdapter( getActivity(),list_itemArrayList1);
         list_itemArrayAdapter = new ArrayAdapter<list_item>(getActivity(),list_itemArrayList.size());
 
         listView.setAdapter(myListAdapter);
+        myListAdapter.notifyDataSetChanged();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -133,12 +116,7 @@ public class FavoritesFragment extends Fragment {
 
                 Intent intent = (new Intent(getActivity(), RecipeActivity.class));
 
-              
-              //  intent .putExtra("data",textView.getText());
-              //  intent .putExtra("image",bitmap);
-
                 startActivity(intent);
-              //  Toast.makeText(getActivity(), textView.getText(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -151,6 +129,9 @@ public class FavoritesFragment extends Fragment {
             public void onClick(View v) {
                list_itemArrayList.removeAll(list_itemArrayList);
                myListAdapter.notifyDataSetChanged();
+                db = com.example.co.appsiba.db.SibaDbHelper.getInstance(getActivity()).getReadableDatabase();
+                db.delete("my_favorates", null, null);
+                onResume();
 
             }
         });
@@ -166,9 +147,12 @@ public class FavoritesFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-       // db = com.example.co.appsiba.db.SibaDbHelper.getInstance(getContext()).getReadableDatabase();
-        //cursot = db.
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
     }
 }
