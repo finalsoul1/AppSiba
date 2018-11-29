@@ -12,4 +12,4 @@ order by a.id, b.id, c.id asc;
 update food_ingredients set name = replace(name, '가다랑어포', '가쓰오부시') where name like '%가다랑어포%';
 update food_ingredients set name = replace(name, '아구', '아귀') where name like '%아구%';
 update food_ingredients set name = replace(name, '매실청','매실') where name like '%매실청%';
-update food_ingredients set name = replace(name, '매실액기스', '매실') where name like '%아구%';
+update food_ingredients set name = replace(name, '매실액기스', '매실') where name like '%매실액기스%';
