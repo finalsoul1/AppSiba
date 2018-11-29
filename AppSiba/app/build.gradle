@@ -37,8 +37,4 @@ dependencies {
     implementation 'com.facebook.stetho:stetho:1.5.0'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
-<<<<<<< HEAD
-
-=======
->>>>>>> 3ff4cfdd88a97fd0d2d1ae3b6c2fa3a9ec582899
 }

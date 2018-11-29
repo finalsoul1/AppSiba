@@ -16,16 +16,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.co.appsiba.R;
-<<<<<<< HEAD
-import com.example.co.appsiba.vo.ResultVO;
-=======
 import com.example.co.appsiba.db.SibaDbHelper;
 import com.example.co.appsiba.vo.MyRefriToResultVO;
 import com.example.co.appsiba.vo.SearchResultVO;
 
 import java.util.ArrayList;
 import java.util.Collections;
->>>>>>> 3ff4cfdd88a97fd0d2d1ae3b6c2fa3a9ec582899
 
 public class ResultTabFragment1 extends Fragment {
 
@@ -37,10 +33,6 @@ public class ResultTabFragment1 extends Fragment {
     private ImageView[] dots;
     Cursor cursor;
     SQLiteDatabase db;
-    ResultVO resultVO;
-
-    SQLiteDatabase db;
-    Cursor cursor;
 
     ArrayList<MyRefriToResultVO> data;
     ArrayList<MyRefriToResultVO> mdata;
@@ -61,27 +53,8 @@ public class ResultTabFragment1 extends Fragment {
 
         view = inflater.inflate(R.layout.result_food_photo, container, false);
 
-        db = com.example.co.appsiba.db.SibaDbHelper.getInstance(getContext()).getReadableDatabase();
-        cursor = db.rawQuery("select id, name, small_image_location from food where id = 387", null);
-
-        resultVO = new ResultVO();
-
-        cursor.moveToNext();
-        resultVO.setId(cursor.getInt(0));
-        resultVO.setName(cursor.getString(1));
-        resultVO.setImagelink(cursor.getString(2));
-
-        cursor.close();
-
-        viewPager = (ViewPager) view.findViewById(R.id.viewPager1);
-        sliderDotspanel = (LinearLayout) view.findViewById(R.id.SliderDots);
-
-<<<<<<< HEAD
-        viewPagerAdapter = new ViewPagerAdapter(getActivity(), resultVO.getImagelink(),resultVO.getId());
-=======
-        /////
->>>>>>> 3ff4cfdd88a97fd0d2d1ae3b6c2fa3a9ec582899
-
+        viewPager = (ViewPager)view.findViewById(R.id.viewPager1);
+        sliderDotspanel = (LinearLayout)view.findViewById(R.id.SliderDots);
 
         db = SibaDbHelper.getInstance(getActivity()).getReadableDatabase();
         cursor = db.rawQuery("select b.name from my_refrigerator a left outer join ingredient_list b\n" +
@@ -95,8 +68,6 @@ public class ResultTabFragment1 extends Fragment {
             myRefriToResultVO.setName(cursor.getString(0));
             data.add(myRefriToResultVO);
         }
-
-        cursor.close();
 
         Collections.shuffle(data);
 
@@ -144,11 +115,13 @@ public class ResultTabFragment1 extends Fragment {
             searchData.add(searchResultVO);
         }
 
+        cursor.close();
+
         Log.d("kwon selec", searchData.size() + "");
 
         /////
 
-        if(searchData.size() == 0) {
+        if (searchData.size() == 0) {
             viewPager.setBackgroundResource(R.drawable.bono);
         } else {
             viewPager.setBackgroundResource(R.drawable.tt);
