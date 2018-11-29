@@ -4,7 +4,7 @@
         android:shape="oval" android:useLevel="true"
         android:dither="true">
 
-        <size android:height="12dip" android:width="12dip"/>
+        <size android:height="30dp" android:width="30dp"/>
 
-        <solid android:color="@color/baseColor"/>
+        <solid android:color="@color/colorButton"/>
     </shape>

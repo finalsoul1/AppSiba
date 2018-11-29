@@ -107,8 +107,6 @@ public class FavoritesFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
-
                 ImageView imageView = view.findViewById(R.id.favorite_imageView);
 
                 TextView textView = view.findViewById(R.id.favorite_content_textview);

@@ -55,9 +55,9 @@ public class RefriActivity extends AppCompatActivity
             SQLiteDatabase db = SibaDbHelper.getInstance(this).getWritableDatabase();
             ContentValues contentValues = new ContentValues();
 
-            int imageTag = (Integer) imageView.getTag();
+            int idTag = (Integer) imageView.getTag();
 
-            contentValues.put("ingredient_list_id", imageTag);
+            contentValues.put("ingredient_list_id", idTag);
             db.insert("my_refrigerator", null, contentValues);
 
             Toast.makeText(this, textView.getText() + "을/를 누르셨습니다.", Toast.LENGTH_LONG).show();

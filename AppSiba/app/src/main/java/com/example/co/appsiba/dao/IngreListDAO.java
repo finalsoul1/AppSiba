@@ -16,6 +16,11 @@ public class IngreListDAO {
         SQLiteDatabase db = SibaDbHelper.getInstance(context).getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
+//        for (IngreList gre:ingreLists) {
+//            String str = gre.getName().replaceAll("^()$", "");
+//            gre.setName(str);
+//        }
+
         for (IngreList ingrelist : ingreLists) {
             contentValues.put("id", ingrelist.getId());
             contentValues.put("ingredient_sub_category_id", ingrelist.getIngredientSubCategoryId());

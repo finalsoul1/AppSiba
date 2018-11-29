@@ -12,7 +12,6 @@
         android:layout_height="match_parent">
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,26 +30,32 @@
                     android:background="@color/baseColor"
                     app:srcCompat="@drawable/agu" />
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3ff4cfdd88a97fd0d2d1ae3b6c2fa3a9ec582899
                 <TextView
                     android:id="@+id/main_recipe_image_textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textAlignment="center"
-                    android:text="main_recipe_image_textView" />
+                    android:text="main_recipe_image_textView"
+                    android:textAlignment="center" />
 
                 <Button
                     android:id="@+id/Add_favor_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="즐겨찾기에 추가"
+                    android:layout_marginBottom="20dp"
                     android:background="@color/bgColorYellow"
+<<<<<<< HEAD
                     />
 
 
+=======
+                    android:text="즐겨찾기에 추가" />
+>>>>>>> 3ff4cfdd88a97fd0d2d1ae3b6c2fa3a9ec582899
 
                 <LinearLayout
                     android:layout_width="match_parent"

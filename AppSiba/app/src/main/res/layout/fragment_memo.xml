@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/memoHead"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp"
         app:layout_constraintBottom_toTopOf="@+id/memoBody"
@@ -23,18 +23,18 @@
         <ImageView
             android:id="@+id/memoHeadImageView"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_height="100dp"
             android:background="@drawable/siba_mark_exclamation_round_rectangular" />
 
         <TextView
             android:id="@+id/memoHeadTextView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
             android:layout_weight="1"
             android:background="@drawable/messagebox"
             android:gravity="center"
             android:text="같이 장보러 가개!"
+            android:textColor="@android:color/black"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -44,7 +44,7 @@
         android:layout_height="0dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:background="@drawable/shape_round_with_edge"
+        android:background="@drawable/shape_round_with_edge_white"
         android:orientation="horizontal"
         android:padding="2dp"
         app:layout_constraintBottom_toTopOf="@+id/memoFoot"
@@ -79,10 +79,22 @@
 
         <Button
             android:id="@+id/memoClearButton"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1"
             android:background="@drawable/button_selector"
             android:text="모두 지우기"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/memoAddButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:text="새 메모 쓰기"
             android:textSize="18sp" />
     </LinearLayout>
 

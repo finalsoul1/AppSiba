@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
+    android:id="@+id/myrefri_toggle"
     >
 
         <ImageView

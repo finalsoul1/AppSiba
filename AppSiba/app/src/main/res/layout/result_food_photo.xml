@@ -8,19 +8,39 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager1"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"        />
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:id="@+id/SliderDots"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager1"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="5dp" />
 
-        android:gravity="center_vertical|center_horizontal"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/viewPager1" />
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/SliderDots"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_round"
+            android:gravity="center"
+            android:text="옆으로 넘겨서 먹고싶은걸 골라보개!"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

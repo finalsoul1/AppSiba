@@ -155,7 +155,6 @@ public class RecipeActivity extends AppCompatActivity {
                  long id =db.insert("my_favorates", null, contentValues);
                  long date = db.insert("my_favorates", null, contentValues);
 
-
              }
 
 
