@@ -9,3 +9,8 @@ where a.id= 2 -- 1,2,3,4,5
 order by a.id, b.id, c.id asc;
 
 
+update food_ingredients set name = replace(name, '요리당', '올리고당');
+update food_ingredients set name = replace(name, '가다랑어포', '가쓰오부시');
+update food_ingredients set name = replace(name, '아구', '아귀');
+update food_ingredients set name = replace(name, '매실청','매실');
+update food_ingredients set name = replace(name, '매실액기스', '매실');
