@@ -21,11 +21,17 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@color/bgColorYellow"
-                    android:text="유제품&amp;치즈" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_round"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:text="유제품 &amp; 치즈" />
 
                 <com.example.co.appsiba.helper.ExpandableHeightGridView
                     android:id="@+id/etc_milk_grid"
@@ -50,11 +56,17 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@color/bgColorYellow"
-                    android:text="양념&amp;소스&amp;향신료" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_round"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="양념 &amp; 소스 &amp; 향신료"
+                    android:textColor="@android:color/black" />
 
                 <com.example.co.appsiba.helper.ExpandableHeightGridView
                     android:id="@+id/etc_sauce_grid"
@@ -79,11 +91,17 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@color/bgColorYellow"
-                    android:text="가공식품" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_round"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="가공식품"
+                    android:textColor="@android:color/black" />
 
                 <com.example.co.appsiba.helper.ExpandableHeightGridView
                     android:id="@+id/etc_processed_grid"
@@ -108,11 +126,17 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@color/bgColorYellow"
-                    android:text="곡류&amp;견과류" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_round"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="곡류 &amp; 견과류"
+                    android:textColor="@android:color/black" />
 
                 <com.example.co.appsiba.helper.ExpandableHeightGridView
                     android:id="@+id/etc_grain_grid"
@@ -136,11 +160,17 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@color/bgColorYellow"
-                    android:text="음료&amp;주류" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_round"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="음료 &amp; 주류"
+                    android:textColor="@android:color/black" />
 
                 <com.example.co.appsiba.helper.ExpandableHeightGridView
                     android:id="@+id/etc_drink_grid"

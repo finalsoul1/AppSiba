@@ -21,11 +21,17 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@color/bgColorYellow"
-                    android:text="생선류" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_round"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="생선류"
+                    android:textColor="@android:color/black" />
 
                 <com.example.co.appsiba.helper.ExpandableHeightGridView
                     android:id="@+id/fish_fish_grid"
@@ -50,11 +56,17 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@color/bgColorYellow"
-                    android:text="조개&amp;갑각류" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_round"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="조개 &amp; 갑각류"
+                    android:textColor="@android:color/black" />
 
                 <com.example.co.appsiba.helper.ExpandableHeightGridView
                     android:id="@+id/fish_clam_grid"
@@ -79,11 +91,17 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@color/bgColorYellow"
-                    android:text="해조류" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_round"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="해조류"
+                    android:textColor="@android:color/black" />
 
                 <com.example.co.appsiba.helper.ExpandableHeightGridView
                     android:id="@+id/fish_seaweed_grid"
@@ -108,11 +126,17 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@color/bgColorYellow"
-                    android:text="어류&amp;알&amp;젓갈" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_round"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="어류 &amp; 알 &amp; 젓갈"
+                    android:textColor="@android:color/black" />
 
                 <com.example.co.appsiba.helper.ExpandableHeightGridView
                     android:id="@+id/fish_dried_grid"
