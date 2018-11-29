@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,6 @@ import com.example.co.appsiba.vo.MyRefriToResultVO;
 import com.example.co.appsiba.vo.SearchResultVO;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class ResultTabFragment5 extends Fragment {
 
@@ -72,36 +72,40 @@ public class ResultTabFragment5 extends Fragment {
 
         cursor.close();
 
-        Collections.shuffle(data);
+        ArrayList<MyRefriToResultVO> mdata;
 
-        if (data.size() > 2) data.subList(0, 2);
+        mdata = new ArrayList<>();
+        if (data.size() > 3) {
+            mdata.addAll(data.subList(0, 3));
+        } else {
+            mdata.addAll(data);
+        }
 
-        selectionArgs = new String[data.size()];
+        Log.d("kwon data", mdata.size() + "");
+
+        selectionArgs = new String[mdata.size()];
         int count = 0;
-        for (MyRefriToResultVO mrr:data) {
-            selectionArgs[count] = mrr.getName();
+        for (MyRefriToResultVO mrr:mdata) {
+            selectionArgs[count] = "%" +mrr.getName() + "%";
             count++;
         }
 
-        cursor = db.rawQuery("select id, name,  small_image_location from (\n" +
-                "select id, name, small_image_location, big_image_location\n" +
+
+        cursor = db.rawQuery("select id, name, small_image_location\n" +
                 "from food \n" +
-                "where food_type_id = 5\n" +
-                "and id in (select food_id from food_ingredients where name like '%아욱%')\n" +
-                "union\n" +
-                "select id, name, small_image_location, big_image_location\n" +
-                "from food \n" +
-                "where food_type_id = 5\n" +
-                "and id in (select food_id from food_ingredients where name like '%닭%')\n" +
-                "union\n" +
-                "select id, name, small_image_location, big_image_location\n" +
-                "from food \n" +
-                "where food_type_id = 5\n" +
-                "and id in (select food_id from food_ingredients where name like '%고등어%')\n" +
-                ") food limit 3;" , null);
+                "where food_type_id =5\n" +
+                "and id in (\n" +
+                "select food_id from food_ingredients \n" +
+                "where name like ? \n" +
+                "or name like ?\n" +
+                "or name like ?)\n" +
+                "limit 3" , selectionArgs);
 
         SearchResultVO searchResultVO;
         searchData = new ArrayList<>();
+
+
+        Log.d("kwon cursor", cursor.getCount()+"");
 
 
         while(cursor.moveToNext()){
@@ -113,51 +117,66 @@ public class ResultTabFragment5 extends Fragment {
             searchData.add(searchResultVO);
         }
 
+        cursor.close();
+
+        Log.d("kwon selec", searchData.size() + "");
+
+        /////
+
+        if(searchData.size() == 0) {
+            viewPager.setBackgroundResource(R.drawable.bono);
+        } else {
+            viewPager.setBackgroundResource(R.drawable.tt);
+        }
+
 
         viewPagerAdapter = new ViewPagerAdapter(getContext(), searchData);
 
         viewPager.setAdapter(viewPagerAdapter);
 
-        dotscount = viewPagerAdapter.getCount();
-        dots = new ImageView[dotscount];
 
-        for(int i = 0; i < dotscount; i++){
+        if (searchData.size() > 0) {
 
-            dots[i] = new ImageView(getContext());
-            dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.non_active_dot));
+            dotscount = viewPagerAdapter.getCount();
+            dots = new ImageView[dotscount];
 
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            for (int i = 0; i < dotscount; i++) {
 
-            params.setMargins(8, 0, 8, 0);
-            sliderDotspanel.addView(dots[i]);
+                dots[i] = new ImageView(getContext());
+                dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.non_active_dot));
 
-        }
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        dots[0].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
-
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                params.setMargins(8, 0, 8, 0);
+                sliderDotspanel.addView(dots[i]);
 
             }
 
-            @Override
-            public void onPageSelected(int position) {
+            dots[0].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
 
-                for(int i = 0; i< dotscount; i++){
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.non_active_dot));
+            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
                 }
 
-                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
+                @Override
+                public void onPageSelected(int position) {
 
-            }
+                    for (int i = 0; i < dotscount; i++) {
+                        dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.non_active_dot));
+                    }
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
+                    dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
 
-            }
-        });
+                }
 
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
+        }
         return view;
     }
 }

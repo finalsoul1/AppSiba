@@ -25,14 +25,6 @@ import com.example.co.appsiba.helper.BottomNavigationBehavior;
 
 public class HomeActivity extends AppCompatActivity {
 
-    FragmentManager fm;
-
-    private View view;
-    ImageButton imageButton;
-
-    Cursor cursor;
-    SQLiteDatabase db;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

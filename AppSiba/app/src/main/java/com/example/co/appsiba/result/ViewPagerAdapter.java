@@ -44,18 +44,20 @@ public class ViewPagerAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.custom_layout, null);
 
-        for (SearchResultVO sr: data) {
-            sr.getSmallImageLocation();
-        }
 
         ImageView imageView = (ImageView) view.findViewById(R.id.pagerImageView);
         TextView textView = view.findViewById(R.id.pagerTextView);
 
+
         textView.setText(data.get(position).getName());
 
-        Picasso.with(context)
-                .load(data.get(position).getSmallImageLocation())
-                .into(imageView);
+        if (data.get(position).getSmallImageLocation().isEmpty()) {
+            imageView.setImageResource(R.drawable.agu);
+        } else {
+            Picasso.with(context)
+                    .load(data.get(position).getSmallImageLocation())
+                    .into(imageView);
+        }
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,4 +81,5 @@ public class ViewPagerAdapter extends PagerAdapter {
         vp.removeView(view);
 
     }
+
 }
