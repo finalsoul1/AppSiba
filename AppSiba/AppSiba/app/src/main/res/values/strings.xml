@@ -1,0 +1,32 @@
+<resources>
+
+    <string name="app_name">AppSiba</string>
+    <string name="st_refrigerator">냉장고</string>
+    <string name="st_menu">메뉴추천</string>
+    <string name="st_memo">메모장</string>
+    <string name="st_favorites">즐겨찾기</string>
+
+    <string name="myrefri_message">냉장고에 이만큼 있개!</string>
+    <string name="myrefri_message2">내 냉장고에 있는 재료</string>
+
+    <string name="refri_message">냉장고에 있는 재료를 \n 선택해주세요!</string>
+
+    <string name="favorite_message"> 또 만들어 보고 싶개!</string>
+    <string name="result_message"> 좌우로 넘겨서 골라보개 ! </string>
+
+    <string name="st_vegi" >채소</string>
+    <string name="st_meat">육류</string>
+    <string name="st_fish">어류</string>
+    <string name="st_fruit">과일</string>
+    <string name="st_etc">기타</string>
+
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="page_1">밥</string>
+    <string name="page_2">찌개</string>
+    <string name="page_3">후식</string>
+    <string name="page_4">반찬</string>
+    <string name="page_5">일품</string>
+</resources>

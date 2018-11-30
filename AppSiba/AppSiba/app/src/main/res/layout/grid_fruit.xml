@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".refrigerator.MeatFragment"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:fontFamily="@font/yanolja_family"
+                android:textStyle="italic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_round"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@android:color/black"
+                android:text="과일" />
+
+            <com.example.co.appsiba.helper.ExpandableHeightGridView
+                android:id="@+id/fruit_grid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center"
+                android:horizontalSpacing="5dp"
+                android:isScrollContainer="false"
+                android:numColumns="4"
+                android:padding="10dp"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="5dp"
+                tools:listitem="@layout/food_toggle" />
+        </LinearLayout>
+
+    </ScrollView>
+</FrameLayout>

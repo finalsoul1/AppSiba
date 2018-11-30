@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:id="@+id/pagerImageView"
+        android:clickable="true"
+        />
+
+    <TextView
+        android:fontFamily="@font/yanolja_family"
+        android:id="@+id/pagerTextView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="300dp"
+        android:gravity="center"
+        android:background="@color/colorBackground"
+        android:textSize="20dp"
+        android:text="TextView" />
+
+
+</RelativeLayout>

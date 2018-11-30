@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="10"
+    android:background="@color/colorBackground">
+
+    <LinearLayout
+        android:id="@+id/memoHead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/memoBody"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <ImageView
+            android:id="@+id/memoHeadImageView"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/siba_mark_exclamation_round_rectangular" />
+
+        <TextView
+            android:fontFamily="@font/yanolja_family"
+            android:id="@+id/memoHeadTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/messagebox"
+            android:gravity="center"
+            android:text="같이 장보러 가개!"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/memoBody"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/shape_round_with_edge_white"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/memoFoot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memoHead"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_weight="1">
+
+        <ListView
+            android:id="@+id/memoListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/colorBackground"
+            tools:listitem="@layout/memo_item" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/memoFoot"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorBackground"
+        android:gravity="bottom|center"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memoBody">
+
+        <Button
+            android:fontFamily="@font/yanolja_family"
+            android:id="@+id/memoClearButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:text="모두 지우기"
+            android:textSize="18sp" />
+
+        <Button
+            android:fontFamily="@font/yanolja_family"
+            android:id="@+id/memoAddButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:text="새 메모 쓰기"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
