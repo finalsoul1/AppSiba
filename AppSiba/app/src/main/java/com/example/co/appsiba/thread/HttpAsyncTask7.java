@@ -1,9 +1,12 @@
 package com.example.co.appsiba.thread;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.co.appsiba.R;
 import com.example.co.appsiba.dao.IngredientsDAO;
 import com.example.co.appsiba.db.model.Ingredients;
 import com.google.gson.Gson;
@@ -26,6 +29,8 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
     private String TAG;
     Context context;
 
+    Dialog dialog;
+
     public HttpAsyncTask7(String TAG, Context context) {
         this.TAG = TAG;
         this.context = context;
@@ -33,8 +38,14 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
 
     @Override
     protected void onPreExecute() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(R.layout.loading_dialog);
+        dialog = builder.create();
+
+        dialog.show();
+
         super.onPreExecute();
-        // 프로그레스바 띄우기
     }
 
     @Override
@@ -75,10 +86,15 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
         // 프로그레스바 진행상황 보고
+
+
     }
 
     @Override
     protected void onPostExecute(List dbList) {
+
+        dialog.dismiss();
+
         super.onPostExecute(dbList);
         // 최종결과 처리
         if (dbList != null) {

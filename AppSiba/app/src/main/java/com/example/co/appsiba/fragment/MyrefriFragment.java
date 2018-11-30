@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +16,13 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.co.appsiba.R;
 import com.example.co.appsiba.db.SibaDbHelper;
+import com.example.co.appsiba.fragment.adapter.RefriRecyclerAdapter;
+import com.example.co.appsiba.helper.MyRefriCustomDialog;
+import com.example.co.appsiba.helper.MyRefriSearchDialog;
 import com.example.co.appsiba.refrigerator.adapter.MyRefriAdapter;
 import com.example.co.appsiba.vo.MyRefriVO;
 
@@ -28,6 +34,9 @@ public class MyrefriFragment extends Fragment {
 
     Cursor cursor;
     SQLiteDatabase db;
+
+    MyRefriCustomDialog myRefriCustomDialog;
+    MyRefriSearchDialog myRefriSearchDialog;
 
     public MyrefriFragment() {
         // Required empty public constructor
@@ -52,27 +61,36 @@ public class MyrefriFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_myrefri, container, false);
 
         Button toSearchBtn = view.findViewById(R.id.to_search);
+
         toSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Fragment fragment2 = new ResultFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame_container, fragment2);
-                fragmentTransaction.commit();
+                db = SibaDbHelper.getInstance(getActivity()).getReadableDatabase();
+
+                cursor = db.rawQuery("select a.ingredient_list_id, b.name, b.file_name from \n" +
+                        "my_refrigerator a left outer join ingredient_list b\n" +
+                        "on a.ingredient_list_id = b.id", null);
+
+                if (cursor.getCount() < 3) {
+
+                    cursor.close();
+                    myRefriSearchDialog = new MyRefriSearchDialog(getContext());
+                    myRefriSearchDialog.call();
+
+
+                } else {
+                    Fragment fragment2 = new ResultFragment();
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.frame_container, fragment2);
+                    fragmentTransaction.commit();
+                }
             }
         });
 
         Button myRefriClearBtn = view.findViewById(R.id.myrefri_clear);
-        myRefriClearBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                db = SibaDbHelper.getInstance(getActivity()).getReadableDatabase();
-                db.delete("my_refrigerator", null, null);
-                onResume();
-            }
-        });
+        myRefriClearBtn.setOnClickListener(new ClearClickListener(this));
 
         return view;
     }
@@ -107,28 +125,57 @@ public class MyrefriFragment extends Fragment {
 
         cursor.close();
 
-        GridView gridView = getActivity().findViewById(R.id.myrefri_view);
-        MyRefriAdapter myRefriAdapter = new MyRefriAdapter(data);
+//        GridView gridView = getActivity().findViewById(R.id.myrefri_view);
+//        MyRefriAdapter myRefriAdapter = new MyRefriAdapter(data);
+//
+//        myRefriAdapter.notifyDataSetChanged();
+//        gridView.setAdapter(myRefriAdapter);
 
-        myRefriAdapter.notifyDataSetChanged();
-        gridView.setAdapter(myRefriAdapter);
+        RecyclerView recyclerView = getActivity().findViewById(R.id.myrefri_view);
+        recyclerView.setNestedScrollingEnabled(false);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 4);
+        recyclerView.setLayoutManager(gridLayoutManager);
+
+        RefriRecyclerAdapter refriRecyclerAdapter = new RefriRecyclerAdapter(data, getContext());
+        recyclerView.setAdapter(refriRecyclerAdapter);
 
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                ImageView imageView = view.findViewById(R.id.myfood_image);
-
-                String idTag = String.valueOf(imageView.getTag());
-
-                db = SibaDbHelper.getInstance(getActivity()).getWritableDatabase();
-
-                db.delete("my_refrigerator", "ingredient_list_id = ?", new String[]{idTag});
-                onResume();
-            }
-        });
+//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                ImageView imageView = view.findViewById(R.id.myfood_image);
+//                TextView textView = view.findViewById(R.id.myfood_nameView);
+//
+//                String idTag = String.valueOf(imageView.getTag());
+//
+//                db = SibaDbHelper.getInstance(getActivity()).getWritableDatabase();
+//
+//                db.delete("my_refrigerator", "ingredient_list_id = ?", new String[]{idTag});
+//
+//                onResume();
+//            }
+//        });
 
     }
 
+    public class ClearClickListener implements View.OnClickListener {
+
+        Fragment fragment;
+
+        public ClearClickListener(Fragment fragment) {
+            this.fragment = fragment;
+        }
+
+        @Override
+        public void onClick(View v) {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+
+            myRefriCustomDialog = new MyRefriCustomDialog(getContext(), ft, fragment);
+            myRefriCustomDialog.call();
+
+        }
+    }
 }
+

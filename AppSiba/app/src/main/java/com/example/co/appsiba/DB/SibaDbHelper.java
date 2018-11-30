@@ -51,7 +51,7 @@ public class SibaDbHelper extends SQLiteOpenHelper {
 
 
     private static final String CREATE_MY_FAVORATES = "CREATE TABLE "
-            + MY_FAVORATES + "(food_id INTEGER PRIMARY KEY, reg_data INTEGER)";
+            + MY_FAVORATES + "(id INTEGER PRIMARY KEY, food_id INTEGER, reg_data INTEGER)";
 
     private static final String CREATE_MY_NOTEPAD = "CREATE TABLE "
             + MY_NOTEPAD + "(id INTEGER PRIMARY KEY, ingredient_name TEXT, checked TEXT, reg_date DATETIME DEFAULT CURRENT_TIMESTAMP)";

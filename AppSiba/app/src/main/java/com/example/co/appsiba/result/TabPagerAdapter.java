@@ -1,13 +1,10 @@
 package com.example.co.appsiba.result;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class TabPagerAdapter extends FragmentStatePagerAdapter {
-
-    Context context;
 
 
     public TabPagerAdapter(FragmentManager fm) {

@@ -18,6 +18,7 @@
                 android:id="@+id/top1_etc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -33,16 +34,13 @@
                     android:textColor="@android:color/black"
                     android:text="유제품 &amp; 치즈" />
 
-                <com.example.co.appsiba.helper.ExpandableHeightGridView
-                    android:id="@+id/etc_milk_grid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/etc_milk_re"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:background="#ffffff"
-                    android:horizontalSpacing="5dp"
                     android:isScrollContainer="false"
-                    android:numColumns="4"
                     android:padding="10dp"
-                    android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
                     android:gravity="center"
                     tools:listitem="@layout/food_toggle" />
@@ -68,16 +66,13 @@
                     android:text="양념 &amp; 소스 &amp; 향신료"
                     android:textColor="@android:color/black" />
 
-                <com.example.co.appsiba.helper.ExpandableHeightGridView
-                    android:id="@+id/etc_sauce_grid"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/etc_sauce_re"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#ffffff"
-                    android:horizontalSpacing="5dp"
                     android:isScrollContainer="false"
-                    android:numColumns="4"
                     android:padding="10dp"
-                    android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
                     android:gravity="center"
                     tools:listitem="@layout/food_toggle" />
@@ -103,16 +98,13 @@
                     android:text="가공식품"
                     android:textColor="@android:color/black" />
 
-                <com.example.co.appsiba.helper.ExpandableHeightGridView
-                    android:id="@+id/etc_processed_grid"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/etc_processed_re"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#ffffff"
-                    android:horizontalSpacing="5dp"
                     android:isScrollContainer="false"
-                    android:numColumns="4"
                     android:padding="10dp"
-                    android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
                     android:gravity="center"
                     tools:listitem="@layout/food_toggle" />
@@ -138,16 +130,14 @@
                     android:text="곡류 &amp; 견과류"
                     android:textColor="@android:color/black" />
 
-                <com.example.co.appsiba.helper.ExpandableHeightGridView
-                    android:id="@+id/etc_grain_grid"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/etc_grain_re"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#ffffff"
                     android:horizontalSpacing="5dp"
                     android:isScrollContainer="false"
-                    android:numColumns="4"
                     android:padding="10dp"
-                    android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
                     android:gravity="center"
                     tools:listitem="@layout/food_toggle" />
@@ -172,16 +162,13 @@
                     android:text="음료 &amp; 주류"
                     android:textColor="@android:color/black" />
 
-                <com.example.co.appsiba.helper.ExpandableHeightGridView
-                    android:id="@+id/etc_drink_grid"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/etc_drink_re"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#ffffff"
-                    android:horizontalSpacing="5dp"
                     android:isScrollContainer="false"
-                    android:numColumns="4"
                     android:padding="10dp"
-                    android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
                     android:gravity="center"
                     tools:listitem="@layout/food_toggle" />

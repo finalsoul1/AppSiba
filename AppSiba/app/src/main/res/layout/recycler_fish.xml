@@ -33,16 +33,14 @@
                     android:text="생선류"
                     android:textColor="@android:color/black" />
 
-                <com.example.co.appsiba.helper.ExpandableHeightGridView
-                    android:id="@+id/fish_fish_grid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/fish_fish_re"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:background="#ffffff"
                     android:horizontalSpacing="5dp"
                     android:isScrollContainer="false"
-                    android:numColumns="4"
                     android:padding="10dp"
-                    android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
                     android:gravity="center"
                     tools:listitem="@layout/food_toggle" />
@@ -68,16 +66,14 @@
                     android:text="조개 &amp; 갑각류"
                     android:textColor="@android:color/black" />
 
-                <com.example.co.appsiba.helper.ExpandableHeightGridView
-                    android:id="@+id/fish_clam_grid"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/fish_clam_re"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#ffffff"
                     android:horizontalSpacing="5dp"
                     android:isScrollContainer="false"
-                    android:numColumns="4"
                     android:padding="10dp"
-                    android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
                     android:gravity="center"
                     tools:listitem="@layout/food_toggle" />
@@ -103,16 +99,14 @@
                     android:text="해조류"
                     android:textColor="@android:color/black" />
 
-                <com.example.co.appsiba.helper.ExpandableHeightGridView
-                    android:id="@+id/fish_seaweed_grid"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/fish_seaweed_re"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#ffffff"
                     android:horizontalSpacing="5dp"
                     android:isScrollContainer="false"
-                    android:numColumns="4"
                     android:padding="10dp"
-                    android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
                     android:gravity="center"
                     tools:listitem="@layout/food_toggle" />
@@ -138,16 +132,14 @@
                     android:text="어류 &amp; 알 &amp; 젓갈"
                     android:textColor="@android:color/black" />
 
-                <com.example.co.appsiba.helper.ExpandableHeightGridView
-                    android:id="@+id/fish_dried_grid"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/fish_dried_re"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#ffffff"
                     android:horizontalSpacing="5dp"
                     android:isScrollContainer="false"
-                    android:numColumns="4"
                     android:padding="10dp"
-                    android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp"
                     android:gravity="center"
                     tools:listitem="@layout/food_toggle" />
