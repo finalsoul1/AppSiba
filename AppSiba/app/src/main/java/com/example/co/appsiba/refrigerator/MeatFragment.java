@@ -7,15 +7,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 
 import com.example.co.appsiba.R;
-import com.example.co.appsiba.db.SibaDbHelper;
-import com.example.co.appsiba.helper.ExpandableHeightGridView;
-import com.example.co.appsiba.refrigerator.adapter.MyAdapter;
+import com.example.co.appsiba.refrigerator.adapter.MyRecyclerAdapter;
 import com.example.co.appsiba.vo.RefriIngredientVO;
 
 import java.util.ArrayList;
@@ -40,6 +39,12 @@ public class MeatFragment extends Fragment {
     ArrayList<RefriIngredientVO> data3;
     ArrayList<RefriIngredientVO> data4;
     ArrayList<RefriIngredientVO> data5;
+
+    GridLayoutManager gridLayoutManager1;
+    GridLayoutManager gridLayoutManager2;
+    GridLayoutManager gridLayoutManager3;
+    GridLayoutManager gridLayoutManager4;
+    GridLayoutManager gridLayoutManager5;
 
     Cursor cursor;
     SQLiteDatabase db;
@@ -87,17 +92,10 @@ public class MeatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.grid_meat, container, false);
-
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        View view = inflater.inflate(R.layout.recycler_meat, container, false);
 
         // db
-        db = SibaDbHelper.getInstance(getContext()).getReadableDatabase();
+        db = com.example.co.appsiba.db.SibaDbHelper.getInstance(getContext()).getReadableDatabase();
 
         cursor = db.rawQuery("select a.id as category_id, a.name as category, b.id as sub_category_id, b.name as sub_category, \n" +
                 "c.id as ingredient_id, c.name, c.file_name \n" +
@@ -122,13 +120,6 @@ public class MeatFragment extends Fragment {
         }
 
         cursor.close();
-
-        // 뷰
-        GridView gridView1 = (ExpandableHeightGridView) getActivity().findViewById(R.id.meat_egg_grid);
-        GridView gridView2 = (ExpandableHeightGridView) getActivity().findViewById(R.id.meat_dak_grid);
-        GridView gridView3 = (ExpandableHeightGridView) getActivity().findViewById(R.id.meat_pig_grid);
-        GridView gridView4 = (ExpandableHeightGridView) getActivity().findViewById(R.id.meat_cow_grid);
-        GridView gridView5 = (ExpandableHeightGridView) getActivity().findViewById(R.id.meat_duck_grid);
 
         data1 = new ArrayList<>();
         data2 = new ArrayList<>();
@@ -156,20 +147,48 @@ public class MeatFragment extends Fragment {
             }
         }
 
-        MyAdapter adapter = new MyAdapter(data1);
-        gridView1.setAdapter(adapter);
+        RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.meat_egg_re);
+        recyclerView1.setNestedScrollingEnabled(false);
+        RecyclerView recyclerView2 = (RecyclerView) view.findViewById(R.id.meat_dak_re);
+        recyclerView2.setNestedScrollingEnabled(false);
+        RecyclerView recyclerView3 = (RecyclerView) view.findViewById(R.id.meat_pig_re);
+        recyclerView3.setNestedScrollingEnabled(false);
+        RecyclerView recyclerView4 = (RecyclerView) view.findViewById(R.id.meat_cow_re);
+        recyclerView4.setNestedScrollingEnabled(false);
+        RecyclerView recyclerView5 = (RecyclerView) view.findViewById(R.id.meat_duck_re);
+        recyclerView5.setNestedScrollingEnabled(false);
 
-        adapter = new MyAdapter(data2);
-        gridView2.setAdapter(adapter);
+        gridLayoutManager1 = new GridLayoutManager(getActivity(), 4);
+        gridLayoutManager2 = new GridLayoutManager(getActivity(), 4);
+        gridLayoutManager3 = new GridLayoutManager(getActivity(), 4);
+        gridLayoutManager4 = new GridLayoutManager(getActivity(), 4);
+        gridLayoutManager5 = new GridLayoutManager(getActivity(), 4);
+        recyclerView1.setLayoutManager(gridLayoutManager1);
+        recyclerView2.setLayoutManager(gridLayoutManager2);
+        recyclerView3.setLayoutManager(gridLayoutManager3);
+        recyclerView4.setLayoutManager(gridLayoutManager4);
+        recyclerView5.setLayoutManager(gridLayoutManager5);
 
-        adapter = new MyAdapter(data3);
-        gridView3.setAdapter(adapter);
+        MyRecyclerAdapter mrAdapter = new MyRecyclerAdapter(data1);
+        recyclerView1.setAdapter(mrAdapter);
+        mrAdapter = new MyRecyclerAdapter(data2);
+        recyclerView2.setAdapter(mrAdapter);
+        mrAdapter = new MyRecyclerAdapter(data3);
+        recyclerView3.setAdapter(mrAdapter);
+        mrAdapter = new MyRecyclerAdapter(data4);
+        recyclerView4.setAdapter(mrAdapter);
+        mrAdapter = new MyRecyclerAdapter(data5);
+        recyclerView5.setAdapter(mrAdapter);
 
-        adapter = new MyAdapter(data4);
-        gridView4.setAdapter(adapter);
+        return view;
+    }
 
-        adapter = new MyAdapter(data5);
-        gridView5.setAdapter(adapter);
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

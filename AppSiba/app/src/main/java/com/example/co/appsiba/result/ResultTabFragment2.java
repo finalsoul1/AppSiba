@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.co.appsiba.R;
-import com.example.co.appsiba.db.SibaDbHelper;
 import com.example.co.appsiba.vo.MyRefriToResultVO;
 import com.example.co.appsiba.vo.SearchResultVO;
 
@@ -58,7 +57,7 @@ public class ResultTabFragment2 extends Fragment {
         sliderDotspanel = view.findViewById(R.id.SliderDots);
 
 
-        db = SibaDbHelper.getInstance(getActivity()).getReadableDatabase();
+        db = com.example.co.appsiba.db.SibaDbHelper.getInstance(getActivity()).getReadableDatabase();
         cursor = db.rawQuery("select b.name from my_refrigerator a left outer join ingredient_list b\n" +
                 "on a.ingredient_list_id = b.id", null);
 
@@ -122,9 +121,9 @@ public class ResultTabFragment2 extends Fragment {
         /////
 
         if (searchData.size() == 0) {
-            viewPager.setBackgroundResource(R.drawable.bono);
+            viewPager.setBackgroundResource(R.drawable.siba_mark_more_searching);
         } else {
-            viewPager.setBackgroundResource(R.drawable.tt);
+            viewPager.setBackgroundResource(R.drawable.siba_mark_searching);
         }
 
 

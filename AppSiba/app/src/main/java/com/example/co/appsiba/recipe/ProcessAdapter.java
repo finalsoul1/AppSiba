@@ -58,8 +58,6 @@ public class ProcessAdapter extends BaseAdapter {
                          .load(recipe_itemArrayList.get(position).getSmall_image_location())
                          .into(recipe_image);
              }
-
-
         return convertView;
     }
 }

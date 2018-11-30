@@ -94,12 +94,5 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    public void onClickSearch(View view) {
-        ViewPager viewPager = findViewById(R.id.refri_pager);
-        ScrollView scrollView = findViewById(R.id.scroll);
-
-        viewPager.addView(scrollView);
-    }
-
 }
 

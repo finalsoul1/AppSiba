@@ -7,16 +7,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 
 import com.example.co.appsiba.R;
-import com.example.co.appsiba.db.SibaDbHelper;
-import com.example.co.appsiba.helper.ExpandableHeightGridView;
-import com.example.co.appsiba.refrigerator.adapter.MyAdapter;
+import com.example.co.appsiba.refrigerator.adapter.MyRecyclerAdapter;
 import com.example.co.appsiba.vo.RefriIngredientVO;
 
 import java.util.ArrayList;
@@ -43,6 +42,11 @@ public class FishFragment extends Fragment {
 
     Cursor cursor;
     SQLiteDatabase db;
+
+    GridLayoutManager gridLayoutManager1;
+    GridLayoutManager gridLayoutManager2;
+    GridLayoutManager gridLayoutManager3;
+    GridLayoutManager gridLayoutManager4;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -85,18 +89,10 @@ public class FishFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.grid_fish, container, false);
-
-
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        View view = inflater.inflate(R.layout.recycler_fish, container, false);
 
         // db
-        db = SibaDbHelper.getInstance(getContext()).getReadableDatabase();
+        db = com.example.co.appsiba.db.SibaDbHelper.getInstance(getContext()).getReadableDatabase();
 
         cursor = db.rawQuery("select a.id as category_id, a.name as category, b.id as sub_category_id, b.name as sub_category, \n" +
                 "c.id as ingredient_id, c.name, c.file_name \n" +
@@ -112,7 +108,7 @@ public class FishFragment extends Fragment {
         data = new ArrayList<>();
         RefriIngredientVO refriVO;
 
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             refriVO = new RefriIngredientVO();
             refriVO.setCateId(cursor.getInt(2));
             refriVO.setId(cursor.getInt(4));
@@ -123,12 +119,6 @@ public class FishFragment extends Fragment {
         }
 
         cursor.close();
-
-        // 뷰
-        GridView gridView1 = (ExpandableHeightGridView) getActivity().findViewById(R.id.fish_fish_grid);
-        GridView gridView2 = (ExpandableHeightGridView) getActivity().findViewById(R.id.fish_clam_grid);
-        GridView gridView3 = (ExpandableHeightGridView) getActivity().findViewById(R.id.fish_seaweed_grid);
-        GridView gridView4 = (ExpandableHeightGridView) getActivity().findViewById(R.id.fish_dried_grid);
 
         data1 = new ArrayList<>();
         data2 = new ArrayList<>();
@@ -152,17 +142,41 @@ public class FishFragment extends Fragment {
             }
         }
 
-        MyAdapter adapter = new MyAdapter(data1);
-        gridView1.setAdapter(adapter);
+        RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.fish_fish_re);
+        recyclerView1.setNestedScrollingEnabled(false);
+        RecyclerView recyclerView2 = (RecyclerView) view.findViewById(R.id.fish_clam_re);
+        recyclerView1.setNestedScrollingEnabled(false);
+        RecyclerView recyclerView3 = (RecyclerView) view.findViewById(R.id.fish_seaweed_re);
+        recyclerView1.setNestedScrollingEnabled(false);
+        RecyclerView recyclerView4 = (RecyclerView) view.findViewById(R.id.fish_dried_re);
+        recyclerView1.setNestedScrollingEnabled(false);
 
-        adapter = new MyAdapter(data2);
-        gridView2.setAdapter(adapter);
+        gridLayoutManager1 = new GridLayoutManager(getActivity(), 4);
+        gridLayoutManager2 = new GridLayoutManager(getActivity(), 4);
+        gridLayoutManager3 = new GridLayoutManager(getActivity(), 4);
+        gridLayoutManager4 = new GridLayoutManager(getActivity(), 4);
+        recyclerView1.setLayoutManager(gridLayoutManager1);
+        recyclerView2.setLayoutManager(gridLayoutManager2);
+        recyclerView3.setLayoutManager(gridLayoutManager3);
+        recyclerView4.setLayoutManager(gridLayoutManager4);
 
-        adapter = new MyAdapter(data3);
-        gridView3.setAdapter(adapter);
+        MyRecyclerAdapter mrAdapter = new MyRecyclerAdapter(data1);
+        recyclerView1.setAdapter(mrAdapter);
+        mrAdapter = new MyRecyclerAdapter(data2);
+        recyclerView2.setAdapter(mrAdapter);
+        mrAdapter = new MyRecyclerAdapter(data3);
+        recyclerView3.setAdapter(mrAdapter);
+        mrAdapter = new MyRecyclerAdapter(data4);
+        recyclerView4.setAdapter(mrAdapter);
 
-        adapter = new MyAdapter(data4);
-        gridView4.setAdapter(adapter);
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

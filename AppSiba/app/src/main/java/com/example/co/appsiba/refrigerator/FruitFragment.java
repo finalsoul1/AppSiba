@@ -7,16 +7,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 
 import com.example.co.appsiba.R;
-import com.example.co.appsiba.db.SibaDbHelper;
-import com.example.co.appsiba.helper.ExpandableHeightGridView;
-import com.example.co.appsiba.refrigerator.adapter.MyAdapter;
+import com.example.co.appsiba.refrigerator.adapter.MyRecyclerAdapter;
 import com.example.co.appsiba.vo.RefriIngredientVO;
 
 import java.util.ArrayList;
@@ -39,6 +38,9 @@ public class FruitFragment extends Fragment {
 
     Cursor cursor;
     SQLiteDatabase db;
+
+    GridLayoutManager gridLayoutManager1;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -81,17 +83,10 @@ public class FruitFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.grid_fruit, container, false);
-
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        View view = inflater.inflate(R.layout.recycler_fruit, container, false);
 
         // db
-        db = SibaDbHelper.getInstance(getContext()).getReadableDatabase();
+        db = com.example.co.appsiba.db.SibaDbHelper.getInstance(getContext()).getReadableDatabase();
 
         cursor = db.rawQuery("select a.id as category_id, a.name as category, b.id as sub_category_id, b.name as sub_category, \n" +
                 "c.id as ingredient_id, c.name, c.file_name \n" +
@@ -119,12 +114,25 @@ public class FruitFragment extends Fragment {
 
         cursor.close();
 
-        // 뷰
-        GridView gridView1 = (ExpandableHeightGridView) getActivity().findViewById(R.id.fruit_grid);
+        RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.fruit_re);
+        recyclerView1.setNestedScrollingEnabled(false);
+
+        gridLayoutManager1 = new GridLayoutManager(getActivity(), 4);
+        recyclerView1.setLayoutManager(gridLayoutManager1);
+
+        MyRecyclerAdapter mrAdapter = new MyRecyclerAdapter(data);
+        recyclerView1.setAdapter(mrAdapter);
+
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
 
-        MyAdapter adapter = new MyAdapter(data);
-        gridView1.setAdapter(adapter);
+
+
 
     }
 

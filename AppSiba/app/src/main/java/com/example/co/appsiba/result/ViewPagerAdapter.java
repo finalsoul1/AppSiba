@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.example.co.appsiba.R;
 import com.example.co.appsiba.RecipeActivity;
-import com.squareup.picasso.Picasso;
 import com.example.co.appsiba.vo.SearchResultVO;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -51,7 +51,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         textView.setText(data.get(position).getName());
 
         if (data.get(position).getSmallImageLocation().isEmpty()) {
-            imageView.setImageResource(R.drawable.agu);
+            imageView.setImageResource(R.drawable.siba_mark_noimage);
         } else {
             Picasso.with(context)
                     .load(data.get(position).getSmallImageLocation())
