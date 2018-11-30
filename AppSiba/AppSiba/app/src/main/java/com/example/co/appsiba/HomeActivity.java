@@ -7,11 +7,13 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+<<<<<<< HEAD:AppSiba/AppSiba/app/src/main/java/com/example/co/appsiba/HomeActivity.java
 import android.widget.ScrollView;
+=======
+>>>>>>> 8162e6d64351135f5f5c98095135dbb37fb3fc1f:AppSiba/app/src/main/java/com/example/co/appsiba/HomeActivity.java
 
 import com.example.co.appsiba.fragment.FavoritesFragment;
 import com.example.co.appsiba.fragment.MemoFragment;
@@ -91,9 +93,9 @@ public class HomeActivity extends AppCompatActivity {
         } catch (OutOfMemoryError e) {
 
         }
-
     }
 
+<<<<<<< HEAD:AppSiba/AppSiba/app/src/main/java/com/example/co/appsiba/HomeActivity.java
     public void onClickSearch(View view) {
         ViewPager viewPager = findViewById(R.id.refri_pager);
         ScrollView scrollView = findViewById(R.id.scroll);
@@ -101,5 +103,7 @@ public class HomeActivity extends AppCompatActivity {
         viewPager.addView(scrollView);
     }
 
+=======
+>>>>>>> 8162e6d64351135f5f5c98095135dbb37fb3fc1f:AppSiba/app/src/main/java/com/example/co/appsiba/HomeActivity.java
 }
 

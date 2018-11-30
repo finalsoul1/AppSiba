@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".refrigerator.MeatFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/top1_fish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_round"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="생선류"
+                    android:textColor="@android:color/black" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/fish_fish_re"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
+                    android:padding="10dp"
+                    android:verticalSpacing="5dp"
+                    android:gravity="center"
+                    tools:listitem="@layout/food_toggle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/top2_fish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top1_fish"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_round"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="조개 &amp; 갑각류"
+                    android:textColor="@android:color/black" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/fish_clam_re"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
+                    android:padding="10dp"
+                    android:verticalSpacing="5dp"
+                    android:gravity="center"
+                    tools:listitem="@layout/food_toggle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/top3_fish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top2_fish"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_round"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="해조류"
+                    android:textColor="@android:color/black" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/fish_seaweed_re"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
+                    android:padding="10dp"
+                    android:verticalSpacing="5dp"
+                    android:gravity="center"
+                    tools:listitem="@layout/food_toggle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/top4_fish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top3_fish"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_round"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="어류 &amp; 알 &amp; 젓갈"
+                    android:textColor="@android:color/black" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/fish_dried_re"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:horizontalSpacing="5dp"
+                    android:isScrollContainer="false"
+                    android:padding="10dp"
+                    android:verticalSpacing="5dp"
+                    android:gravity="center"
+                    tools:listitem="@layout/food_toggle" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</FrameLayout>

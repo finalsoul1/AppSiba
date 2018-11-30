@@ -122,9 +122,13 @@ public class ResultTabFragment2 extends Fragment {
         /////
 
         if (searchData.size() == 0) {
+<<<<<<< HEAD:AppSiba/AppSiba/app/src/main/java/com/example/co/appsiba/result/ResultTabFragment2.java
             viewPager.setBackgroundResource(R.drawable.bono);
+=======
+            viewPager.setBackgroundResource(R.drawable.siba_mark_more_searching);
+>>>>>>> 8162e6d64351135f5f5c98095135dbb37fb3fc1f:AppSiba/app/src/main/java/com/example/co/appsiba/result/ResultTabFragment2.java
         } else {
-            viewPager.setBackgroundResource(R.drawable.tt);
+            viewPager.setBackgroundResource(R.drawable.siba_mark_searching);
         }
 
 

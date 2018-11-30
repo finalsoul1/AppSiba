@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <context id="context1">
+ 	<jdbcConnection connectionURL="jdbc:mysql://localhost:3306/siba?autoreconnect=true" driverClass="com.mysql.jdbc.Driver" password="elin0827" userId="root" />
+    <javaModelGenerator targetPackage="app.siba.model" targetProject="sibaapp-api\src\main\java" />
+    <sqlMapGenerator targetPackage="app.siba.mapper" targetProject="sibaapp-api\src\main\resources" />
+    <javaClientGenerator targetPackage="app.siba.mapper" targetProject="sibaapp-api\src\main\java" type="XMLMAPPER" />
+    
+    <!--  
+   	<table schema="food_type" tableName="food_type"></table>
+    <table schema="food" tableName="food"></table>
+    <table schema="food_ingredients" tableName="food_ingredients"></table>
+    -->
+    
+    <table schema="food_recipe" tableName="food_recipe"></table>
+    <!--  
+    <table schema="ingredient_category" tableName="ingredient_category"></table>
+    <table schema="ingredient_sub_category" tableName="ingredient_sub_category"></table>
+    <table schema="ingredient_list" tableName="ingredient_list"></table>
+   --> 
+  </context>
+</generatorConfiguration>

@@ -22,10 +22,10 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 
-public class MyListAdapter extends BaseAdapter  {
+public class MyListAdapter extends BaseAdapter {
 
 
-    Context  context;
+    Context context;
     ArrayList<FavoritesVO> list_itemArrayList;
 //    ArrayAdapter<FavoritesVO> list_itemArrayAdapter;
 Fragment fragment;
@@ -66,7 +66,7 @@ Fragment fragment;
 //    favorite_item.xml을 context생성자로 불러와 반복문처럼 한칸씩 화면구성해줌.
     public View getView(final int position, View convertView, final ViewGroup parent) {
 
-        if(convertView==null) {
+        if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.favorite_item, null);
 
 
@@ -92,7 +92,11 @@ Fragment fragment;
                     int id = list_itemArrayList.get(position).getRecipeId();
                     String str = String.valueOf(id);
                     db = com.example.co.appsiba.db.SibaDbHelper.getInstance(context).getWritableDatabase();
+<<<<<<< HEAD:AppSiba/AppSiba/app/src/main/java/com/example/co/appsiba/favorite/MyListAdapter.java
                     db.delete("my_favorates " ,"food_id=?",new String[]{str});
+=======
+                    db.delete("my_favorates ", "food_id=?", new String[]{str});
+>>>>>>> 8162e6d64351135f5f5c98095135dbb37fb3fc1f:AppSiba/app/src/main/java/com/example/co/appsiba/favorite/MyListAdapter.java
                     Toast.makeText(context, "삭제했습니다.", Toast.LENGTH_SHORT).show();
 
 

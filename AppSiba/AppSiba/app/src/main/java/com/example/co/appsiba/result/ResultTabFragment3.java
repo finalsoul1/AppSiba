@@ -124,10 +124,10 @@ public class ResultTabFragment3 extends Fragment {
 
         /////
 
-        if(searchData.size() == 0) {
-            viewPager.setBackgroundResource(R.drawable.bono);
+        if (searchData.size() == 0) {
+            viewPager.setBackgroundResource(R.drawable.siba_mark_more_searching);
         } else {
-            viewPager.setBackgroundResource(R.drawable.tt);
+            viewPager.setBackgroundResource(R.drawable.siba_mark_searching);
         }
 
 

@@ -37,8 +37,12 @@
 
     </LinearLayout>
 
+<<<<<<< HEAD:AppSiba/AppSiba/app/src/main/res/layout/fragment_myrefri.xml
     <GridView
 
+=======
+    <android.support.v7.widget.RecyclerView
+>>>>>>> 8162e6d64351135f5f5c98095135dbb37fb3fc1f:AppSiba/app/src/main/res/layout/fragment_myrefri.xml
         android:id="@+id/myrefri_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -50,7 +54,6 @@
         android:layout_marginEnd="5dp"
         android:background="@drawable/shape_round_with_edge_white"
         android:gravity="center"
-        android:numColumns="4"
         android:padding="5dp" />
 
 

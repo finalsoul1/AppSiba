@@ -167,5 +167,13 @@ public class RecipeActivity extends AppCompatActivity {
 
 
          });
+<<<<<<< HEAD:AppSiba/AppSiba/app/src/main/java/com/example/co/appsiba/RecipeActivity.java
      }
   }
+=======
+
+     }
+ }
+
+
+>>>>>>> 8162e6d64351135f5f5c98095135dbb37fb3fc1f:AppSiba/app/src/main/java/com/example/co/appsiba/RecipeActivity.java
