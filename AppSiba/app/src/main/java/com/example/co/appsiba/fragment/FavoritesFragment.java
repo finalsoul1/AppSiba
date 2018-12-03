@@ -1,22 +1,19 @@
 package com.example.co.appsiba.fragment;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.co.appsiba.R;
-import com.example.co.appsiba.RecipeActivity;
 import com.example.co.appsiba.favorite.FavorCustomDialog;
 import com.example.co.appsiba.favorite.MyListAdapter;
 import com.example.co.appsiba.favorite.list_item;
@@ -30,8 +27,11 @@ public class FavoritesFragment extends Fragment {
     SQLiteDatabase db;
     FavoritesVO favoritesVO;
     View view;
-    ListView listView;
+
     MyListAdapter myListAdapter;
+    RecyclerView mRecyclerView;
+    RecyclerView.LayoutManager mLayoutManager;
+
 
     ArrayAdapter<list_item> list_itemArrayAdapter;
 
@@ -67,6 +67,7 @@ public class FavoritesFragment extends Fragment {
 
 
         list_itemArrayList = new ArrayList<>();
+
         while (cursor.moveToNext()) {
             favoritesVO = new FavoritesVO();
             favoritesVO.setRecipeId(cursor.getInt(0));
@@ -76,27 +77,18 @@ public class FavoritesFragment extends Fragment {
         }
         cursor.close();
 
-        listView = (ListView) view.findViewById(R.id.my_listView);
-        myListAdapter = new MyListAdapter(getActivity(), list_itemArrayList, this);
+        mRecyclerView  = view.findViewById(R.id.my_listView);
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        myListAdapter  = new MyListAdapter(getActivity(), list_itemArrayList, this);
 
         list_itemArrayAdapter = new ArrayAdapter<list_item>(getActivity(), list_itemArrayList.size());
 
-        listView.setAdapter(myListAdapter);
-        //myListAdapter.notifyDataSetChanged();
+        mRecyclerView.setAdapter(myListAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                id = position;
-
-                TextView textView = view.findViewById(R.id.favorite_content_textview);
-
-                Intent intent = (new Intent(getActivity(), RecipeActivity.class));
-                intent.putExtra("id", (Integer) textView.getTag());
-                startActivity(intent);
-            }
-        });
+        mRecyclerView.setNestedScrollingEnabled(false);
 
 
         Button button2 = (Button) view.findViewById(R.id.favor_allDelete);
@@ -110,7 +102,6 @@ public class FavoritesFragment extends Fragment {
 
                 myListAdapter.notifyDataSetChanged();
 
-                // onResume();
 
             }
         });
