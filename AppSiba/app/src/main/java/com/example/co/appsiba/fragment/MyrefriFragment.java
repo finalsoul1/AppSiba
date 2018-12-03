@@ -131,6 +131,8 @@ public class MyrefriFragment extends Fragment {
 
     }
 
+
+
     public class ClearClickListener implements View.OnClickListener {
 
         Fragment fragment;
@@ -148,5 +150,6 @@ public class MyrefriFragment extends Fragment {
 
         }
     }
+
 }
 

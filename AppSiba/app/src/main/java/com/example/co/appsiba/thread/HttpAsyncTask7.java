@@ -3,8 +3,6 @@ package com.example.co.appsiba.thread;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -34,8 +32,7 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
     Dialog dialog;
     AlertDialog.Builder builder;
 
-    SQLiteDatabase db;
-    Cursor cursor;
+
 
     public HttpAsyncTask7(String TAG, Context context) {
         this.TAG = TAG;
@@ -45,18 +42,14 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
     @Override
     protected void onPreExecute() {
 
-        db = com.example.co.appsiba.db.SibaDbHelper.getInstance(context).getReadableDatabase();
-
-        cursor = db.rawQuery("select id from food_ingredients", null);
-
-        if (cursor.getCount() == 0) {
 
             builder = new AlertDialog.Builder(context);
             builder.setView(R.layout.loading_dialog);
+            builder.setCancelable(false);
             dialog = builder.create();
 
             dialog.show();
-        }
+
         super.onPreExecute();
     }
 
@@ -83,7 +76,7 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
             Type listType = new TypeToken<ArrayList<Ingredients>>() {}.getType();
             dbList = gson.fromJson(str, listType);
 
-//            Log.d(TAG, "dbList: " + dbList);
+            Log.d(TAG, "dbList: " + dbList.size());
 
             new IngredientsDAO().insert(dbList, context);
 
