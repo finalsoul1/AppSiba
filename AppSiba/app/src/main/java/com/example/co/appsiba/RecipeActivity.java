@@ -77,7 +77,7 @@ public class RecipeActivity extends AppCompatActivity {
          listView = (ListView) findViewById(R.id.recipe_indgredients);
 
          db = com.example.co.appsiba.db.SibaDbHelper.getInstance(this).getReadableDatabase();
-         cursor = db.rawQuery("select id, name, small_image_location from food where id = ?", new String[]{stringid} );
+         cursor = db.rawQuery("select distinct  id, name, small_image_location from food where id = ?", new String[]{stringid} );
 
          recipeVO = new RecipeVO();
 
@@ -98,7 +98,7 @@ public class RecipeActivity extends AppCompatActivity {
 
 ////////////////////////////////////////////////////////////////////////
 
-         cursor1 = db.rawQuery("select * from food_recipe where food_id =? order by ord asc",new String[]{stringid} );
+         cursor1 = db.rawQuery("select distinct * from food_recipe where food_id =? order by ord asc",new String[]{stringid} );
          Log.d("sh11111", String.valueOf(cursor1.getCount()));
          recipe_itemArrayList1 = new ArrayList<>();
 
@@ -121,7 +121,7 @@ public class RecipeActivity extends AppCompatActivity {
 ////////////////////////////////////////////////////////////////////////////////////
 
 
-         cursor2 = db.rawQuery("select * from food_ingredients where food_id = ?",new String[]{stringid} );
+         cursor2 = db.rawQuery("select distinct * from food_ingredients where food_id = ?",new String[]{stringid} );
 
          recipe_itemArrayList2 = new ArrayList<>();
 
@@ -149,8 +149,6 @@ public class RecipeActivity extends AppCompatActivity {
          Add_favor_btn.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 ImageView imageView = (ImageView)findViewById(R.id.main_recipe_image);
-                 TextView textView = (TextView)findViewById(R.id.main_recipe_image_textView);
 
                  Toast.makeText(RecipeActivity.this, "즐겨찾기에 추가했습니다.", Toast.LENGTH_SHORT).show();
 

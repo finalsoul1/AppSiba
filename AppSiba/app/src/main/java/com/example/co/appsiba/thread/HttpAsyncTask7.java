@@ -3,6 +3,8 @@ package com.example.co.appsiba.thread;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -30,6 +32,10 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
     Context context;
 
     Dialog dialog;
+    AlertDialog.Builder builder;
+
+    SQLiteDatabase db;
+    Cursor cursor;
 
     public HttpAsyncTask7(String TAG, Context context) {
         this.TAG = TAG;
@@ -39,12 +45,18 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
     @Override
     protected void onPreExecute() {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setView(R.layout.loading_dialog);
-        dialog = builder.create();
+        db = com.example.co.appsiba.db.SibaDbHelper.getInstance(context).getReadableDatabase();
 
-        dialog.show();
+        cursor = db.rawQuery("select id from food_ingredients", null);
 
+        if (cursor.getCount() == 0) {
+
+            builder = new AlertDialog.Builder(context);
+            builder.setView(R.layout.loading_dialog);
+            dialog = builder.create();
+
+            dialog.show();
+        }
         super.onPreExecute();
     }
 
@@ -93,9 +105,10 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
     @Override
     protected void onPostExecute(List dbList) {
 
+        super.onPostExecute(dbList);
+
         dialog.dismiss();
 
-        super.onPostExecute(dbList);
         // 최종결과 처리
         if (dbList != null) {
             Log.d("HttpAsyncTask", dbList.toString());
