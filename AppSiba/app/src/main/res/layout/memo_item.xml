@@ -48,7 +48,7 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/memoWriteButton"
+            android:id="@+id/memoRewriteButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="5dp"

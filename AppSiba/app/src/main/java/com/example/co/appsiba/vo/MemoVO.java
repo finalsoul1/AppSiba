@@ -2,12 +2,24 @@ package com.example.co.appsiba.vo;
 
 public class MemoVO {
 
+    private int memoId;
     private String ingredientName;
-    private String checkBoxCheckedStatus;
+    private String checked;
 
-    public MemoVO(String ingredientName, String checkBoxCheckedStatus) {
+    public MemoVO(){}
+
+    public MemoVO(int memoId, String ingredientName, String checked) {
+        this.memoId = memoId;
         this.ingredientName = ingredientName;
-        this.checkBoxCheckedStatus = checkBoxCheckedStatus;
+        this.checked = checked;
+    }
+
+    public int getMemoId() {
+        return memoId;
+    }
+
+    public void setMemoId(int memoId) {
+        this.memoId = memoId;
     }
 
     public String getIngredientName() {
@@ -18,12 +30,12 @@ public class MemoVO {
         this.ingredientName = ingredientName;
     }
 
-    public String getCheckBoxCheckedStatus() {
-        return checkBoxCheckedStatus;
+    public String getChecked() {
+        return checked;
     }
 
-    public void setCheckBoxCheckedStatus(String checkBoxCheckedStatus) {
-        this.checkBoxCheckedStatus = checkBoxCheckedStatus;
+    public void setChecked(String checked) {
+        this.checked = checked;
     }
 
 }
