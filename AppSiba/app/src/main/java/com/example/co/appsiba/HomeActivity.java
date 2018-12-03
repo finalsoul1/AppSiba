@@ -7,11 +7,9 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ScrollView;
 
 import com.example.co.appsiba.fragment.FavoritesFragment;
 import com.example.co.appsiba.fragment.MemoFragment;
@@ -94,5 +92,18 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+        int count = getSupportFragmentManager ().getBackStackEntryCount();
+
+        if (count == 1) {
+            super.onBackPressed();
+            finish();
+        } else {
+            getSupportFragmentManager().popBackStack();
+        }
+
+    }
 }
 

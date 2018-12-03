@@ -69,18 +69,17 @@
             android:text="모두 지우기"
             android:textSize="18sp" />
 
-        <android.support.v7.widget.RecyclerView
+        <ListView
             android:id="@+id/my_listView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="6dp"
             android:background="@drawable/shape_round_with_edge_white"
-
+            android:padding="5dp"
 
             tools:listitem="@layout/favorite_item">
 
-        </android.support.v7.widget.RecyclerView>
+        </ListView>
 
     </LinearLayout>
 

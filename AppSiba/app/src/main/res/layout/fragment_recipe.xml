@@ -9,7 +9,6 @@
 
     <ScrollView
         android:id="@+id/scroll_view"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -33,7 +32,7 @@
 
                     android:layout_height="200dp"
                     android:background="@color/colorBackground"
-                    app:srcCompat="@drawable/agu" />
+                    app:srcCompat="@drawable/siba_mark_more_searching" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -61,11 +60,10 @@
                         android:layout_height="30dp"
                         android:background="@drawable/blackheart"
                         android:src="@drawable/favorbtn_states"
-                        />
+                         />
                 </LinearLayout>/
 
-                <LinearLayout android:descendantFocusability="blocksDescendants"
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">

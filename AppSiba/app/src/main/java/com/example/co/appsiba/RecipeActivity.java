@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,7 +21,10 @@ import com.example.co.appsiba.recipe.ProcessAdapter;
 import com.example.co.appsiba.vo.RecipeVO;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class RecipeActivity extends AppCompatActivity {
 
@@ -33,7 +37,6 @@ public class RecipeActivity extends AppCompatActivity {
      IndgredientsAdapter myindgredientsAdapter;
      ProcessAdapter processAdapter;
 
-
     ArrayList<RecipeVO> data;
      ArrayList<RecipeVO> recipe_itemArrayList1;
      ArrayList<RecipeVO> recipe_itemArrayList2;
@@ -41,7 +44,6 @@ public class RecipeActivity extends AppCompatActivity {
      Cursor cursor;
      Cursor cursor1;
      Cursor cursor2;
-
 
      SQLiteDatabase db;
 
@@ -51,7 +53,13 @@ public class RecipeActivity extends AppCompatActivity {
 
 
 
+    private String getDateTime() {
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
      @Override
      protected void onCreate(@Nullable Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
@@ -65,11 +73,11 @@ public class RecipeActivity extends AppCompatActivity {
 
          String stringid = String.valueOf(toSearchId);
 
-
+         //String stringid1 = String.valueOf(toSearchId1);
          listView = (ListView) findViewById(R.id.recipe_indgredients);
 
          db = com.example.co.appsiba.db.SibaDbHelper.getInstance(this).getReadableDatabase();
-         cursor = db.rawQuery("select id, name, small_image_location from food where id = ?", new String[]{stringid} );
+         cursor = db.rawQuery("select distinct  id, name, small_image_location from food where id = ?", new String[]{stringid} );
 
          recipeVO = new RecipeVO();
 
@@ -90,8 +98,8 @@ public class RecipeActivity extends AppCompatActivity {
 
 ////////////////////////////////////////////////////////////////////////
 
-         cursor1 = db.rawQuery("select * from food_recipe where food_id =? order by ord asc",new String[]{stringid} );
-
+         cursor1 = db.rawQuery("select distinct * from food_recipe where food_id =? order by ord asc",new String[]{stringid} );
+         Log.d("sh11111", String.valueOf(cursor1.getCount()));
          recipe_itemArrayList1 = new ArrayList<>();
 
          while( cursor1.moveToNext()){
@@ -113,7 +121,7 @@ public class RecipeActivity extends AppCompatActivity {
 ////////////////////////////////////////////////////////////////////////////////////
 
 
-         cursor2 = db.rawQuery("select * from food_ingredients where food_id = ?",new String[]{stringid} );
+         cursor2 = db.rawQuery("select distinct * from food_ingredients where food_id = ?",new String[]{stringid} );
 
          recipe_itemArrayList2 = new ArrayList<>();
 
@@ -141,18 +149,16 @@ public class RecipeActivity extends AppCompatActivity {
          Add_favor_btn.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 ImageView imageView = (ImageView)findViewById(R.id.main_recipe_image);
-                 TextView textView = (TextView)findViewById(R.id.main_recipe_image_textView);
 
                  Toast.makeText(RecipeActivity.this, "즐겨찾기에 추가했습니다.", Toast.LENGTH_SHORT).show();
 
                  SQLiteDatabase db = com.example.co.appsiba.db.SibaDbHelper.getInstance(RecipeActivity.this).getWritableDatabase();
-                 ContentValues contentValues = new ContentValues();
+                ContentValues contentValues = new ContentValues();
 
-                 int foodid = recipeVO.getId();
+                  int foodid = recipeVO.getId();
 
-                 contentValues.put("food_id", foodid);
-                 db.insert("my_favorates", null, contentValues);
+                  contentValues.put("food_id", foodid);
+                db.insert("my_favorates", null, contentValues);
 
 
              }
@@ -160,4 +166,4 @@ public class RecipeActivity extends AppCompatActivity {
 
          });
      }
-}
+  }

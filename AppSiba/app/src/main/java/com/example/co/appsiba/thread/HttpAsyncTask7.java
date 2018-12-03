@@ -30,6 +30,9 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
     Context context;
 
     Dialog dialog;
+    AlertDialog.Builder builder;
+
+
 
     public HttpAsyncTask7(String TAG, Context context) {
         this.TAG = TAG;
@@ -39,11 +42,13 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
     @Override
     protected void onPreExecute() {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setView(R.layout.loading_dialog);
-        dialog = builder.create();
 
-        dialog.show();
+            builder = new AlertDialog.Builder(context);
+            builder.setView(R.layout.loading_dialog);
+            builder.setCancelable(false);
+            dialog = builder.create();
+
+            dialog.show();
 
         super.onPreExecute();
     }
@@ -71,7 +76,7 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
             Type listType = new TypeToken<ArrayList<Ingredients>>() {}.getType();
             dbList = gson.fromJson(str, listType);
 
-//            Log.d(TAG, "dbList: " + dbList);
+            Log.d(TAG, "dbList: " + dbList.size());
 
             new IngredientsDAO().insert(dbList, context);
 
@@ -93,9 +98,10 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
     @Override
     protected void onPostExecute(List dbList) {
 
+        super.onPostExecute(dbList);
+
         dialog.dismiss();
 
-        super.onPostExecute(dbList);
         // 최종결과 처리
         if (dbList != null) {
             Log.d("HttpAsyncTask", dbList.toString());
