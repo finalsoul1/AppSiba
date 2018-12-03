@@ -101,14 +101,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IndgredientsAdapter.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="IndgredientsAdapter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/co/appsiba/recipe/IndgredientsAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="57" column="34" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
+            <state relative-caret-position="306">
+              <caret line="62" column="95" selection-start-line="62" selection-start-column="95" selection-end-line="62" selection-end-column="95" />
               <folding>
-                <element signature="e#1769#2496#0" expanded="true" />
-                <element signature="e#2495#2496#0" expanded="true" />
+                <element signature="e#1762#2495#0" expanded="true" />
+                <element signature="e#2494#2495#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -143,7 +143,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="memo_custom_dialog_edit_memo.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="memo_custom_dialog_edit_memo.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/memo_custom_dialog_edit_memo.xml">
           <provider editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -2449,13 +2449,13 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/co/appsiba/vo/MemoVO.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/co/appsiba/fragment/MemoFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/co/appsiba/memo/MemoCustomDialogEditMemo.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/co/appsiba/recipe/IndgredientsAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/co/appsiba/memo/MemoListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/memo_custom_dialog.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/co/appsiba/recipe/IndgredientsAdapter.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="130" />
     <option name="y" value="10" />
     <option name="width" value="1447" />
@@ -2517,15 +2517,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppSiba" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AppSiba" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -2730,7 +2721,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -2747,8 +2739,8 @@
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25973153" />
-      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.12535612" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24832214" />
+      <window_info active="true" anchor="bottom" id="Build" order="7" visible="true" weight="0.12535612" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
@@ -3126,17 +3118,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/co/appsiba/recipe/IndgredientsAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="57" column="34" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
-          <folding>
-            <element signature="e#1769#2496#0" expanded="true" />
-            <element signature="e#2495#2496#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/co/appsiba/memo/MemoCustomDialogEditMemo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -3186,6 +3167,17 @@
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/co/appsiba/recipe/IndgredientsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="62" column="95" selection-start-line="62" selection-start-column="95" selection-end-line="62" selection-end-column="95" />
+          <folding>
+            <element signature="e#1762#2495#0" expanded="true" />
+            <element signature="e#2494#2495#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
