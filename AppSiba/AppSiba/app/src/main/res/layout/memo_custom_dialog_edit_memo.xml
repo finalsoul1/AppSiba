@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_round_with_edge"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/memoRewriteQuestion"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:background="@drawable/messagebox_horizontal"
+        android:fontFamily="@font/yanolja_family"
+        android:gravity="center"
+        android:text="어떻게 바꿀거개?"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/memoRewritePicture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <ImageView
+        android:id="@+id/memoRewritePicture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/siba_mark_question_round_rectangular"
+        app:layout_constraintBottom_toTopOf="@+id/memoRewriteBeforeEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memoRewriteQuestion" />
+
+    <TextView
+        android:id="@+id/memoRewriteBeforeEdit"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_round"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/memoRewriteAfterEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memoRewritePicture" />
+
+    <EditText
+        android:id="@+id/memoRewriteAfterEdit"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:background="@drawable/shape_round"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        android:text="여기에 새 메모를 넣개!"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memoRewriteBeforeEdit" />
+
+    <LinearLayout
+
+        android:id="@+id/linearLayout2"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memoRewriteAfterEdit">
+
+        <Button
+            android:id="@+id/memeRewriteConfirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_round"
+            android:fontFamily="@font/yanolja_family"
+            android:padding="5dp"
+            android:text="이렇게 할래"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/memeRewriteCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_round"
+            android:fontFamily="@font/yanolja_family"
+            android:padding="5dp"
+            android:text="안 할래"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
