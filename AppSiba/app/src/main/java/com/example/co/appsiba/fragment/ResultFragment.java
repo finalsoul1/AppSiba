@@ -1,5 +1,7 @@
 package com.example.co.appsiba.fragment;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.co.appsiba.R;
+import com.example.co.appsiba.helper.MyRefriSearchDialog;
 import com.example.co.appsiba.result.TabPagerAdapter;
 
 public class ResultFragment extends Fragment {
@@ -19,6 +22,9 @@ public class ResultFragment extends Fragment {
     protected ViewPager viewPager;
     protected TabLayout tabLayout;
     private TabPagerAdapter pagerAdapter;
+    SQLiteDatabase db;
+    Cursor cursor;
+    MyRefriSearchDialog myRefriSearchDialog;
 
     public ResultFragment() {
     }
@@ -34,6 +40,22 @@ public class ResultFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        db = com.example.co.appsiba.db.SibaDbHelper.getInstance(getActivity()).getReadableDatabase();
+
+        cursor = db.rawQuery("select a.ingredient_list_id, b.name, b.file_name from \n" +
+                "my_refrigerator a left outer join ingredient_list b\n" +
+                "on a.ingredient_list_id = b.id", null);
+
+        if(cursor.getCount() < 3) {
+
+            cursor.close();
+            myRefriSearchDialog = new MyRefriSearchDialog(getContext());
+            myRefriSearchDialog.call();
+
+            getFragmentManager().popBackStack();
+
+        }
 
     }
 
