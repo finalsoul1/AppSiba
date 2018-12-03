@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/memoItem"
@@ -20,13 +19,13 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:fontFamily="@font/yanolja_family"
             android:id="@+id/memoINameTextView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="8"
             android:background="@drawable/shape_round"
+            android:fontFamily="@font/yanolja_family"
             android:gravity="start|center_vertical"
             android:padding="5dp"
             android:text="돼지고기"
@@ -44,7 +43,7 @@
             <CheckBox
                 android:id="@+id/memoCheckBox"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <ImageButton
@@ -70,7 +69,7 @@
             android:text="-"
             android:textColor="#756531"
             android:textSize="15sp"
-            app:srcCompat="@drawable/ic_delete_black"/>
+            app:srcCompat="@drawable/ic_delete_black" />
     </LinearLayout>
 
 
