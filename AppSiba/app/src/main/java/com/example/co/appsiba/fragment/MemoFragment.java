@@ -120,7 +120,7 @@ public class MemoFragment extends Fragment {
         public void onClick(View v) {
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
-            memoCustomDialog = new MemoCustomDialog(getContext(), memofragment, fragmentTransaction);
+            memoCustomDialog = new MemoCustomDialog(getContext(), memofragment, fragmentTransaction, memosArrayList);
             memoCustomDialog.call();
         }
     }
