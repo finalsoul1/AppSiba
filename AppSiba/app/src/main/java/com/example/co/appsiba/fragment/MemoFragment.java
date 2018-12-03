@@ -6,15 +6,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
 
 import com.example.co.appsiba.R;
 import com.example.co.appsiba.memo.MemoCustomDialog;
-import com.example.co.appsiba.memo.MemoListAdapter;
+import com.example.co.appsiba.memo.MemoRecyclerAdapter;
 import com.example.co.appsiba.vo.MemoVO;
 
 import java.util.ArrayList;
@@ -30,8 +31,9 @@ public class MemoFragment extends Fragment {
     Button memoClearButton;
     Button memoAddButton;
 
-    MemoListAdapter memoListAdapter;
-    ListView memoListView;
+    MemoRecyclerAdapter memoRecyclerAdapter;
+    RecyclerView memoRecyclerView;
+    LinearLayoutManager linearLayoutManager;
 
     MemoCustomDialog memoCustomDialog;
 
@@ -76,8 +78,6 @@ public class MemoFragment extends Fragment {
 
         cursor.close();
 
-        memoListAdapter = new MemoListAdapter(getContext(), memosArrayList, this);
-
         memoClearButton = view.findViewById(R.id.memoClearButton);
         memoClearButton.setOnClickListener(new memoClearButtonClickListener(this));
 
@@ -98,8 +98,14 @@ public class MemoFragment extends Fragment {
             }
         });
 
-        memoListView = view.findViewById(R.id.memoListView);
-        memoListView.setAdapter(memoListAdapter);
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        memoRecyclerAdapter = new MemoRecyclerAdapter(getContext(), memosArrayList, this);
+
+        memoRecyclerView = view.findViewById(R.id.memoRecyclerView);
+        memoRecyclerView.setNestedScrollingEnabled(false);
+        memoRecyclerView.setLayoutManager(linearLayoutManager);
+        memoRecyclerView.setAdapter(memoRecyclerAdapter);
+
     }
 
     public class memoClearButtonClickListener implements View.OnClickListener {
