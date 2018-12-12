@@ -49,7 +49,6 @@ public class ResultTabFragment1 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-
         view = inflater.inflate(R.layout.result_food_photo, container, false);
 
         viewPager = (ViewPager)view.findViewById(R.id.viewPager1);
@@ -77,16 +76,12 @@ public class ResultTabFragment1 extends Fragment {
             mdata.addAll(data);
         }
 
-        Log.d("kwon data", mdata.size() + "");
-
         selectionArgs = new String[mdata.size()];
         int count = 0;
         for (MyRefriToResultVO mrr : mdata) {
             selectionArgs[count] = "%" + mrr.getName() + "%";
             count++;
         }
-
-        Log.d("kwon String", selectionArgs[0] + " " + selectionArgs[1] + " " + selectionArgs[2]);
 
         cursor = db.rawQuery("select id, name, small_image_location\n" +
                 "from food \n" +
@@ -101,9 +96,7 @@ public class ResultTabFragment1 extends Fragment {
         SearchResultVO searchResultVO;
         searchData = new ArrayList<>();
 
-
         Log.d("kwon cursor", cursor.getCount() + "");
-
 
         while (cursor.moveToNext()) {
             searchResultVO = new SearchResultVO();
@@ -146,7 +139,6 @@ public class ResultTabFragment1 extends Fragment {
 
                 params.setMargins(8, 0, 8, 0);
                 sliderDotspanel.addView(dots[i]);
-
             }
 
             dots[0].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
@@ -154,34 +146,24 @@ public class ResultTabFragment1 extends Fragment {
             viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
                 }
-
                 @Override
                 public void onPageSelected(int position) {
-
                     for (int i = 0; i < dotscount; i++) {
                         dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.non_active_dot));
                     }
-
                     dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
-
                 }
-
                 @Override
                 public void onPageScrollStateChanged(int state) {
-
                 }
             });
-
         }
-
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
     }
 }

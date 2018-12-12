@@ -82,27 +82,25 @@ public class FruitFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.recycler_fruit, container, false);
 
-        // db
+        // db 연결
         db = com.example.co.appsiba.db.SibaDbHelper.getInstance(getContext()).getReadableDatabase();
 
+        // 조회query
         cursor = db.rawQuery("select a.id as category_id, a.name as category, b.id as sub_category_id, b.name as sub_category, \n" +
                 "c.id as ingredient_id, c.name, c.file_name \n" +
                 "from ingredient_category as a left outer join ingredient_sub_category as b \n" +
                 "on a.id = b.ingredient_category_id \n " +
                 "left outer join ingredient_list c \n" +
                 "on b.id = c.ingredient_sub_category_id \n" +
-                "where a.id= 4 \n" +
+                "where a.id= 4 \n" + // 재료종류
                 "order by a.id, b.id, c.id asc", null);
-
-        Log.d("kwon", cursor.getColumnName(6));
 
         data = new ArrayList<>();
         RefriIngredientVO refriVO;
 
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             refriVO = new RefriIngredientVO();
             refriVO.setCateId(cursor.getInt(2));
             refriVO.setId(cursor.getInt(4));
@@ -114,6 +112,7 @@ public class FruitFragment extends Fragment {
 
         cursor.close();
 
+        // 리사이클러뷰 설정 밑 적용
         RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.fruit_re);
         recyclerView1.setNestedScrollingEnabled(false);
 
@@ -129,10 +128,6 @@ public class FruitFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
-
-
 
     }
 

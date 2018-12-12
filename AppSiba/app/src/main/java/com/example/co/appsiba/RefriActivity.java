@@ -46,8 +46,6 @@ public class RefriActivity extends AppCompatActivity
 
         TabLayout tabLayout = findViewById(R.id.tab);
         tabLayout.setupWithViewPager(viewPager);
-
-
     }
 
     @Override
@@ -55,42 +53,22 @@ public class RefriActivity extends AppCompatActivity
 
     }
 
+    // 재료추가 부분
     public void onClick(View view) {
         TextView textView = view.findViewById(R.id.food_nameView);
         ImageView imageView = view.findViewById(R.id.food_image);
 
         db = SibaDbHelper.getInstance(this).getWritableDatabase();
 
-        cursor = db.rawQuery("select a.ingredient_list_id, b.name, b.file_name from \n" +
-                "my_refrigerator a left outer join ingredient_list b\n" +
-                "on a.ingredient_list_id = b.id", null);
+        int id = (int) imageView.getTag();
 
-        data = new ArrayList<>();
-        MyRefriVO myRefriVO;
+        cursor = db.rawQuery("select ingredient_list_id from my_refrigerator " +
+                "where ingredient_list_id = ?", new String[]{String.valueOf(id)});
 
-        while (cursor.moveToNext()) {
-            myRefriVO = new MyRefriVO();
-            myRefriVO.setIngredientListId(cursor.getInt(0));
-            myRefriVO.setName(cursor.getString(1));
-            myRefriVO.setFileName(cursor.getString(2));
-
-            data.add(myRefriVO);
-        }
-
-        int idTag = (Integer) imageView.getTag();
-        Boolean inRefri = false;
-
-        for (MyRefriVO myRefri : data) {
-            if (myRefri.getIngredientListId() == idTag) {
-                inRefri = true;
-                break;
-            }
-        }
-
-        if (!inRefri) {
+        if(cursor.getCount() == 0){
             ContentValues contentValues = new ContentValues();
 
-            contentValues.put("ingredient_list_id", idTag);
+            contentValues.put("ingredient_list_id", id);
             db.insert("my_refrigerator", null, contentValues);
 
             Toast.makeText(this, textView.getText() + "을/를 추가하셨습니다.", Toast.LENGTH_LONG).show();
@@ -101,5 +79,46 @@ public class RefriActivity extends AppCompatActivity
             Toast.makeText(this, textView.getText() + "을/를 이미 추가하셨습니다.", Toast.LENGTH_LONG).show();
         }
 
+        /////////////////////////////////////////
+
+//        cursor = db.rawQuery("select a.ingredient_list_id, b.name, b.file_name from \n" +
+//                "my_refrigerator a left outer join ingredient_list b\n" +
+//                "on a.ingredient_list_id = b.id", null);
+//
+//        data = new ArrayList<>();
+//        MyRefriVO myRefriVO;
+//
+//        while (cursor.moveToNext()) {
+//            myRefriVO = new MyRefriVO();
+//            myRefriVO.setIngredientListId(cursor.getInt(0));
+//            myRefriVO.setName(cursor.getString(1));
+//            myRefriVO.setFileName(cursor.getString(2));
+//
+//            data.add(myRefriVO);
+//        }
+//
+//        int idTag = (Integer) imageView.getTag();
+//        Boolean inRefri = false;
+//
+//        for (MyRefriVO myRefri : data) {
+//            if (myRefri.getIngredientListId() == idTag) {
+//                inRefri = true;
+//                break;
+//            }
+//        }
+//
+//        if (!inRefri) {
+//            ContentValues contentValues = new ContentValues();
+//
+//            contentValues.put("ingredient_list_id", idTag);
+//            db.insert("my_refrigerator", null, contentValues);
+//
+//            Toast.makeText(this, textView.getText() + "을/를 추가하셨습니다.", Toast.LENGTH_LONG).show();
+//            imageView.setImageAlpha(20);
+//
+//        } else {
+//            imageView.setImageAlpha(20);
+//            Toast.makeText(this, textView.getText() + "을/를 이미 추가하셨습니다.", Toast.LENGTH_LONG).show();
+//        }
     }
 }

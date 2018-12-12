@@ -10,7 +10,6 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
     public TabPagerAdapter(FragmentManager fm) {
         super(fm);
 
-
     }
 
     @Override

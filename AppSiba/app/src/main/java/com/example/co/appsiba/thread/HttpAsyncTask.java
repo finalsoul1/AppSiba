@@ -34,12 +34,10 @@ public class HttpAsyncTask extends AsyncTask<String, Void, List> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        // 프로그레스바 띄우기
     }
 
     @Override
     protected List doInBackground(String... params) {
-        // 실제 시간이 오래 걸리는 로직을 처리: 다운로드
 
         List dbList = new ArrayList<>();
         String strUrl = params[0];
@@ -54,13 +52,15 @@ public class HttpAsyncTask extends AsyncTask<String, Void, List> {
             Response response = client.newCall(request).execute();
 
             String str = response.body().string();
-//            Log.d(TAG, "str: " + str);
 
+            Log.d("kwon", "1 - http1");
+
+
+            // Gson 사용 파싱
             Gson gson = new Gson();
             Type listType = new TypeToken<ArrayList<IngreCate>>() {}.getType();
             dbList = gson.fromJson(str, listType);
 
-//            Log.d(TAG, "dbList: " + dbList);
 
             new IngreCateDAO().insert(dbList, context);
 
@@ -74,12 +74,12 @@ public class HttpAsyncTask extends AsyncTask<String, Void, List> {
     @Override
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
-        // 프로그레스바 진행상황 보고
     }
 
     @Override
     protected void onPostExecute(List dbList) {
         super.onPostExecute(dbList);
+
         // 최종결과 처리
         if (dbList != null) {
             Log.d("HttpAsyncTask", dbList.toString());

@@ -55,12 +55,11 @@ public class MyrefriFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_myrefri, container, false);
 
+        // 검색 버튼
         Button toSearchBtn = view.findViewById(R.id.to_search);
-
         toSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 db = SibaDbHelper.getInstance(getActivity()).getReadableDatabase();
 
                 cursor = db.rawQuery("select a.ingredient_list_id, b.name, b.file_name from \n" +
@@ -68,12 +67,9 @@ public class MyrefriFragment extends Fragment {
                         "on a.ingredient_list_id = b.id", null);
 
                 if (cursor.getCount() < 3) {
-
                     cursor.close();
                     myRefriSearchDialog = new MyRefriSearchDialog(getContext());
                     myRefriSearchDialog.call();
-
-
                 } else {
                     Fragment fragment2 = new ResultFragment();
                     FragmentManager fragmentManager = getFragmentManager();
@@ -83,7 +79,7 @@ public class MyrefriFragment extends Fragment {
                 }
             }
         });
-
+        // 비우기 버튼
         Button myRefriClearBtn = view.findViewById(R.id.myrefri_clear);
         myRefriClearBtn.setOnClickListener(new ClearClickListener(this));
 
@@ -102,8 +98,9 @@ public class MyrefriFragment extends Fragment {
 
         db = SibaDbHelper.getInstance(getActivity()).getReadableDatabase();
 
-        cursor = db.rawQuery("select a.ingredient_list_id, b.name, b.file_name from \n" +
-                "my_refrigerator a left outer join ingredient_list b\n" +
+        cursor = db.rawQuery("select a.ingredient_list_id, b.name, " +
+                "b.file_name from my_refrigerator a " +
+                "left outer join ingredient_list b\n" +
                 "on a.ingredient_list_id = b.id", null);
 
         data = new ArrayList<>();
@@ -121,17 +118,14 @@ public class MyrefriFragment extends Fragment {
         cursor.close();
 
         RecyclerView recyclerView = getActivity().findViewById(R.id.myrefri_view);
-        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setNestedScrollingEnabled(false); // 부드러운 스크롤링 설정
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 4);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setLayoutManager(gridLayoutManager); // 4칸 설정
 
         RefriRecyclerAdapter refriRecyclerAdapter = new RefriRecyclerAdapter(data, getContext());
         recyclerView.setAdapter(refriRecyclerAdapter);
-
     }
-
-
 
     public class ClearClickListener implements View.OnClickListener {
 
@@ -147,9 +141,7 @@ public class MyrefriFragment extends Fragment {
 
             myRefriCustomDialog = new MyRefriCustomDialog(getContext(), ft, fragment);
             myRefriCustomDialog.call();
-
         }
     }
-
 }
 

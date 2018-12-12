@@ -22,6 +22,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
         this.mData = mData;
     }
 
+    // 뷰홀더 생성
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -31,6 +32,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
         return new ViewHolder(view);
     }
 
+    // 뷰홀더와 연결
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         RefriIngredientVO refri = (RefriIngredientVO) mData.get(i);
@@ -47,7 +49,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
     }
 
 
-
+    // 이너클래스로 뷰홀더 구현
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView foodName;
         ImageView foodImage;
@@ -57,7 +59,6 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
 
             foodImage = itemView.findViewById(R.id.food_image);
             foodName = itemView.findViewById(R.id.food_nameView);
-
         }
     }
 }

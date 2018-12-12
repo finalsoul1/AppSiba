@@ -34,7 +34,6 @@ public class RefriRecyclerAdapter extends RecyclerView.Adapter<RefriRecyclerAdap
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.food_toggle_my, viewGroup, false);
-
         return new ViewHolder(view);
     }
 
@@ -48,28 +47,25 @@ public class RefriRecyclerAdapter extends RecyclerView.Adapter<RefriRecyclerAdap
         viewHolder.foodImage.setImageResource(resId);
         viewHolder.foodImage.setTag(id);
 
-
+        // 냉장고 속 재료 지우는 이벤트리스너
         viewHolder.foodImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 db = SibaDbHelper.getInstance(context).getWritableDatabase();
-
-                db.delete("my_refrigerator", "ingredient_list_id = ?", new String[]{String.valueOf(id)});
+                db.delete("my_refrigerator", "ingredient_list_id = ?",
+                        new String[]{String.valueOf(id)});
 
                 mData.remove(i);
-                notifyItemRemoved(i);
+                notifyItemRemoved(i); // 리사이클러 뷰 실시간 적용
                 notifyItemRangeChanged(i, mData.size());
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
         return mData.size();
     }
-
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView foodName;
@@ -80,7 +76,6 @@ public class RefriRecyclerAdapter extends RecyclerView.Adapter<RefriRecyclerAdap
 
             foodImage = itemView.findViewById(R.id.myfood_image);
             foodName = itemView.findViewById(R.id.myfood_nameView);
-
         }
     }
 }

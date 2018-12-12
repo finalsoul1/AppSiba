@@ -33,7 +33,6 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
     AlertDialog.Builder builder;
 
 
-
     public HttpAsyncTask7(String TAG, Context context) {
         this.TAG = TAG;
         this.context = context;
@@ -42,41 +41,38 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
     @Override
     protected void onPreExecute() {
 
+        // 로딩 다이얼로그 생성
+        builder = new AlertDialog.Builder(context);
+        builder.setView(R.layout.loading_dialog);
+        builder.setCancelable(false);
+        dialog = builder.create();
 
-            builder = new AlertDialog.Builder(context);
-            builder.setView(R.layout.loading_dialog);
-            builder.setCancelable(false);
-            dialog = builder.create();
-
-            dialog.show();
+        dialog.show();
 
         super.onPreExecute();
     }
 
     @Override
     protected List doInBackground(String... params) {
-        // 실제 시간이 오래 걸리는 로직을 처리: 다운로드
 
         List dbList = new ArrayList<>();
         String strUrl = params[0];
-
         try {
             // 요청
             Request request = new Request.Builder()
                     .url(strUrl)
                     .build();
-
             // 응답
             Response response = client.newCall(request).execute();
-
             String str = response.body().string();
-//            Log.d(TAG, "str: " + str);
 
+            Log.d("kwon", "http7");
+
+            // Gson사용 파싱
             Gson gson = new Gson();
-            Type listType = new TypeToken<ArrayList<Ingredients>>() {}.getType();
+            Type listType = new TypeToken<ArrayList<Ingredients>>() {
+            }.getType();
             dbList = gson.fromJson(str, listType);
-
-            Log.d(TAG, "dbList: " + dbList.size());
 
             new IngredientsDAO().insert(dbList, context);
 
@@ -90,18 +86,13 @@ public class HttpAsyncTask7 extends AsyncTask<String, Void, List> {
     @Override
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
-        // 프로그레스바 진행상황 보고
-
-
     }
 
     @Override
     protected void onPostExecute(List dbList) {
-
         super.onPostExecute(dbList);
-
+        // 다이얼로그 종료
         dialog.dismiss();
-
         // 최종결과 처리
         if (dbList != null) {
             Log.d("HttpAsyncTask", dbList.toString());

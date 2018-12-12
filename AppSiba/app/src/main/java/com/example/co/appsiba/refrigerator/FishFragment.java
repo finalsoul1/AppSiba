@@ -145,11 +145,11 @@ public class FishFragment extends Fragment {
         RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.fish_fish_re);
         recyclerView1.setNestedScrollingEnabled(false);
         RecyclerView recyclerView2 = (RecyclerView) view.findViewById(R.id.fish_clam_re);
-        recyclerView1.setNestedScrollingEnabled(false);
+        recyclerView2.setNestedScrollingEnabled(false);
         RecyclerView recyclerView3 = (RecyclerView) view.findViewById(R.id.fish_seaweed_re);
-        recyclerView1.setNestedScrollingEnabled(false);
+        recyclerView3.setNestedScrollingEnabled(false);
         RecyclerView recyclerView4 = (RecyclerView) view.findViewById(R.id.fish_dried_re);
-        recyclerView1.setNestedScrollingEnabled(false);
+        recyclerView4.setNestedScrollingEnabled(false);
 
         gridLayoutManager1 = new GridLayoutManager(getActivity(), 4);
         gridLayoutManager2 = new GridLayoutManager(getActivity(), 4);
