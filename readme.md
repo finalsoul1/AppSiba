@@ -5,7 +5,7 @@
 https://ovenapp.io/view/comxGroVXog2zwxJMBagwbALww0DfqKT#jlEZQ
 
 ## 구성
-backend - Spring Boot RESTful API
+backend - Spring Boot RESTful API  
 frontend - Android FrameWork
 
 ## 프레젠테이션
