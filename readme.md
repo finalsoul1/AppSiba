@@ -11,7 +11,7 @@ https://docs.google.com/spreadsheets/d/1yk2wlp9vdUUTEpzP5vEmEfxNYI_FzmsVEA0wzHFj
 https://docs.google.com/presentation/d/1SgZRlXlPsgIhLsZIPt_AuwEogmz46c8Q1IsyJRxkJ7c/edit#slide=id.p1
 
 ## 시연동영상
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GyynTv2R8c8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Video Label](http://img.youtube.com/vi/GyynTv2R8c8/0.jpg)](https://youtu.be/GyynTv2R8c8)
 
 ## 사용한 api
 https://www.foodsafetykorea.go.kr/api/sheetInfo.do
