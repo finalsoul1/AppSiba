@@ -1,12 +1,25 @@
+당신과 함께하는 시장바구니, 시바
+================================
 
-
-https://docs.google.com/spreadsheets/d/1yk2wlp9vdUUTEpzP5vEmEfxNYI_FzmsVEA0wzHFjUmY/edit#gid=1458517013
-
-
-
+## prototype
 https://ovenapp.io/view/comxGroVXog2zwxJMBagwbALww0DfqKT#jlEZQ
 
+## docs
+https://docs.google.com/spreadsheets/d/1yk2wlp9vdUUTEpzP5vEmEfxNYI_FzmsVEA0wzHFjUmY/edit#gid=1458517013
 
+## 프레젠테이션
+https://docs.google.com/presentation/d/1SgZRlXlPsgIhLsZIPt_AuwEogmz46c8Q1IsyJRxkJ7c/edit#slide=id.p1
+
+## 시연동영상
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GyynTv2R8c8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## 사용한 api
+https://www.foodsafetykorea.go.kr/api/sheetInfo.do
+- 조리식품의 레시피 DB
+
+
+도움말
+------
 
 #가져올때  
 git add .  

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <context id="context1">
+    <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/siba?autoreconnect=true" driverClass="com.mysql.jdbc.Driver" password="elin0827" userId="root" />
+    <javaModelGenerator targetPackage="com.example.demo.model" targetProject="spring-mybatis-json-mysql\src\main\java" />
+    <sqlMapGenerator targetPackage="com.example.demo.mapper" targetProject="spring-mybatis-json-mysql\src\main\resources" />
+     <javaClientGenerator targetPackage="com.example.demo.mapper" targetProject="spring-mybatis-json-mysql\src\main\java" type="XMLMAPPER" />
+
+  <!--  <table schema="food_type" tableName="food_type"></table>-->
+   	<table schema="food" tableName="food"></table> 
+  <!-- <table schema="food_ingredients" tableName="food_ingredients"></table> -->
+   <table schema="food_recipe" tableName="food_recipe"></table>
+	<!--  useGeneratedKeys="true" keyProperty="id"  -->
+  </context>
+</generatorConfiguration>

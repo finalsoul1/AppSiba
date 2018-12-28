@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.FoodSearchMapper">
+	<select id="searchFood" parameterType="map" resultMap="map">
+    	select id, name, small_image_location, big_image_location
+		from (
+			select id, name, small_image_location, big_image_location
+			from food 
+			where food_type_id = #{foodTypeId}
+			and id in (select food_id from food_ingredients where name like CONCAT('%',#{keyword1},'%'))
+			union
+			select id, name, small_image_location, big_image_location
+			from food 
+			where food_type_id = #{foodTypeId}
+			and id in (select food_id from food_ingredients where name like CONCAT('%',#{keyword2},'%'))
+			union
+			select id, name, small_image_location, big_image_location
+			from food 
+			where food_type_id = #{foodTypeId}
+			and id in (select food_id from food_ingredients where name like CONCAT('%',#{keyword3},'%'))
+			union
+			select id, name, small_image_location, big_image_location
+			from food 
+			where food_type_id = #{foodTypeId}
+			and id in (select food_id from food_ingredients where name like CONCAT('%',#{keyword4},'%'))
+			union
+			select id, name, small_image_location, big_image_location
+			from food 
+			where food_type_id = #{foodTypeId}
+			and id in (select food_id from food_ingredients where name like CONCAT('%',#{keyword5},'%'))
+			union
+			select id, name, small_image_location, big_image_location
+			from food 
+			where food_type_id = #{foodTypeId}
+			and id in (select food_id from food_ingredients where name like CONCAT('%',#{keyword6},'%'))
+		) food
+    </select>
+</mapper>
+
