@@ -4,8 +4,9 @@
 ## prototype
 https://ovenapp.io/view/comxGroVXog2zwxJMBagwbALww0DfqKT#jlEZQ
 
-## docs
-https://docs.google.com/spreadsheets/d/1yk2wlp9vdUUTEpzP5vEmEfxNYI_FzmsVEA0wzHFjUmY/edit#gid=1458517013
+## 구성
+backend - Spring Boot RESTful API
+frontend - Android FrameWork
 
 ## 프레젠테이션
 https://docs.google.com/presentation/d/1SgZRlXlPsgIhLsZIPt_AuwEogmz46c8Q1IsyJRxkJ7c/edit#slide=id.p1
@@ -17,6 +18,8 @@ https://docs.google.com/presentation/d/1SgZRlXlPsgIhLsZIPt_AuwEogmz46c8Q1IsyJRxk
 https://www.foodsafetykorea.go.kr/api/sheetInfo.do
 - 조리식품의 레시피 DB
 
+## docs
+https://docs.google.com/spreadsheets/d/1yk2wlp9vdUUTEpzP5vEmEfxNYI_FzmsVEA0wzHFjUmY/edit#gid=1458517013
 
 도움말
 ------
